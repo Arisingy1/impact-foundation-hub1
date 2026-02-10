@@ -4,19 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, FileText, Search, Award, Send } from "lucide-react";
+import { FileText, Search, CheckCircle, Award, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const steps = [
-  { icon: FileText, title: "Подайте заявку", desc: "Заполните форму с описанием проекта" },
-  { icon: Search, title: "Экспертиза", desc: "Наши эксперты оценят инициативу" },
-  { icon: CheckCircle, title: "Согласование", desc: "Обсуждаем детали и план реализации" },
-  { icon: Award, title: "Реализация", desc: "Запуск проекта при поддержке фонда" },
+  { icon: FileText, num: "01", title: "Заявка", desc: "Заполните форму" },
+  { icon: Search, num: "02", title: "Экспертиза", desc: "Оценка инициативы" },
+  { icon: CheckCircle, num: "03", title: "Согласование", desc: "Детали и план" },
+  { icon: Award, num: "04", title: "Запуск", desc: "Поддержка фонда" },
 ];
 
 const ParticipantsSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [formState, setFormState] = useState({ name: "", email: "", direction: "", description: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -30,44 +30,47 @@ const ParticipantsSection = () => {
   };
 
   return (
-    <section id="participants" className="section-padding" ref={ref}>
-      <div className="container-narrow">
+    <section id="participants" ref={ref} className="bg-primary overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-accent mb-4">
-            Участникам
-          </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <div className="h-[2px] w-12 bg-accent mb-6" />
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-primary-foreground/40 mb-3">Участникам</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
             Подайте свой проект
           </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-body text-base text-primary-foreground/50 max-w-xl">
             Мы поддерживаем инициативы в сфере культуры, образования, социального
             предпринимательства и международного сотрудничества.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {/* Steps — horizontal timeline */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex flex-col sm:flex-row gap-4 sm:gap-0 mb-16"
+        >
           {steps.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center"
-            >
-              <div className="w-12 h-12 rounded-full bg-accent/15 flex items-center justify-center mx-auto mb-3">
-                <s.icon className="w-5 h-5 text-accent" />
+            <div key={s.num} className="flex-1 flex items-start gap-3 sm:flex-col sm:items-center sm:text-center relative">
+              {i < steps.length - 1 && (
+                <div className="hidden sm:block absolute top-5 left-1/2 w-full h-[1px] bg-primary-foreground/10" />
+              )}
+              <div className="relative z-10 w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center bg-primary flex-shrink-0">
+                <span className="font-body text-xs font-bold text-accent">{s.num}</span>
               </div>
-              <h4 className="font-display text-sm font-semibold text-foreground mb-1">{s.title}</h4>
-              <p className="font-body text-xs text-muted-foreground">{s.desc}</p>
-            </motion.div>
+              <div className="sm:mt-3">
+                <p className="font-body text-sm font-semibold text-primary-foreground">{s.title}</p>
+                <p className="font-body text-xs text-primary-foreground/40">{s.desc}</p>
+              </div>
+            </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Form */}
         <motion.form
@@ -75,54 +78,45 @@ const ParticipantsSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto bg-card border border-border rounded-2xl p-8 shadow-sm"
+          className="max-w-2xl bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-8"
         >
-          <h3 className="font-display text-xl font-semibold text-foreground mb-6">
+          <h3 className="font-display text-lg font-semibold text-primary-foreground mb-6">
             Форма заявки
           </h3>
           <div className="space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="font-body text-sm font-medium text-foreground mb-1 block">
-                  Имя <span className="text-destructive">*</span>
-                </label>
+                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Имя *</label>
                 <Input
                   value={formState.name}
                   onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
                   placeholder="Ваше имя"
-                  className="font-body"
+                  className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
                   maxLength={100}
                 />
               </div>
               <div>
-                <label className="font-body text-sm font-medium text-foreground mb-1 block">
-                  Email <span className="text-destructive">*</span>
-                </label>
+                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Email *</label>
                 <Input
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
                   placeholder="email@example.com"
-                  className="font-body"
+                  className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
                   maxLength={255}
                 />
               </div>
             </div>
             <div>
-              <label className="font-body text-sm font-medium text-foreground mb-1 block">
-                Направление <span className="text-destructive">*</span>
-              </label>
-              <Select
-                value={formState.direction}
-                onValueChange={(v) => setFormState((s) => ({ ...s, direction: v }))}
-              >
-                <SelectTrigger className="font-body">
+              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Направление *</label>
+              <Select value={formState.direction} onValueChange={(v) => setFormState((s) => ({ ...s, direction: v }))}>
+                <SelectTrigger className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground">
                   <SelectValue placeholder="Выберите направление" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="culture">Культура и искусство</SelectItem>
                   <SelectItem value="social">Социальные инициативы</SelectItem>
-                  <SelectItem value="business">Бизнес и социальное воздействие</SelectItem>
+                  <SelectItem value="business">Бизнес и соц. воздействие</SelectItem>
                   <SelectItem value="international">Международные проекты</SelectItem>
                   <SelectItem value="events">Фестивали и события</SelectItem>
                   <SelectItem value="education">Образование</SelectItem>
@@ -130,19 +124,17 @@ const ParticipantsSection = () => {
               </Select>
             </div>
             <div>
-              <label className="font-body text-sm font-medium text-foreground mb-1 block">
-                Описание проекта <span className="text-destructive">*</span>
-              </label>
+              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Описание проекта *</label>
               <Textarea
                 value={formState.description}
                 onChange={(e) => setFormState((s) => ({ ...s, description: e.target.value }))}
                 placeholder="Расскажите о вашей инициативе..."
-                rows={5}
-                className="font-body"
+                rows={4}
+                className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
                 maxLength={1000}
               />
             </div>
-            <Button type="submit" className="w-full font-body" size="lg">
+            <Button type="submit" variant="hero" size="lg" className="w-full font-body">
               <Send className="w-4 h-4 mr-2" />
               Отправить заявку
             </Button>

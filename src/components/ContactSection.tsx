@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,62 +22,44 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacts" className="section-padding" ref={ref}>
-      <div className="container-narrow">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
-        >
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-accent mb-4">Контакты</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-            Свяжитесь с нами
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12">
+    <section id="contacts" ref={ref} className="bg-background border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7 }}
           >
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-accent" />
+            <div className="h-[2px] w-12 bg-accent mb-6" />
+            <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Контакты</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-10">
+              Свяжитесь
+              <br />с нами
+            </h2>
+
+            <div className="space-y-5 mb-10">
+              {[
+                { icon: MapPin, label: "Адрес", value: "г. Москва, ул. Примерная, д. 1" },
+                { icon: Mail, label: "Email", value: "info@fond.org" },
+                { icon: Phone, label: "Телефон", value: "+7 (495) 000-00-00" },
+              ].map((c) => (
+                <div key={c.label} className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <c.icon className="w-4 h-4 text-accent" />
+                  </div>
+                  <div>
+                    <p className="font-body text-xs uppercase tracking-wider text-muted-foreground">{c.label}</p>
+                    <p className="font-body text-sm text-foreground">{c.value}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-body font-semibold text-foreground">Адрес</p>
-                  <p className="font-body text-sm text-muted-foreground">г. Москва, ул. Примерная, д. 1</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-body font-semibold text-foreground">Email</p>
-                  <p className="font-body text-sm text-muted-foreground">info@fond.org</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-body font-semibold text-foreground">Телефон</p>
-                  <p className="font-body text-sm text-muted-foreground">+7 (495) 000-00-00</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h4 className="font-display text-sm font-semibold text-foreground mb-2">Юридическая информация</h4>
+            <div className="bg-card border border-border rounded-xl p-5">
+              <p className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-2">Юридическая информация</p>
               <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                Благотворительный фонд «Фонд»<br />
-                ИНН: 0000000000 / ОГРН: 0000000000000<br />
-                Юридический адрес: г. Москва, ул. Примерная, д. 1
+                Благотворительный фонд «Фонд» · ИНН: 0000000000 · ОГРН: 0000000000000
+                <br />г. Москва, ул. Примерная, д. 1
               </p>
             </div>
           </motion.div>
@@ -85,9 +67,9 @@ const ContactSection = () => {
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             onSubmit={handleSubmit}
-            className="bg-card border border-border rounded-2xl p-8 shadow-sm"
+            className="bg-card border border-border rounded-2xl p-8 self-start"
           >
             <h3 className="font-display text-xl font-semibold text-foreground mb-6">Обратная связь</h3>
             <div className="space-y-4">
@@ -114,8 +96,9 @@ const ContactSection = () => {
                 className="font-body"
                 maxLength={1000}
               />
-              <Button type="submit" className="w-full font-body" size="lg">
+              <Button type="submit" className="w-full font-body group" size="lg">
                 Отправить
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </motion.form>
