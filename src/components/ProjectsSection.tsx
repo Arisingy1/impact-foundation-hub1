@@ -1,6 +1,7 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 type Category = "realized" | "current" | "planned";
 
@@ -57,80 +58,94 @@ const projects: { category: Category; title: string; idea: string; goal: string;
   },
 ];
 
-const categoryLabels: Record<Category, string> = {
-  realized: "Реализованные",
-  current: "Текущие",
-  planned: "Планируемые",
-};
+const tabs: { key: Category; label: string }[] = [
+  { key: "realized", label: "Реализованные" },
+  { key: "current", label: "Текущие" },
+  { key: "planned", label: "Планируемые" },
+];
 
 const ProjectsSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeCategory, setActiveCategory] = useState<Category>("realized");
-
-  const filtered = projects.filter((p) => p.category === activeCategory);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [active, setActive] = useState<Category>("realized");
+  const filtered = projects.filter((p) => p.category === active);
 
   return (
-    <section id="projects" className="section-padding" ref={ref}>
-      <div className="container-narrow">
+    <section id="projects" ref={ref} className="bg-primary overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
         >
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-accent mb-4">Проекты</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-            Наши проекты
-          </h2>
+          <div>
+            <div className="h-[2px] w-12 bg-accent mb-6" />
+            <p className="font-body text-xs uppercase tracking-[0.3em] text-primary-foreground/40 mb-3">Проекты</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground">Наши проекты</h2>
+          </div>
+          <div className="flex gap-1 bg-primary-foreground/5 rounded-full p-1">
+            {tabs.map((t) => (
+              <button
+                key={t.key}
+                onClick={() => setActive(t.key)}
+                className={`font-body text-sm px-5 py-2 rounded-full transition-all duration-300 ${
+                  active === t.key
+                    ? "bg-accent text-accent-foreground font-medium"
+                    : "text-primary-foreground/50 hover:text-primary-foreground/80"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="flex justify-center gap-2 mb-10">
-          {(Object.keys(categoryLabels) as Category[]).map((cat) => (
-            <Button
-              key={cat}
-              variant={activeCategory === cat ? "default" : "secondary"}
-              size="sm"
-              onClick={() => setActiveCategory(cat)}
-              className="font-body"
-            >
-              {categoryLabels[cat]}
-            </Button>
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {filtered.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-card rounded-2xl p-6 border border-border shadow-sm"
-            >
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">{p.title}</h3>
-              <div className="space-y-2 font-body text-sm">
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-foreground">Идея:</span> {p.idea}
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-foreground">Цель:</span> {p.goal}
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-foreground">Формат:</span> {p.format}
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-foreground">Эффект:</span> {p.impact}
-                </p>
-                {p.partners && (
-                  <p className="text-muted-foreground">
-                    <span className="font-semibold text-foreground">Партнёры:</span> {p.partners}
-                  </p>
-                )}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {filtered.map((p) => (
+              <div
+                key={p.title}
+                className="group bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-7 hover:bg-primary-foreground/8 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="font-display text-xl font-semibold text-primary-foreground group-hover:text-accent transition-colors">
+                    {p.title}
+                  </h3>
+                  <ArrowRight className="w-5 h-5 text-primary-foreground/20 group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                </div>
+                <p className="font-body text-sm text-primary-foreground/50 mb-4 leading-relaxed">{p.idea}</p>
+                <div className="grid grid-cols-2 gap-3 text-xs font-body">
+                  <div>
+                    <span className="text-primary-foreground/30 uppercase tracking-wider">Цель</span>
+                    <p className="text-primary-foreground/60 mt-0.5">{p.goal}</p>
+                  </div>
+                  <div>
+                    <span className="text-primary-foreground/30 uppercase tracking-wider">Формат</span>
+                    <p className="text-primary-foreground/60 mt-0.5">{p.format}</p>
+                  </div>
+                  <div>
+                    <span className="text-primary-foreground/30 uppercase tracking-wider">Эффект</span>
+                    <p className="text-accent mt-0.5 font-medium">{p.impact}</p>
+                  </div>
+                  {p.partners && (
+                    <div>
+                      <span className="text-primary-foreground/30 uppercase tracking-wider">Партнёры</span>
+                      <p className="text-primary-foreground/60 mt-0.5">{p.partners}</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
