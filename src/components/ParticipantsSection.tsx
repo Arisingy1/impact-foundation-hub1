@@ -1,17 +1,19 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FileText, Search, CheckCircle, Award, Send } from "lucide-react";
+import { FileText, Search, CheckCircle, Award, Send, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 const steps = [
-  { icon: FileText, num: "01", title: "Заявка", desc: "Заполните форму" },
-  { icon: Search, num: "02", title: "Экспертиза", desc: "Оценка инициативы" },
-  { icon: CheckCircle, num: "03", title: "Согласование", desc: "Детали и план" },
-  { icon: Award, num: "04", title: "Запуск", desc: "Поддержка фонда" },
+  { icon: FileText, num: "01", title: "Заявка", desc: "Заполните форму с описанием проекта" },
+  { icon: Search, num: "02", title: "Экспертиза", desc: "Наши эксперты оценят инициативу" },
+  { icon: CheckCircle, num: "03", title: "Согласование", desc: "Обсуждаем детали и план" },
+  { icon: Award, num: "04", title: "Запуск", desc: "Начинаем при поддержке фонда" },
 ];
 
 const ParticipantsSection = () => {
@@ -30,45 +32,52 @@ const ParticipantsSection = () => {
   };
 
   return (
-    <section id="participants" ref={ref} className="bg-primary overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
+    <section id="participants" ref={ref} className="relative bg-primary overflow-hidden">
+      {/* Decorative */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/[0.02] -translate-y-1/3 translate-x-1/3" />
+
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <div className="h-[2px] w-12 bg-accent mb-6" />
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-primary-foreground/40 mb-3">Участникам</p>
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Участникам</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-            Подайте свой проект
+            Подайте свой <span className="italic text-accent">проект</span>
           </h2>
-          <p className="font-body text-base text-primary-foreground/50 max-w-xl">
+          <p className="font-body text-base text-primary-foreground/50 max-w-xl mx-auto">
             Мы поддерживаем инициативы в сфере культуры, образования, социального
             предпринимательства и международного сотрудничества.
           </p>
         </motion.div>
 
-        {/* Steps — horizontal timeline */}
+        {/* Steps — modern timeline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-0 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16"
         >
           {steps.map((s, i) => (
-            <div key={s.num} className="flex-1 flex items-start gap-3 sm:flex-col sm:items-center sm:text-center relative">
+            <motion.div
+              key={s.num}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 + i * 0.1 }}
+              className="relative bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 text-center group hover:border-accent/20 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/25 transition-colors">
+                <s.icon className="w-5 h-5 text-accent" />
+              </div>
+              <span className="font-display text-2xl font-bold text-accent/20 block mb-1">{s.num}</span>
+              <p className="font-body text-sm font-semibold text-primary-foreground mb-1">{s.title}</p>
+              <p className="font-body text-xs text-primary-foreground/40">{s.desc}</p>
               {i < steps.length - 1 && (
-                <div className="hidden sm:block absolute top-5 left-1/2 w-full h-[1px] bg-primary-foreground/10" />
+                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/15 z-10" />
               )}
-              <div className="relative z-10 w-10 h-10 rounded-full border border-accent/40 flex items-center justify-center bg-primary flex-shrink-0">
-                <span className="font-body text-xs font-bold text-accent">{s.num}</span>
-              </div>
-              <div className="sm:mt-3">
-                <p className="font-body text-sm font-semibold text-primary-foreground">{s.title}</p>
-                <p className="font-body text-xs text-primary-foreground/40">{s.desc}</p>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -78,39 +87,42 @@ const ParticipantsSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
           onSubmit={handleSubmit}
-          className="max-w-2xl bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-8"
+          className="max-w-2xl mx-auto bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-3xl p-8 md:p-10"
         >
-          <h3 className="font-display text-lg font-semibold text-primary-foreground mb-6">
-            Форма заявки
-          </h3>
-          <div className="space-y-4">
-            <div className="grid sm:grid-cols-2 gap-4">
+          <div className="text-center mb-8">
+            <h3 className="font-display text-xl font-semibold text-primary-foreground mb-2">
+              Форма заявки
+            </h3>
+            <p className="font-body text-sm text-primary-foreground/40">Заполните поля и мы свяжемся с вами</p>
+          </div>
+          <div className="space-y-5">
+            <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Имя *</label>
+                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Имя *</label>
                 <Input
                   value={formState.name}
                   onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
                   placeholder="Ваше имя"
-                  className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
+                  className="font-body bg-white/[0.05] border-white/[0.1] text-primary-foreground placeholder:text-primary-foreground/25 rounded-xl h-12"
                   maxLength={100}
                 />
               </div>
               <div>
-                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Email *</label>
+                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Email *</label>
                 <Input
                   type="email"
                   value={formState.email}
                   onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
                   placeholder="email@example.com"
-                  className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
+                  className="font-body bg-white/[0.05] border-white/[0.1] text-primary-foreground placeholder:text-primary-foreground/25 rounded-xl h-12"
                   maxLength={255}
                 />
               </div>
             </div>
             <div>
-              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Направление *</label>
+              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Направление *</label>
               <Select value={formState.direction} onValueChange={(v) => setFormState((s) => ({ ...s, direction: v }))}>
-                <SelectTrigger className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground">
+                <SelectTrigger className="font-body bg-white/[0.05] border-white/[0.1] text-primary-foreground rounded-xl h-12">
                   <SelectValue placeholder="Выберите направление" />
                 </SelectTrigger>
                 <SelectContent>
@@ -124,20 +136,23 @@ const ParticipantsSection = () => {
               </Select>
             </div>
             <div>
-              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-1.5 block">Описание проекта *</label>
+              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Описание проекта *</label>
               <Textarea
                 value={formState.description}
                 onChange={(e) => setFormState((s) => ({ ...s, description: e.target.value }))}
                 placeholder="Расскажите о вашей инициативе..."
                 rows={4}
-                className="font-body bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/30"
+                className="font-body bg-white/[0.05] border-white/[0.1] text-primary-foreground placeholder:text-primary-foreground/25 rounded-xl"
                 maxLength={1000}
               />
             </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full font-body">
+            <Button type="submit" variant="hero" size="lg" className="w-full font-body rounded-xl h-13 text-base">
               <Send className="w-4 h-4 mr-2" />
               Отправить заявку
             </Button>
+            <p className="font-body text-[11px] text-primary-foreground/25 text-center">
+              Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
+            </p>
           </div>
         </motion.form>
       </div>

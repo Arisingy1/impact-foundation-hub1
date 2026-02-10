@@ -1,6 +1,8 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Palette, Sprout, Handshake, Globe, PartyPopper, BookOpen, ArrowRight } from "lucide-react";
+import { Palette, Sprout, Handshake, Globe, PartyPopper, BookOpen, ArrowUpRight } from "lucide-react";
 
 const directions = [
   {
@@ -9,6 +11,9 @@ const directions = [
     desc: "Поддержка выставок, театральных постановок, музыкальных инициатив и арт-резиденций.",
     formats: "Выставки · Спектакли · Арт-резиденции",
     audience: "Художники, музыканты, театральные деятели",
+    gradient: "from-rose-500/10 to-amber-500/10",
+    iconBg: "bg-rose-500/10",
+    iconColor: "text-rose-500",
   },
   {
     icon: Sprout,
@@ -16,6 +21,9 @@ const directions = [
     desc: "Реабилитационные программы и развитие социальной инфраструктуры.",
     formats: "Программы · Центры · Гранты",
     audience: "НКО, социальные предприниматели",
+    gradient: "from-emerald-500/10 to-teal-500/10",
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600",
   },
   {
     icon: Handshake,
@@ -23,6 +31,9 @@ const directions = [
     desc: "Интеграция бизнес-ресурсов в социально значимые проекты.",
     formats: "Партнёрства · CSR-проекты",
     audience: "Корпорации, предприниматели",
+    gradient: "from-blue-500/10 to-indigo-500/10",
+    iconBg: "bg-blue-500/10",
+    iconColor: "text-blue-600",
   },
   {
     icon: Globe,
@@ -30,6 +41,9 @@ const directions = [
     desc: "Межрегиональные инициативы и культурный обмен.",
     formats: "Обмены · Конференции · Программы",
     audience: "Международные организации",
+    gradient: "from-violet-500/10 to-purple-500/10",
+    iconBg: "bg-violet-500/10",
+    iconColor: "text-violet-600",
   },
   {
     icon: PartyPopper,
@@ -37,6 +51,9 @@ const directions = [
     desc: "Организация форумов и образовательных событий.",
     formats: "Фестивали · Форумы · Конференции",
     audience: "Широкая аудитория",
+    gradient: "from-amber-500/10 to-orange-500/10",
+    iconBg: "bg-amber-500/10",
+    iconColor: "text-amber-600",
   },
   {
     icon: BookOpen,
@@ -44,6 +61,9 @@ const directions = [
     desc: "Воркшопы, менторство и развитие навыков.",
     formats: "Курсы · Лекции · Воркшопы",
     audience: "Студенты, молодые специалисты",
+    gradient: "from-cyan-500/10 to-blue-500/10",
+    iconBg: "bg-cyan-500/10",
+    iconColor: "text-cyan-600",
   },
 ];
 
@@ -53,60 +73,67 @@ const DirectionsSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="directions" ref={ref} className="bg-background">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
-          {/* Left sticky headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="lg:sticky lg:top-32 lg:self-start"
-          >
-            <div className="h-[2px] w-12 bg-accent mb-6" />
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Направления</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-              Сферы
-              <br />деятельности
-            </h2>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed">
-              Шесть ключевых направлений, в которых мы создаём устойчивые изменения.
-            </p>
-          </motion.div>
+    <section id="directions" ref={ref} className="bg-background relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-          {/* Right — direction items as list */}
-          <div className="space-y-0 divide-y divide-border">
-            {directions.map((d, i) => (
-              <motion.div
-                key={d.title}
-                initial={{ opacity: 0, x: 30 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                className="group py-6 md:py-8 cursor-pointer"
-              >
-                <div className="flex items-start gap-4 md:gap-6">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${hovered === i ? 'bg-accent text-accent-foreground scale-110' : 'bg-accent/10 text-accent'}`}>
-                    <d.icon className="w-5 h-5" />
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Направления</p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Сферы <span className="italic text-accent">деятельности</span>
+          </h2>
+          <p className="font-body text-base text-muted-foreground max-w-xl mx-auto">
+            Шесть ключевых направлений, в которых мы создаём устойчивые изменения
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {directions.map((d, i) => (
+            <motion.div
+              key={d.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              className="group relative bg-card rounded-2xl border border-border p-7 hover:border-accent/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 transition-all duration-300 overflow-hidden cursor-pointer"
+            >
+              {/* Gradient background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${d.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+              <div className="relative">
+                <div className="flex items-start justify-between mb-5">
+                  <div className={`w-12 h-12 rounded-2xl ${d.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <d.icon className={`w-6 h-6 ${d.iconColor}`} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-display text-lg md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
-                        {d.title}
-                      </h3>
-                      <ArrowRight className={`w-4 h-4 text-accent transition-all duration-300 ${hovered === i ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`} />
-                    </div>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-2">{d.desc}</p>
-                    <div className={`overflow-hidden transition-all duration-300 ${hovered === i ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-                      <p className="font-body text-xs text-accent">{d.formats}</p>
-                      <p className="font-body text-xs text-muted-foreground mt-1">Для: {d.audience}</p>
-                    </div>
-                  </div>
+                  <ArrowUpRight className={`w-5 h-5 text-muted-foreground/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300`} />
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-3">
+                  {d.title}
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">{d.desc}</p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {d.formats.split(" · ").map((tag) => (
+                    <span key={tag} className="font-body text-[11px] bg-muted px-2.5 py-1 rounded-full text-muted-foreground group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="font-body text-xs text-muted-foreground/70">
+                  <span className="text-accent/60">Для:</span> {d.audience}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

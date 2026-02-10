@@ -1,151 +1,164 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+"use client";
 
-type Category = "realized" | "current" | "planned";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { ExternalLink } from "lucide-react";
 
-const projects: { category: Category; title: string; idea: string; goal: string; format: string; impact: string; partners?: string }[] = [
+interface Project {
+  title: string;
+  idea: string;
+  goal: string;
+  format: string;
+  impact: string;
+  link: string;
+  emoji: string;
+  gradient: string;
+}
+
+const projects: Project[] = [
   {
-    category: "realized",
-    title: "Фестиваль «Свет культуры»",
-    idea: "Масштабный фестиваль современного искусства в регионах",
-    goal: "Сделать современное искусство доступным за пределами столицы",
-    format: "Выставки, перформансы, мастер-классы",
-    impact: "5 000+ посетителей, 12 городов",
-    partners: "Министерство культуры, Фонд А",
+    title: "Творческий фестиваль",
+    idea: "Поддержка молодых художников на старте их пути — помощь талантам вырасти в настоящие творческие бренды",
+    goal: "Дать молодым художникам платформу для развития и продвижения",
+    format: "Фестиваль, выставки, конкурсы, менторство",
+    impact: "Развитие творческого сообщества",
+    link: "https://t.me/unionart_fest",
+    emoji: "🎨",
+    gradient: "from-rose-500/20 via-pink-500/10 to-transparent",
   },
   {
-    category: "realized",
-    title: "Программа «Новый старт»",
-    idea: "Реабилитационная программа для молодёжи",
-    goal: "Социальная адаптация молодёжи через творчество",
-    format: "Мастерские, менторство, гранты",
-    impact: "300+ участников программы",
+    title: "Футбольный турнир",
+    idea: "Спортивное событие, объединяющее участников через командный дух и здоровый образ жизни",
+    goal: "Популяризация спорта и формирование сообщества",
+    format: "Турнир, соревнования",
+    impact: "Укрепление спортивного сообщества",
+    link: "https://t.me/spfootballturnir",
+    emoji: "⚽",
+    gradient: "from-emerald-500/20 via-green-500/10 to-transparent",
   },
   {
-    category: "current",
-    title: "Платформа «Идея → Дело»",
-    idea: "Онлайн-платформа для инициаторов социальных проектов",
-    goal: "Создать экосистему поддержки социальных инициатив",
-    format: "Цифровая платформа, акселератор",
-    impact: "50+ проектов в работе",
-    partners: "Tech-партнёры",
+    title: "Фестиваль гармоничного развития личности",
+    idea: "Пространство для раскрытия потенциала через практики осознанности, творчества и физического развития",
+    goal: "Содействие гармоничному развитию участников",
+    format: "Фестиваль, мастер-классы, практики",
+    impact: "Личностный рост участников",
+    link: "https://t.me/fbweel",
+    emoji: "🧘",
+    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
   },
   {
-    category: "current",
-    title: "Образовательная лаборатория",
-    idea: "Серия воркшопов по социальному предпринимательству",
-    goal: "Обучить 500 социальных предпринимателей",
-    format: "Онлайн и офлайн обучение",
-    impact: "200+ выпускников",
+    title: "Кинофестиваль «Загляни в яркий мир кино с изнанки»",
+    idea: "Кинофестиваль для молодёжи и всей семьи — возможность увидеть мир кино изнутри",
+    goal: "Вовлечение молодёжи и семей в кинокультуру",
+    format: "Кинопоказы, встречи с создателями, мастер-классы",
+    impact: "Развитие киноиндустрии и культурного досуга",
+    link: "https://t.me/kino_festival_25",
+    emoji: "🎬",
+    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
   },
   {
-    category: "planned",
-    title: "Международный форум «Мосты»",
-    idea: "Форум по межкультурному сотрудничеству",
-    goal: "Наладить международные партнёрства",
-    format: "Конференция, нетворкинг, воркшопы",
-    impact: "Ожидается 1 000+ участников",
+    title: "Музыкальный фестиваль «Песни со смыслом»",
+    idea: "Фестиваль, посвящённый музыке с глубоким содержанием и смыслом",
+    goal: "Поддержка авторской музыки и культуры осмысленного творчества",
+    format: "Концерты, выступления, конкурс",
+    impact: "Продвижение качественной авторской музыки",
+    link: "https://t.me/musicfestmsc",
+    emoji: "🎵",
+    gradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
   },
   {
-    category: "planned",
-    title: "Грантовая программа «Первый шаг»",
-    idea: "Микрогранты для начинающих инициаторов",
-    goal: "Поддержать 100 начинающих проектов",
-    format: "Гранты, менторство",
-    impact: "100+ грантов",
+    title: "Фестиваль творчества и культурных ценностей народов России",
+    idea: "Сохранение и популяризация культурного наследия и традиций народов России",
+    goal: "Объединение людей через культурный обмен и уважение к традициям",
+    format: "Фестиваль, выставки, мастер-классы, выступления",
+    impact: "Сохранение культурного разнообразия России",
+    link: "https://t.me/sokrovishanarodovrossii",
+    emoji: "🏛️",
+    gradient: "from-orange-500/20 via-red-500/10 to-transparent",
   },
 ];
 
-const tabs: { key: Category; label: string }[] = [
-  { key: "realized", label: "Реализованные" },
-  { key: "current", label: "Текущие" },
-  { key: "planned", label: "Планируемые" },
-];
+const TelegramIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+  </svg>
+);
 
 const ProjectsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [active, setActive] = useState<Category>("realized");
-  const filtered = projects.filter((p) => p.category === active);
 
   return (
-    <section id="projects" ref={ref} className="bg-primary overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-32">
+    <section id="projects" ref={ref} className="relative bg-primary overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/[0.03] -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/[0.02] translate-y-1/2 -translate-x-1/3" />
+
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+          className="text-center mb-16"
         >
-          <div>
-            <div className="h-[2px] w-12 bg-accent mb-6" />
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-primary-foreground/40 mb-3">Проекты</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground">Наши проекты</h2>
-          </div>
-          <div className="flex gap-1 bg-primary-foreground/5 rounded-full p-1">
-            {tabs.map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setActive(t.key)}
-                className={`font-body text-sm px-5 py-2 rounded-full transition-all duration-300 ${
-                  active === t.key
-                    ? "bg-accent text-accent-foreground font-medium"
-                    : "text-primary-foreground/50 hover:text-primary-foreground/80"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Проекты</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+            Наши <span className="italic text-accent">проекты</span>
+          </h2>
+          <p className="font-body text-base text-primary-foreground/50 max-w-lg mx-auto">
+            Текущие инициативы фонда — фестивали, турниры и культурные события, объединяющие людей
+          </p>
         </motion.div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-            className="grid md:grid-cols-2 gap-6"
-          >
-            {filtered.map((p) => (
-              <div
-                key={p.title}
-                className="group bg-primary-foreground/5 backdrop-blur-sm border border-primary-foreground/10 rounded-2xl p-7 hover:bg-primary-foreground/8 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-display text-xl font-semibold text-primary-foreground group-hover:text-accent transition-colors">
-                    {p.title}
-                  </h3>
-                  <ArrowRight className="w-5 h-5 text-primary-foreground/20 group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {projects.map((p, i) => (
+            <motion.a
+              key={p.title}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 * i }}
+              className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-7 hover:bg-white/[0.08] hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300 cursor-pointer block overflow-hidden"
+            >
+              {/* Gradient blob */}
+              <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${p.gradient} opacity-40 group-hover:opacity-70 transition-opacity rounded-bl-full`} />
+
+              <div className="relative">
+                {/* Emoji + title */}
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-white/[0.1] transition-all duration-300">
+                    {p.emoji}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-lg font-semibold text-primary-foreground group-hover:text-accent transition-colors leading-tight mb-1">
+                      {p.title}
+                    </h3>
+                    <p className="font-body text-xs text-accent/50">{p.format}</p>
+                  </div>
                 </div>
-                <p className="font-body text-sm text-primary-foreground/50 mb-4 leading-relaxed">{p.idea}</p>
-                <div className="grid grid-cols-2 gap-3 text-xs font-body">
-                  <div>
-                    <span className="text-primary-foreground/30 uppercase tracking-wider">Цель</span>
-                    <p className="text-primary-foreground/60 mt-0.5">{p.goal}</p>
+
+                <p className="font-body text-sm text-primary-foreground/50 leading-relaxed mb-5">{p.idea}</p>
+
+                {/* Impact badge */}
+                <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-3 py-1.5 mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="font-body text-xs font-medium text-accent">{p.impact}</span>
+                </div>
+
+                {/* Telegram link */}
+                <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+                  <div className="flex items-center gap-2 text-primary-foreground/30 group-hover:text-accent/70 transition-colors">
+                    <TelegramIcon />
+                    <span className="font-body text-xs">Подробнее</span>
                   </div>
-                  <div>
-                    <span className="text-primary-foreground/30 uppercase tracking-wider">Формат</span>
-                    <p className="text-primary-foreground/60 mt-0.5">{p.format}</p>
-                  </div>
-                  <div>
-                    <span className="text-primary-foreground/30 uppercase tracking-wider">Эффект</span>
-                    <p className="text-accent mt-0.5 font-medium">{p.impact}</p>
-                  </div>
-                  {p.partners && (
-                    <div>
-                      <span className="text-primary-foreground/30 uppercase tracking-wider">Партнёры</span>
-                      <p className="text-primary-foreground/60 mt-0.5">{p.partners}</p>
-                    </div>
-                  )}
+                  <ExternalLink className="w-4 h-4 text-primary-foreground/15 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            </motion.a>
+          ))}
+        </div>
       </div>
     </section>
   );
