@@ -141,7 +141,7 @@ const ProjectsSection = () => {
             <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
               Наши <span className="italic text-accent">проекты</span>
             </h2>
-            <p className="font-body text-base md:text-lg text-primary-foreground/50 max-w-lg">
+            <p className="font-body text-base md:text-lg text-primary-foreground/80 max-w-lg">
               Текущие инициативы фонда — фестивали, турниры и культурные события, объединяющие людей
             </p>
           </motion.div>
@@ -203,11 +203,11 @@ const ProjectsSection = () => {
                         <h3 className="font-display text-lg font-semibold text-primary-foreground group-hover:text-accent transition-colors leading-tight mb-1">
                           {p.title}
                         </h3>
-                        <p className="font-body text-xs text-accent/50">{p.format}</p>
+                        <p className="font-body text-xs text-accent/70">{p.format}</p>
                       </div>
                     </div>
 
-                    <p className="font-body text-sm md:text-base text-primary-foreground/55 leading-relaxed mb-5">{p.idea}</p>
+                    <p className="font-body text-sm md:text-base text-primary-foreground/80 leading-relaxed mb-5">{p.idea}</p>
 
                     {/* Impact badge */}
                     <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-3 py-1.5 mb-5">
@@ -217,11 +217,11 @@ const ProjectsSection = () => {
 
                     {/* Telegram link */}
                     <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                      <div className="flex items-center gap-2 text-primary-foreground/30 group-hover:text-accent/70 transition-colors">
+                      <div className="flex items-center gap-2 text-primary-foreground/55 group-hover:text-accent/70 transition-colors">
                         <TelegramIcon />
                         <span className="font-body text-xs">Подробнее</span>
                       </div>
-                      <ExternalLink className="w-4 h-4 text-primary-foreground/15 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ExternalLink className="w-4 h-4 text-primary-foreground/35 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </div>
                   </div>
                 </a>

@@ -47,7 +47,7 @@ const ParticipantsSection = () => {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
             Подайте свой <span className="italic text-accent">проект</span>
           </h2>
-          <p className="font-body text-base text-primary-foreground/50 max-w-xl mx-auto">
+          <p className="font-body text-base text-primary-foreground/80 max-w-xl mx-auto">
             Мы поддерживаем инициативы в сфере культуры, образования, социального
             предпринимательства и международного сотрудничества.
           </p>
@@ -73,9 +73,9 @@ const ParticipantsSection = () => {
               </div>
               <span className="font-display text-2xl font-bold text-accent/20 block mb-1">{s.num}</span>
               <p className="font-body text-sm font-semibold text-primary-foreground mb-1">{s.title}</p>
-              <p className="font-body text-xs text-primary-foreground/40">{s.desc}</p>
+              <p className="font-body text-xs text-primary-foreground/65">{s.desc}</p>
               {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/15 z-10" />
+                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/35 z-10" />
               )}
             </motion.div>
           ))}
@@ -93,12 +93,12 @@ const ParticipantsSection = () => {
             <h3 className="font-display text-xl font-semibold text-primary-foreground mb-2">
               Форма заявки
             </h3>
-            <p className="font-body text-sm text-primary-foreground/40">Заполните поля и мы свяжемся с вами</p>
+            <p className="font-body text-sm text-primary-foreground/65">Заполните поля и мы свяжемся с вами</p>
           </div>
           <div className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Имя *</label>
+                <label className="font-body text-xs font-medium text-primary-foreground/80 mb-2 block">Имя *</label>
                 <Input
                   value={formState.name}
                   onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
@@ -108,7 +108,7 @@ const ParticipantsSection = () => {
                 />
               </div>
               <div>
-                <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Email *</label>
+                <label className="font-body text-xs font-medium text-primary-foreground/80 mb-2 block">Email *</label>
                 <Input
                   type="email"
                   value={formState.email}
@@ -120,7 +120,7 @@ const ParticipantsSection = () => {
               </div>
             </div>
             <div>
-              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Направление *</label>
+              <label className="font-body text-xs font-medium text-primary-foreground/80 mb-2 block">Направление *</label>
               <Select value={formState.direction} onValueChange={(v) => setFormState((s) => ({ ...s, direction: v }))}>
                 <SelectTrigger className="font-body bg-white/[0.05] border-white/[0.1] text-primary-foreground rounded-xl h-12">
                   <SelectValue placeholder="Выберите направление" />
@@ -136,7 +136,7 @@ const ParticipantsSection = () => {
               </Select>
             </div>
             <div>
-              <label className="font-body text-xs font-medium text-primary-foreground/60 mb-2 block">Описание проекта *</label>
+              <label className="font-body text-xs font-medium text-primary-foreground/80 mb-2 block">Описание проекта *</label>
               <Textarea
                 value={formState.description}
                 onChange={(e) => setFormState((s) => ({ ...s, description: e.target.value }))}
@@ -150,7 +150,7 @@ const ParticipantsSection = () => {
               <Send className="w-4 h-4 mr-2" />
               Отправить заявку
             </Button>
-            <p className="font-body text-[11px] text-primary-foreground/25 text-center">
+            <p className="font-body text-[11px] text-primary-foreground/45 text-center">
               Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
             </p>
           </div>

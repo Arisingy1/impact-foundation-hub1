@@ -53,7 +53,7 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1.5 mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="font-body text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary-foreground/60">
+                <span className="font-body text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary-foreground/80">
                   Фонд поддержки соц.-культурных инициатив
                 </span>
               </motion.div>
@@ -74,7 +74,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
-                className="font-body text-lg md:text-xl text-primary-foreground/55 max-w-lg leading-relaxed mb-10"
+                className="font-body text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed mb-10"
               >
                 Мы объединяем людей, бизнес и культуру для создания проектов,
                 которые меняют жизнь и формируют пространство доверия.
@@ -109,7 +109,7 @@ const HeroSection = () => {
                   { icon: Users, text: "15 000+ участников" },
                   { icon: Lightbulb, text: "25 регионов" },
                 ].map((item) => (
-                  <div key={item.text} className="flex items-center gap-2 text-primary-foreground/40">
+                  <div key={item.text} className="flex items-center gap-2 text-primary-foreground/65">
                     <item.icon className="w-4 h-4 text-accent/60" />
                     <span className="font-body text-sm">{item.text}</span>
                   </div>
@@ -138,7 +138,7 @@ const HeroSection = () => {
                     <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">
                       Фестивали и события
                     </h3>
-                    <p className="font-body text-sm text-primary-foreground/40 leading-relaxed">
+                    <p className="font-body text-sm text-primary-foreground/65 leading-relaxed">
                       6 уникальных фестивалей — от творческих до спортивных — объединяют тысячи людей по всей России
                     </p>
                   </div>
@@ -153,7 +153,7 @@ const HeroSection = () => {
                         </div>
                       ))}
                     </div>
-                    <span className="font-body text-xs text-primary-foreground/40">+2 проекта</span>
+                    <span className="font-body text-xs text-primary-foreground/60">+2 проекта</span>
                   </div>
                 </div>
               </div>
