@@ -15,9 +15,9 @@ export const HeroPattern = () => (
   >
     <defs>
       <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#3a7a6a" />
-        <stop offset="50%" stopColor="#408070" />
-        <stop offset="100%" stopColor="#357565" />
+        <stop offset="0%" stopColor="#2d8c6f" />
+        <stop offset="50%" stopColor="#339978" />
+        <stop offset="100%" stopColor="#2a8568" />
       </linearGradient>
       <linearGradient id="heroAccent" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#d4a039" stopOpacity="0.3" />
