@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -86,36 +86,42 @@ const TelegramIcon = () => (
 
 const ProjectsSection = () => {
   const ref = useRef(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  const checkScroll = useCallback(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-    // Calculate active index
-    const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
-    setActiveIdx(Math.round(el.scrollLeft / cardWidth));
+  const goTo = useCallback((idx: number) => {
+    setDirection(idx > activeIdx ? 1 : -1);
+    setActiveIdx(idx);
+  }, [activeIdx]);
+
+  const next = useCallback(() => {
+    setDirection(1);
+    setActiveIdx((prev) => (prev + 1) % projects.length);
   }, []);
 
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    el.addEventListener("scroll", checkScroll, { passive: true });
-    checkScroll();
-    return () => el.removeEventListener("scroll", checkScroll);
-  }, [checkScroll]);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setActiveIdx((prev) => (prev - 1 + projects.length) % projects.length);
+  }, []);
 
-  const scroll = (dir: "left" | "right") => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
-    el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
+  // Auto-advance every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  // Show 3 cards on desktop, 1 on mobile
+  const getVisibleProjects = () => {
+    const visible: { project: Project; index: number }[] = [];
+    for (let offset = 0; offset < 3; offset++) {
+      const idx = (activeIdx + offset) % projects.length;
+      visible.push({ project: projects[idx], index: idx });
+    }
+    return visible;
   };
+
+  const visibleProjects = getVisibleProjects();
 
   return (
     <section id="projects" ref={ref} className="relative bg-primary-soft overflow-hidden">
@@ -148,17 +154,15 @@ const ProjectsSection = () => {
             className="flex items-center gap-3"
           >
             <button
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+              onClick={prev}
+              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all duration-300"
               aria-label="Предыдущий проект"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+              onClick={next}
+              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 transition-all duration-300"
               aria-label="Следующий проект"
             >
               <ChevronRight className="w-5 h-5" />
@@ -166,72 +170,72 @@ const ProjectsSection = () => {
           </motion.div>
         </div>
 
-        {/* Carousel */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {projects.map((p, i) => (
-            <motion.a
-              key={p.title}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, x: 40 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.08 * i }}
-              className="group relative flex-shrink-0 w-[320px] md:w-[380px] snap-start bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-7 hover:bg-white/[0.08] hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300 cursor-pointer block overflow-hidden"
+        {/* Carousel — animated cards */}
+        <div className="relative overflow-hidden">
+          <AnimatePresence mode="popLayout" custom={direction}>
+            <motion.div
+              key={activeIdx}
+              custom={direction}
+              initial={{ opacity: 0, x: direction >= 0 ? 300 : -300 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction >= 0 ? -300 : 300 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-5"
             >
-              {/* Gradient blob */}
-              <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${p.gradient} opacity-40 group-hover:opacity-70 transition-opacity rounded-bl-full`} />
+              {visibleProjects.map(({ project: p, index: origIdx }) => (
+                <a
+                  key={`${activeIdx}-${origIdx}`}
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-7 hover:bg-white/[0.08] hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300 cursor-pointer block overflow-hidden"
+                >
+                  {/* Gradient blob */}
+                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${p.gradient} opacity-40 group-hover:opacity-70 transition-opacity rounded-bl-full`} />
 
-              <div className="relative">
-                {/* Emoji + title */}
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-white/[0.1] transition-all duration-300">
-                    {p.emoji}
+                  <div className="relative">
+                    {/* Emoji + title */}
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className="w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-white/[0.1] transition-all duration-300">
+                        {p.emoji}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-display text-lg font-semibold text-primary-foreground group-hover:text-accent transition-colors leading-tight mb-1">
+                          {p.title}
+                        </h3>
+                        <p className="font-body text-xs text-accent/50">{p.format}</p>
+                      </div>
+                    </div>
+
+                    <p className="font-body text-sm md:text-base text-primary-foreground/55 leading-relaxed mb-5">{p.idea}</p>
+
+                    {/* Impact badge */}
+                    <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-3 py-1.5 mb-5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span className="font-body text-xs font-medium text-accent">{p.impact}</span>
+                    </div>
+
+                    {/* Telegram link */}
+                    <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+                      <div className="flex items-center gap-2 text-primary-foreground/30 group-hover:text-accent/70 transition-colors">
+                        <TelegramIcon />
+                        <span className="font-body text-xs">Подробнее</span>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-primary-foreground/15 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-lg font-semibold text-primary-foreground group-hover:text-accent transition-colors leading-tight mb-1">
-                      {p.title}
-                    </h3>
-                    <p className="font-body text-xs text-accent/50">{p.format}</p>
-                  </div>
-                </div>
-
-                <p className="font-body text-sm md:text-base text-primary-foreground/55 leading-relaxed mb-5">{p.idea}</p>
-
-                {/* Impact badge */}
-                <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-3 py-1.5 mb-5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  <span className="font-body text-xs font-medium text-accent">{p.impact}</span>
-                </div>
-
-                {/* Telegram link */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                  <div className="flex items-center gap-2 text-primary-foreground/30 group-hover:text-accent/70 transition-colors">
-                    <TelegramIcon />
-                    <span className="font-body text-xs">Подробнее</span>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-primary-foreground/15 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                </div>
-              </div>
-            </motion.a>
-          ))}
+                </a>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-8">
           {projects.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                const el = scrollContainerRef.current;
-                if (!el) return;
-                const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
-                el.scrollTo({ left: i * cardWidth, behavior: "smooth" });
-              }}
+              onClick={() => goTo(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === activeIdx
                   ? "w-8 bg-accent"
