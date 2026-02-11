@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X, Heart, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DonationModal from "./DonationModal";
+import { TelegramIcon } from "./illustrations";
 
 const navItems = [
   { label: "О фонде", href: "#about" },
@@ -18,6 +20,7 @@ const navItems = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [donationOpen, setDonationOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -68,11 +71,35 @@ const Header = () => {
               {item.label}
             </button>
           ))}
-          <div className="ml-3">
+          <div className="ml-3 flex items-center gap-2">
+            <a
+              href="https://t.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                isScrolled
+                  ? "text-foreground/50 hover:text-accent hover:bg-muted"
+                  : "text-primary-foreground/50 hover:text-accent hover:bg-white/10"
+              }`}
+              title="Telegram"
+            >
+              <TelegramIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="mailto:info@fond-support.ru"
+              className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                isScrolled
+                  ? "text-foreground/50 hover:text-accent hover:bg-muted"
+                  : "text-primary-foreground/50 hover:text-accent hover:bg-white/10"
+              }`}
+              title="Email"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
             <Button
               variant={isScrolled ? "default" : "hero"}
               size="sm"
-              onClick={() => scrollTo("#partners")}
+              onClick={() => setDonationOpen(true)}
               className="rounded-xl font-body"
             >
               <Heart className="w-3.5 h-3.5 mr-1.5" />
@@ -115,8 +142,24 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <div className="pt-3 mt-2 border-t border-border">
-                <Button variant="default" size="sm" onClick={() => scrollTo("#partners")} className="w-full rounded-xl font-body">
+              <div className="pt-3 mt-2 border-t border-border flex flex-col gap-2">
+                <div className="flex items-center gap-2 px-3 py-1">
+                  <a
+                    href="https://t.me/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-foreground/50 hover:text-accent hover:bg-muted transition-colors"
+                  >
+                    <TelegramIcon className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="mailto:info@fond-support.ru"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-foreground/50 hover:text-accent hover:bg-muted transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                  </a>
+                </div>
+                <Button variant="default" size="sm" onClick={() => { setDonationOpen(true); setMobileOpen(false); }} className="w-full rounded-xl font-body">
                   <Heart className="w-3.5 h-3.5 mr-1.5" />
                   Поддержать
                 </Button>
@@ -125,6 +168,8 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <DonationModal open={donationOpen} onClose={() => setDonationOpen(false)} />
     </header>
   );
 };

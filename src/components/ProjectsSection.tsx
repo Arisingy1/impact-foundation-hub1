@@ -89,7 +89,7 @@ const ProjectsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" ref={ref} className="relative bg-primary overflow-hidden">
+    <section id="projects" ref={ref} className="relative bg-primary-soft overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/[0.03] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/[0.02] translate-y-1/2 -translate-x-1/3" />

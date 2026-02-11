@@ -8,7 +8,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary relative">
+    <footer className="bg-primary-soft relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">

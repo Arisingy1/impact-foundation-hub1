@@ -48,7 +48,7 @@ const NewsSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Медиа</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Последние <span className="italic text-accent">новости</span>
+            Наши <span className="italic text-accent">новости</span>
           </h2>
         </motion.div>
 

@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Heart, Users, Lightbulb } from "lucide-react";
 import { HeroPattern } from "./illustrations";
+import DonationModal from "./DonationModal";
 
 const HeroSection = () => {
+  const [donationOpen, setDonationOpen] = useState(false);
   const scrollTo = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -83,7 +86,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="flex flex-wrap gap-3 mb-12"
               >
-                <Button variant="hero" size="lg" onClick={() => scrollTo("#partners")} className="text-base px-8 rounded-full">
+                <Button variant="hero" size="lg" onClick={() => setDonationOpen(true)} className="text-base px-8 rounded-full">
                   Поддержать фонд
                 </Button>
                 <Button variant="heroOutline" size="lg" onClick={() => scrollTo("#partners")} className="text-base px-8 rounded-full">
@@ -172,6 +175,8 @@ const HeroSection = () => {
           <ArrowDown className="w-4 h-4" />
         </motion.div>
       </motion.button>
+
+      <DonationModal open={donationOpen} onClose={() => setDonationOpen(false)} />
     </section>
   );
 };

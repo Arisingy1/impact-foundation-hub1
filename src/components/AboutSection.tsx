@@ -59,7 +59,7 @@ const AboutSection = () => {
       <div className="h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
 
       {/* About intro — warm teal background */}
-      <div className="relative bg-primary overflow-hidden">
+      <div className="relative bg-primary-soft overflow-hidden">
         {/* Decorative circles */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/[0.03] -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/[0.02] translate-y-1/2 -translate-x-1/3" />

@@ -32,7 +32,7 @@ const ParticipantsSection = () => {
   };
 
   return (
-    <section id="participants" ref={ref} className="relative bg-primary overflow-hidden">
+    <section id="participants" ref={ref} className="relative bg-primary-soft overflow-hidden">
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/[0.02] -translate-y-1/3 translate-x-1/3" />
 
