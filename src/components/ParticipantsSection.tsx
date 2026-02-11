@@ -71,7 +71,7 @@ const ParticipantsSection = () => {
               <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/25 transition-colors">
                 <s.icon className="w-5 h-5 text-accent" />
               </div>
-              <span className="font-display text-2xl font-bold text-accent/20 block mb-1">{s.num}</span>
+              <span className="font-display text-2xl font-bold text-accent/50 block mb-1">{s.num}</span>
               <p className="font-body text-sm font-semibold text-primary-foreground mb-1">{s.title}</p>
               <p className="font-body text-xs text-primary-foreground/65">{s.desc}</p>
               {i < steps.length - 1 && (

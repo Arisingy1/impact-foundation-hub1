@@ -203,7 +203,7 @@ const ProjectsSection = () => {
                         <h3 className="font-display text-lg font-semibold text-primary-foreground group-hover:text-accent transition-colors leading-tight mb-1">
                           {p.title}
                         </h3>
-                        <p className="font-body text-xs text-accent/70">{p.format}</p>
+                        <p className="font-body text-xs text-primary-foreground/60">{p.format}</p>
                       </div>
                     </div>
 
