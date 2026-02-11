@@ -76,7 +76,7 @@ const AboutSection = () => {
                 Кто мы и зачем
                 <br />мы <span className="italic text-accent">здесь</span>
               </h2>
-              <p className="font-body text-base md:text-lg text-primary-foreground/60 leading-relaxed mb-8">
+              <p className="font-body text-lg md:text-xl lg:text-2xl text-primary-foreground/70 leading-relaxed mb-8">
                 Фонд поддержки социально-культурных инициатив и бизнес проектов был создан с убеждением,
                 что сила общества — в объединении. Мы верим, что каждый человек и организация способны
                 изменить мир вокруг себя, если дать им правильные инструменты и окружение.
@@ -88,7 +88,7 @@ const AboutSection = () => {
                   ИА
                 </div>
                 <div>
-                  <blockquote className="font-display text-sm italic text-primary-foreground/70 leading-relaxed mb-2">
+                  <blockquote className="font-display text-base md:text-lg italic text-primary-foreground/70 leading-relaxed mb-2">
                     «Каждый проект — это инвестиция в будущее. Не финансовая, а человеческая.»
                   </blockquote>
                   <p className="font-body text-xs text-primary-foreground/40">
@@ -110,7 +110,7 @@ const AboutSection = () => {
                   <Eye className="w-5 h-5 text-accent" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">Видение</h3>
-                <p className="font-body text-sm text-primary-foreground/55 leading-relaxed">
+                <p className="font-body text-base md:text-lg text-primary-foreground/60 leading-relaxed">
                   Мы видим мир, в котором социальная ответственность становится нормой.
                   Мир, где бизнес, культура и общество действуют в гармонии, создавая
                   устойчивые изменения для будущих поколений.
@@ -121,7 +121,7 @@ const AboutSection = () => {
                   <Rocket className="w-5 h-5 text-accent" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">Миссия</h3>
-                <p className="font-body text-sm text-primary-foreground/55 leading-relaxed">
+                <p className="font-body text-base md:text-lg text-primary-foreground/60 leading-relaxed">
                   Объединять ресурсы, идеи и людей для реализации проектов, которые приносят
                   долгосрочную пользу обществу и формируют культуру созидания.
                 </p>

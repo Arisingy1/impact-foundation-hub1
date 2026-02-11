@@ -52,9 +52,10 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4 overflow-y-auto"
+            onClick={onClose}
           >
-            <div className="bg-card rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto border border-border">
+            <div className="bg-card rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto border border-border my-auto" onClick={(e) => e.stopPropagation()}>
               {/* Header */}
               <div className="sticky top-0 bg-card/95 backdrop-blur-xl rounded-t-3xl border-b border-border px-6 py-5 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">

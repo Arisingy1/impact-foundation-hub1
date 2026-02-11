@@ -160,3 +160,8 @@
     padding-right: 2.5rem;
   }
 }
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

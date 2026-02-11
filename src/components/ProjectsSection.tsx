@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Project {
   title: string;
@@ -86,7 +86,36 @@ const TelegramIcon = () => (
 
 const ProjectsSection = () => {
   const ref = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+    // Calculate active index
+    const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
+    setActiveIdx(Math.round(el.scrollLeft / cardWidth));
+  }, []);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    checkScroll();
+    return () => el.removeEventListener("scroll", checkScroll);
+  }, [checkScroll]);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
+    el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
+  };
 
   return (
     <section id="projects" ref={ref} className="relative bg-primary-soft overflow-hidden">
@@ -95,32 +124,64 @@ const ProjectsSection = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/[0.02] translate-y-1/2 -translate-x-1/3" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Проекты</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-            Наши <span className="italic text-accent">проекты</span>
-          </h2>
-          <p className="font-body text-base text-primary-foreground/50 max-w-lg mx-auto">
-            Текущие инициативы фонда — фестивали, турниры и культурные события, объединяющие людей
-          </p>
-        </motion.div>
+        {/* Header with nav arrows */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Проекты</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              Наши <span className="italic text-accent">проекты</span>
+            </h2>
+            <p className="font-body text-base md:text-lg text-primary-foreground/50 max-w-lg">
+              Текущие инициативы фонда — фестивали, турниры и культурные события, объединяющие людей
+            </p>
+          </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {/* Navigation arrows */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4 }}
+            className="flex items-center gap-3"
+          >
+            <button
+              onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
+              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+              aria-label="Предыдущий проект"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              disabled={!canScrollRight}
+              className="w-12 h-12 rounded-full border border-white/[0.15] flex items-center justify-center text-primary-foreground/60 hover:text-accent hover:border-accent/40 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300"
+              aria-label="Следующий проект"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Carousel */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {projects.map((p, i) => (
             <motion.a
               key={p.title}
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-7 hover:bg-white/[0.08] hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300 cursor-pointer block overflow-hidden"
+              initial={{ opacity: 0, x: 40 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.08 * i }}
+              className="group relative flex-shrink-0 w-[320px] md:w-[380px] snap-start bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-7 hover:bg-white/[0.08] hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300 cursor-pointer block overflow-hidden"
             >
               {/* Gradient blob */}
               <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${p.gradient} opacity-40 group-hover:opacity-70 transition-opacity rounded-bl-full`} />
@@ -139,7 +200,7 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className="font-body text-sm text-primary-foreground/50 leading-relaxed mb-5">{p.idea}</p>
+                <p className="font-body text-sm md:text-base text-primary-foreground/55 leading-relaxed mb-5">{p.idea}</p>
 
                 {/* Impact badge */}
                 <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-3 py-1.5 mb-5">
@@ -157,6 +218,27 @@ const ProjectsSection = () => {
                 </div>
               </div>
             </motion.a>
+          ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-6">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                const el = scrollContainerRef.current;
+                if (!el) return;
+                const cardWidth = el.firstElementChild ? (el.firstElementChild as HTMLElement).offsetWidth + 20 : 380;
+                el.scrollTo({ left: i * cardWidth, behavior: "smooth" });
+              }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === activeIdx
+                  ? "w-8 bg-accent"
+                  : "w-2 bg-primary-foreground/20 hover:bg-primary-foreground/40"
+              }`}
+              aria-label={`Проект ${i + 1}`}
+            />
           ))}
         </div>
       </div>
