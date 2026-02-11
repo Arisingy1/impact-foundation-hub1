@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Heart, CreditCard, Copy, Check, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,21 @@ const bankDetails = [
 const DonationModal = ({ open, onClose }: DonationModalProps) => {
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [showOffer, setShowOffer] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   const copyToClipboard = (text: string, idx: number) => {
     navigator.clipboard.writeText(text);
@@ -33,7 +49,9 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
     setTimeout(() => setCopiedIdx(null), 2000);
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <Fragment>
@@ -46,16 +64,19 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
             className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4 overflow-y-auto"
+          {/* Modal wrapper — always centered in viewport */}
+          <div
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
             onClick={onClose}
           >
-            <div className="bg-card rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto border border-border my-auto" onClick={(e) => e.stopPropagation()}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-card rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto border border-border"
+              onClick={(e) => e.stopPropagation()}
+            >
               {/* Header */}
               <div className="sticky top-0 bg-card/95 backdrop-blur-xl rounded-t-3xl border-b border-border px-6 py-5 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
@@ -188,11 +209,12 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
                   Закрыть
                 </Button>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </Fragment>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
