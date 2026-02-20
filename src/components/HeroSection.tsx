@@ -64,12 +64,9 @@ const HeroSection = () => {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-bold text-primary-foreground leading-[1.15] mb-8 uppercase"
               >
-                Фонд поддержки
-                <br />
-                <span className="text-accent">социально-культурных</span>
-                <br />
-                инициатив
-                <br />
+                Фонд поддержки{" "}
+                <span className="text-accent">социально-культурных</span>{" "}
+                инициатив{" "}
                 <span className="text-accent">и бизнес проектов</span>
               </motion.h1>
 
@@ -147,7 +144,7 @@ const HeroSection = () => {
                       {["🎨", "⚽", "🎬", "🎵"].map((emoji, i) => (
                         <div
                           key={i}
-                          className="w-8 h-8 rounded-full bg-white/10 border-2 border-primary flex items-center justify-center text-sm"
+                          className="w-8 h-8 rounded-full bg-white/[0.12] border border-white/20 flex items-center justify-center text-sm"
                         >
                           {emoji}
                         </div>
