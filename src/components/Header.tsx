@@ -11,6 +11,7 @@ const navItems = [
   { label: "О фонде", href: "#about" },
   { label: "Направления", href: "#directions" },
   { label: "Проекты", href: "#projects" },
+  { label: "Команда", href: "#team" },
   { label: "Партнёрам", href: "#partners" },
   { label: "Участникам", href: "#participants" },
   { label: "Новости", href: "#news" },

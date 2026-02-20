@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Heart, Users, Lightbulb } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { HeroPattern } from "./illustrations";
 import DonationModal from "./DonationModal";
 
@@ -54,7 +54,7 @@ const HeroSection = () => {
               >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 <span className="font-body text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary-foreground/80">
-                  Фонд поддержки соц.-культурных инициатив
+                  Фонд поддержки социально-культурных инициатив и бизнес проектов
                 </span>
               </motion.div>
 
@@ -92,27 +92,23 @@ const HeroSection = () => {
                 <Button variant="heroOutline" size="lg" onClick={() => scrollTo("#partners")} className="text-base px-8 rounded-full">
                   Стать партнёром
                 </Button>
-                <Button variant="heroOutline" size="lg" onClick={() => scrollTo("#participants")} className="text-base px-8 rounded-full">
+                <Button variant="heroOutline" size="lg" onClick={() => scrollTo("#participants")} className="text-base px-8 rounded-full mt-0">
                   Подать проект
                 </Button>
               </motion.div>
 
-              {/* Trust indicators */}
+              {/* Micro-triggers */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="flex flex-wrap gap-6"
+                className="flex flex-wrap items-center gap-x-2 gap-y-1"
               >
-                {[
-                  { icon: Heart, text: "6 активных проектов" },
-                  { icon: Users, text: "15 000+ участников" },
-                  { icon: Lightbulb, text: "25 регионов" },
-                ].map((item) => (
-                  <div key={item.text} className="flex items-center gap-2 text-primary-foreground/65">
-                    <item.icon className="w-4 h-4 text-accent/60" />
-                    <span className="font-body text-sm">{item.text}</span>
-                  </div>
+                {["Прозрачная поддержка", "Экспертный отбор", "Долгосрочный результат"].map((text, idx) => (
+                  <span key={text} className="flex items-center gap-2 text-primary-foreground/55">
+                    <span className="font-body text-sm">{text}</span>
+                    {idx < 2 && <span className="text-accent/40">•</span>}
+                  </span>
                 ))}
               </motion.div>
             </div>
