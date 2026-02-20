@@ -54,7 +54,7 @@ const HeroSection = () => {
               >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 <span className="font-body text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary-foreground/80">
-                  Фонд поддержки социально-культурных инициатив и бизнес проектов
+                  Благотворительный фонд
                 </span>
               </motion.div>
 
@@ -62,12 +62,15 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-primary-foreground leading-[0.95] mb-8"
+                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.05] mb-8 uppercase"
               >
-                Созидаем
+                Фонд поддержки
                 <br />
-                будущее{" "}
-                <span className="text-gradient-gold italic">вместе</span>
+                <span className="text-accent">социально-культурных</span>
+                <br />
+                инициатив
+                <br />
+                <span className="text-accent">и бизнес проектов</span>
               </motion.h1>
 
               <motion.p
@@ -76,8 +79,9 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.6 }}
                 className="font-body text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed mb-10"
               >
-                Мы объединяем людей, бизнес и культуру для создания проектов,
-                которые меняют жизнь и формируют пространство доверия.
+                Мы объединяем людей, бизнес и творческие инициативы
+                для создания значимых социальных, культурных и
+                образовательных проектов.
               </motion.p>
 
               <motion.div
