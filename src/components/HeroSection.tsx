@@ -24,13 +24,13 @@ const HeroSection = () => {
           animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(212,160,57,0.08) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(184,146,46,0.08) 0%, transparent 70%)" }}
         />
         <motion.div
           animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -bottom-20 -left-40 w-[500px] h-[500px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(212,160,57,0.06) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(184,146,46,0.06) 0%, transparent 70%)" }}
         />
       </div>
 

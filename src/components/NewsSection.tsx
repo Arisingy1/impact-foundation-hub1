@@ -11,7 +11,7 @@ const newsItems = [
     icon: Newspaper,
     title: "Фестиваль «Свет культуры» пройдёт в 5 новых городах",
     excerpt: "В 2025 году фестиваль расширяет географию — Казань, Екатеринбург, Новосибирск, Краснодар, Владивосток.",
-    color: "bg-blue-500/10 text-blue-600",
+    color: "bg-indigo-400/10 text-indigo-600",
   },
   {
     date: "15.01.2025",
@@ -19,7 +19,7 @@ const newsItems = [
     icon: FileText,
     title: "Как социальное предпринимательство меняет регионы",
     excerpt: "Интервью с выпускниками образовательной лаборатории о влиянии их проектов на сообщества.",
-    color: "bg-emerald-500/10 text-emerald-600",
+    color: "bg-slate-400/10 text-slate-600",
   },
   {
     date: "10.12.2024",
@@ -27,7 +27,7 @@ const newsItems = [
     icon: BarChart3,
     title: "Итоги 2024 года: цифры и достижения",
     excerpt: "40 новых проектов, 15 000 участников мероприятий и расширение в 8 регионов.",
-    color: "bg-amber-500/10 text-amber-600",
+    color: "bg-amber-700/10 text-amber-700",
   },
 ];
 

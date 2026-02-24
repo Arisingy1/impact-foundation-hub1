@@ -24,7 +24,7 @@ const projects: Project[] = [
     impact: "Развитие творческого сообщества",
     link: "https://t.me/unionart_fest",
     emoji: "🎨",
-    gradient: "from-rose-500/20 via-pink-500/10 to-transparent",
+    gradient: "from-stone-400/15 via-stone-500/8 to-transparent",
   },
   {
     title: "Футбольный турнир",
@@ -34,7 +34,7 @@ const projects: Project[] = [
     impact: "Укрепление спортивного сообщества",
     link: "https://t.me/spfootballturnir",
     emoji: "⚽",
-    gradient: "from-emerald-500/20 via-green-500/10 to-transparent",
+    gradient: "from-slate-400/15 via-slate-500/8 to-transparent",
   },
   {
     title: "Фестиваль гармоничного развития личности",
@@ -44,7 +44,7 @@ const projects: Project[] = [
     impact: "Личностный рост участников",
     link: "https://t.me/fbweel",
     emoji: "🧘",
-    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
+    gradient: "from-indigo-400/15 via-indigo-500/8 to-transparent",
   },
   {
     title: "Кинофестиваль «Загляни в яркий мир кино с изнанки»",
@@ -54,7 +54,7 @@ const projects: Project[] = [
     impact: "Развитие киноиндустрии и культурного досуга",
     link: "https://t.me/kino_festival_25",
     emoji: "🎬",
-    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
+    gradient: "from-amber-700/15 via-amber-800/8 to-transparent",
   },
   {
     title: "Музыкальный фестиваль «Песни со смыслом»",
@@ -64,7 +64,7 @@ const projects: Project[] = [
     impact: "Продвижение качественной авторской музыки",
     link: "https://t.me/musicfestmsc",
     emoji: "🎵",
-    gradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
+    gradient: "from-slate-500/15 via-indigo-400/8 to-transparent",
   },
   {
     title: "Фестиваль творчества и культурных ценностей народов России",
@@ -74,7 +74,7 @@ const projects: Project[] = [
     impact: "Сохранение культурного разнообразия России",
     link: "https://t.me/sokrovishanarodovrossii",
     emoji: "🏛️",
-    gradient: "from-orange-500/20 via-red-500/10 to-transparent",
+    gradient: "from-amber-600/15 via-stone-400/8 to-transparent",
   },
 ];
 
