@@ -43,7 +43,7 @@ const ContactSection = () => {
             <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Контакты</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-4">
               Свяжитесь
-              <br />с <span className="italic text-accent">нами</span>
+              <br />с <span className="italic text-glow-light">нами</span>
             </h2>
             <p className="font-body text-base text-muted-foreground leading-relaxed mb-10 max-w-md">
               Мы всегда открыты для вопросов, предложений и сотрудничества. Напишите нам!

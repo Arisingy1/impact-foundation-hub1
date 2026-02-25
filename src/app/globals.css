@@ -22,6 +22,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-primary-soft: var(--primary-soft);
   --color-primary-soft-foreground: var(--primary-soft-foreground);
+  --color-accent-glow: var(--accent-glow);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -71,17 +72,18 @@
   --secondary-foreground: oklch(0.16 0.03 265);
   --muted: oklch(0.94 0.004 265);
   --muted-foreground: oklch(0.45 0.02 265);
-  --accent: oklch(0.65 0.11 65);
-  --accent-foreground: oklch(0.16 0.04 265);
+  --accent: oklch(0.62 0.22 264);
+  --accent-foreground: oklch(0.99 0.002 265);
   --destructive: oklch(0.55 0.22 29);
   --destructive-foreground: oklch(0.98 0.005 90);
   --border: oklch(0.91 0.004 265);
   --input: oklch(0.91 0.004 265);
-  --ring: oklch(0.23 0.05 265);
-  --primary-soft: oklch(0.25 0.05 265);
+  --ring: oklch(0.62 0.22 264);
+  --primary-soft: oklch(0.20 0.04 265);
   --primary-soft-foreground: oklch(0.97 0.004 265);
-  --gold-gradient: linear-gradient(135deg, oklch(0.65 0.11 65), oklch(0.72 0.09 72));
-  --hero-gradient: linear-gradient(135deg, oklch(0.23 0.05 265), oklch(0.20 0.045 268), oklch(0.26 0.05 262));
+  --accent-gradient: linear-gradient(135deg, oklch(0.55 0.22 264), oklch(0.65 0.20 255));
+  --accent-glow: oklch(0.62 0.22 264);
+  --hero-gradient: linear-gradient(135deg, oklch(0.18 0.04 265), oklch(0.15 0.035 268), oklch(0.20 0.045 262));
 }
 
 .dark {
@@ -91,19 +93,19 @@
   --card-foreground: oklch(0.93 0.008 265);
   --popover: oklch(0.16 0.02 265);
   --popover-foreground: oklch(0.93 0.008 265);
-  --primary: oklch(0.65 0.11 65);
-  --primary-foreground: oklch(0.16 0.04 265);
+  --primary: oklch(0.62 0.22 264);
+  --primary-foreground: oklch(0.99 0.002 265);
   --secondary: oklch(0.22 0.025 265);
   --secondary-foreground: oklch(0.93 0.008 265);
   --muted: oklch(0.20 0.02 265);
   --muted-foreground: oklch(0.65 0.012 265);
-  --accent: oklch(0.65 0.11 65);
-  --accent-foreground: oklch(0.16 0.04 265);
+  --accent: oklch(0.62 0.22 264);
+  --accent-foreground: oklch(0.99 0.002 265);
   --destructive: oklch(0.45 0.18 29);
   --destructive-foreground: oklch(0.98 0.005 90);
   --border: oklch(0.25 0.02 265);
   --input: oklch(0.25 0.02 265);
-  --ring: oklch(0.65 0.11 65);
+  --ring: oklch(0.62 0.22 264);
 }
 
 @layer base {
@@ -130,16 +132,32 @@
 
   /* Improved selection color */
   ::selection {
-    background-color: oklch(0.65 0.11 65 / 0.25);
+    background-color: oklch(0.62 0.22 264 / 0.25);
     color: oklch(0.16 0.03 265);
   }
 }
 
-@utility text-gradient-gold {
-  background: var(--gold-gradient);
+@utility text-gradient-accent {
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@utility text-glow {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px oklch(0.62 0.22 264 / 0.4)) drop-shadow(0 0 60px oklch(0.55 0.22 264 / 0.2));
+}
+
+@utility text-glow-light {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px oklch(0.62 0.22 264 / 0.3)) drop-shadow(0 0 40px oklch(0.55 0.22 264 / 0.15));
 }
 
 @utility bg-hero-gradient {

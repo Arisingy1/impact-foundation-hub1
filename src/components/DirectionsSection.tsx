@@ -17,9 +17,9 @@ const directions = [
     icon: BookOpen,
     title: "Культурные и образовательные проекты",
     desc: "Выставки, фестивали, образовательные лаборатории, менторство и развитие творческих навыков.",
-    gradient: "from-amber-600/10 to-amber-700/10",
-    iconBg: "bg-amber-600/10",
-    iconColor: "text-amber-700",
+    gradient: "from-blue-400/10 to-blue-500/10",
+    iconBg: "bg-blue-400/10",
+    iconColor: "text-blue-500",
   },
   {
     icon: Briefcase,
@@ -33,9 +33,9 @@ const directions = [
     icon: Globe,
     title: "Междисциплинарные и международные проекты",
     desc: "Межрегиональные и международные инициативы, культурный обмен и кросс-функциональные программы.",
-    gradient: "from-stone-400/10 to-stone-500/10",
-    iconBg: "bg-stone-400/10",
-    iconColor: "text-stone-600",
+    gradient: "from-violet-400/10 to-violet-500/10",
+    iconBg: "bg-violet-400/10",
+    iconColor: "text-violet-600",
   },
 ];
 
@@ -56,7 +56,7 @@ const DirectionsSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Направления фонда</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Что мы <span className="italic text-accent">поддерживаем</span>
+            Что мы <span className="italic text-glow-light">поддерживаем</span>
           </h2>
         </motion.div>
 

@@ -22,9 +22,9 @@ export const HeroPattern = () => (
       </linearGradient>
       {/* Large warm glow — top right */}
       <radialGradient id="heroGlowGold" cx="75%" cy="25%" r="50%">
-        <stop offset="0%" stopColor="#b8922e" stopOpacity="0.15" />
-        <stop offset="50%" stopColor="#b8922e" stopOpacity="0.05" />
-        <stop offset="100%" stopColor="#b8922e" stopOpacity="0" />
+        <stop offset="0%" stopColor="#4B7BF5" stopOpacity="0.15" />
+        <stop offset="50%" stopColor="#4B7BF5" stopOpacity="0.05" />
+        <stop offset="100%" stopColor="#4B7BF5" stopOpacity="0" />
       </radialGradient>
       {/* Soft light glow — center-left */}
       <radialGradient id="heroGlowLight" cx="30%" cy="50%" r="45%">
@@ -42,8 +42,8 @@ export const HeroPattern = () => (
         <stop offset="100%" stopColor="#3a5080" stopOpacity="0" />
       </radialGradient>
       <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#b8922e" stopOpacity="0.12" />
-        <stop offset="100%" stopColor="#b8922e" stopOpacity="0" />
+        <stop offset="0%" stopColor="#4B7BF5" stopOpacity="0.12" />
+        <stop offset="100%" stopColor="#4B7BF5" stopOpacity="0" />
       </radialGradient>
       <radialGradient id="blob3" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stopColor="#4a6a9a" stopOpacity="0.2" />
@@ -73,7 +73,7 @@ export const HeroPattern = () => (
 
     {/* ===== Medium blurred accents ===== */}
     <circle cx="200" cy="300" r="120" fill="#4a6a9a" fillOpacity="0.12" filter="url(#heroBlurSm)" />
-    <circle cx="1350" cy="400" r="100" fill="#b8922e" fillOpacity="0.08" filter="url(#heroBlurSm)" />
+    <circle cx="1350" cy="400" r="100" fill="#4B7BF5" fillOpacity="0.08" filter="url(#heroBlurSm)" />
     <circle cx="700" cy="500" r="150" fill="#3a5080" fillOpacity="0.08" filter="url(#heroBlurSm)" />
 
     {/* ===== Soft flowing wave curves ===== */}
@@ -82,31 +82,31 @@ export const HeroPattern = () => (
     <path d="M-100 750 Q300 600 600 700 Q900 800 1200 650 Q1400 550 1540 600" fill="none" stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1" />
 
     {/* ===== Decorative gold accent circles ===== */}
-    <circle cx="1180" cy="230" r="14" fill="#b8922e" fillOpacity="0.22" />
-    <circle cx="1050" cy="150" r="8" fill="#b8922e" fillOpacity="0.18" />
-    <circle cx="1280" cy="130" r="10" fill="#b8922e" fillOpacity="0.15" />
-    <circle cx="980" cy="320" r="6" fill="#b8922e" fillOpacity="0.20" />
-    <circle cx="1350" cy="360" r="7" fill="#b8922e" fillOpacity="0.12" />
-    <circle cx="250" cy="200" r="5" fill="#b8922e" fillOpacity="0.12" />
-    <circle cx="400" cy="780" r="4" fill="#b8922e" fillOpacity="0.15" />
+    <circle cx="1180" cy="230" r="14" fill="#4B7BF5" fillOpacity="0.22" />
+    <circle cx="1050" cy="150" r="8" fill="#4B7BF5" fillOpacity="0.18" />
+    <circle cx="1280" cy="130" r="10" fill="#4B7BF5" fillOpacity="0.15" />
+    <circle cx="980" cy="320" r="6" fill="#4B7BF5" fillOpacity="0.20" />
+    <circle cx="1350" cy="360" r="7" fill="#4B7BF5" fillOpacity="0.12" />
+    <circle cx="250" cy="200" r="5" fill="#4B7BF5" fillOpacity="0.12" />
+    <circle cx="400" cy="780" r="4" fill="#4B7BF5" fillOpacity="0.15" />
 
     {/* ===== Soft concentric rings — right area ===== */}
-    <circle cx="1150" cy="200" r="280" fill="none" stroke="#b8922e" strokeOpacity="0.08" strokeWidth="1" />
-    <circle cx="1150" cy="200" r="200" fill="none" stroke="#b8922e" strokeOpacity="0.06" strokeWidth="1" />
-    <circle cx="1150" cy="200" r="120" fill="none" stroke="#b8922e" strokeOpacity="0.04" strokeWidth="1" />
+    <circle cx="1150" cy="200" r="280" fill="none" stroke="#4B7BF5" strokeOpacity="0.08" strokeWidth="1" />
+    <circle cx="1150" cy="200" r="200" fill="none" stroke="#4B7BF5" strokeOpacity="0.06" strokeWidth="1" />
+    <circle cx="1150" cy="200" r="120" fill="none" stroke="#4B7BF5" strokeOpacity="0.04" strokeWidth="1" />
 
     {/* ===== Abstract leaf shapes ===== */}
-    <path d="M1250 480 Q1290 400 1370 370 Q1310 430 1290 510 Z" fill="#b8922e" fillOpacity="0.07" />
+    <path d="M1250 480 Q1290 400 1370 370 Q1310 430 1290 510 Z" fill="#4B7BF5" fillOpacity="0.07" />
     <path d="M80 500 Q120 440 180 420 Q130 460 110 530 Z" fill="#ffffff" fillOpacity="0.04" />
 
     {/* ===== Small dot constellations ===== */}
-    <circle cx="260" cy="700" r="3.5" fill="#b8922e" fillOpacity="0.18" />
-    <circle cx="300" cy="680" r="2.5" fill="#b8922e" fillOpacity="0.14" />
-    <circle cx="240" cy="730" r="2" fill="#b8922e" fillOpacity="0.10" />
-    <circle cx="1350" cy="560" r="4" fill="#b8922e" fillOpacity="0.14" />
-    <circle cx="1390" cy="540" r="2.5" fill="#b8922e" fillOpacity="0.10" />
-    <circle cx="700" cy="80" r="3" fill="#b8922e" fillOpacity="0.14" />
-    <circle cx="740" cy="60" r="2" fill="#b8922e" fillOpacity="0.10" />
+    <circle cx="260" cy="700" r="3.5" fill="#4B7BF5" fillOpacity="0.18" />
+    <circle cx="300" cy="680" r="2.5" fill="#4B7BF5" fillOpacity="0.14" />
+    <circle cx="240" cy="730" r="2" fill="#4B7BF5" fillOpacity="0.10" />
+    <circle cx="1350" cy="560" r="4" fill="#4B7BF5" fillOpacity="0.14" />
+    <circle cx="1390" cy="540" r="2.5" fill="#4B7BF5" fillOpacity="0.10" />
+    <circle cx="700" cy="80" r="3" fill="#4B7BF5" fillOpacity="0.14" />
+    <circle cx="740" cy="60" r="2" fill="#4B7BF5" fillOpacity="0.10" />
   </svg>
 );
 
@@ -119,8 +119,8 @@ export const AboutIllustration = () => (
   >
     <defs>
       <linearGradient id="aboutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#b8922e" stopOpacity="0.2" />
-        <stop offset="100%" stopColor="#b8922e" stopOpacity="0.05" />
+        <stop offset="0%" stopColor="#4B7BF5" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#4B7BF5" stopOpacity="0.05" />
       </linearGradient>
     </defs>
     {/* Central interlocking hands/hearts motif */}
@@ -132,18 +132,18 @@ export const AboutIllustration = () => (
     <circle cx="230" cy="160" r="18" fill="url(#aboutGrad)" />
     <circle cx="200" cy="180" r="22" fill="url(#aboutGrad)" />
     {/* Connection arcs */}
-    <path d="M140 220 Q170 200 200 220 Q230 200 260 220" stroke="#b8922e" strokeOpacity="0.15" strokeWidth="2" fill="none" />
-    <path d="M150 250 Q175 230 200 250 Q225 230 250 250" stroke="#b8922e" strokeOpacity="0.1" strokeWidth="1.5" fill="none" />
+    <path d="M140 220 Q170 200 200 220 Q230 200 260 220" stroke="#4B7BF5" strokeOpacity="0.15" strokeWidth="2" fill="none" />
+    <path d="M150 250 Q175 230 200 250 Q225 230 250 250" stroke="#4B7BF5" strokeOpacity="0.1" strokeWidth="1.5" fill="none" />
     {/* Growth element */}
-    <path d="M200 280 L200 320" stroke="#b8922e" strokeOpacity="0.15" strokeWidth="2" />
-    <circle cx="200" cy="280" r="4" fill="#b8922e" fillOpacity="0.2" />
-    <path d="M192 300 Q200 285 208 300" fill="none" stroke="#b8922e" strokeOpacity="0.12" strokeWidth="1.5" />
-    <path d="M188 310 Q200 292 212 310" fill="none" stroke="#b8922e" strokeOpacity="0.1" strokeWidth="1.5" />
+    <path d="M200 280 L200 320" stroke="#4B7BF5" strokeOpacity="0.15" strokeWidth="2" />
+    <circle cx="200" cy="280" r="4" fill="#4B7BF5" fillOpacity="0.2" />
+    <path d="M192 300 Q200 285 208 300" fill="none" stroke="#4B7BF5" strokeOpacity="0.12" strokeWidth="1.5" />
+    <path d="M188 310 Q200 292 212 310" fill="none" stroke="#4B7BF5" strokeOpacity="0.1" strokeWidth="1.5" />
     {/* Stars */}
-    <circle cx="120" cy="120" r="3" fill="#b8922e" fillOpacity="0.2" />
-    <circle cx="280" cy="100" r="2" fill="#b8922e" fillOpacity="0.15" />
-    <circle cx="300" cy="280" r="3" fill="#b8922e" fillOpacity="0.12" />
-    <circle cx="100" cy="300" r="2" fill="#b8922e" fillOpacity="0.1" />
+    <circle cx="120" cy="120" r="3" fill="#4B7BF5" fillOpacity="0.2" />
+    <circle cx="280" cy="100" r="2" fill="#4B7BF5" fillOpacity="0.15" />
+    <circle cx="300" cy="280" r="3" fill="#4B7BF5" fillOpacity="0.12" />
+    <circle cx="100" cy="300" r="2" fill="#4B7BF5" fillOpacity="0.1" />
   </svg>
 );
 

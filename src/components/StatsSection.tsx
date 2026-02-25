@@ -5,11 +5,11 @@ import { useRef, useState, useEffect } from "react";
 import { Target, Users, MapPin, Handshake, TrendingUp } from "lucide-react";
 
 const stats = [
-  { value: 9, suffix: "", label: "Активных проектов", icon: Target, color: "from-amber-700/15 to-amber-800/5" },
+  { value: 9, suffix: "", label: "Активных проектов", icon: Target, color: "from-blue-500/15 to-blue-600/5" },
   { value: 15000, suffix: "+", label: "Участников и благополучателей", icon: Users, color: "from-slate-400/15 to-slate-500/5" },
   { value: 25, suffix: "+", label: "Регионов и стран", icon: MapPin, color: "from-indigo-400/15 to-indigo-500/5" },
-  { value: 120, suffix: "+", label: "Партнёров и экспертов", icon: Handshake, color: "from-slate-500/15 to-indigo-400/5" },
-  { value: 90, suffix: "%", label: "Проектов продолжают развитие", icon: TrendingUp, color: "from-stone-400/15 to-stone-500/5" },
+  { value: 120, suffix: "+", label: "Партнёров и экспертов", icon: Handshake, color: "from-violet-400/15 to-violet-500/5" },
+  { value: 90, suffix: "%", label: "Проектов продолжают развитие", icon: TrendingUp, color: "from-sky-400/15 to-sky-500/5" },
 ];
 
 function AnimatedNumber({ value, inView }: { value: number; inView: boolean }) {
@@ -49,7 +49,7 @@ const StatsSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Наши результаты</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Цифры, которые <span className="italic text-accent">говорят</span>
+            Цифры, которые <span className="italic text-glow-light">говорят</span>
           </h2>
         </motion.div>
 

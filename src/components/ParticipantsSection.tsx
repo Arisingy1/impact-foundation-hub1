@@ -45,7 +45,7 @@ const ParticipantsSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Участникам</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-            Подайте свой <span className="italic text-accent">проект</span>
+            Подайте свой <span className="italic text-glow">проект</span>
           </h2>
           <p className="font-body text-base text-primary-foreground/80 max-w-xl mx-auto">
             Мы поддерживаем инициативы в сфере культуры, образования, социального

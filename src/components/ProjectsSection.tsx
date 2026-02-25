@@ -24,7 +24,7 @@ const projects: Project[] = [
     impact: "Развитие творческого сообщества",
     link: "https://t.me/unionart_fest",
     emoji: "🎨",
-    gradient: "from-stone-400/15 via-stone-500/8 to-transparent",
+    gradient: "from-blue-400/15 via-blue-500/8 to-transparent",
   },
   {
     title: "Футбольный турнир",
@@ -34,7 +34,7 @@ const projects: Project[] = [
     impact: "Укрепление спортивного сообщества",
     link: "https://t.me/spfootballturnir",
     emoji: "⚽",
-    gradient: "from-slate-400/15 via-slate-500/8 to-transparent",
+    gradient: "from-slate-400/15 via-indigo-400/8 to-transparent",
   },
   {
     title: "Фестиваль гармоничного развития личности",
@@ -44,7 +44,7 @@ const projects: Project[] = [
     impact: "Личностный рост участников",
     link: "https://t.me/fbweel",
     emoji: "🧘",
-    gradient: "from-indigo-400/15 via-indigo-500/8 to-transparent",
+    gradient: "from-violet-400/15 via-violet-500/8 to-transparent",
   },
   {
     title: "Кинофестиваль «Загляни в яркий мир кино с изнанки»",
@@ -54,7 +54,7 @@ const projects: Project[] = [
     impact: "Развитие киноиндустрии и культурного досуга",
     link: "https://t.me/kino_festival_25",
     emoji: "🎬",
-    gradient: "from-amber-700/15 via-amber-800/8 to-transparent",
+    gradient: "from-sky-400/15 via-sky-500/8 to-transparent",
   },
   {
     title: "Музыкальный фестиваль «Песни со смыслом»",
@@ -64,7 +64,7 @@ const projects: Project[] = [
     impact: "Продвижение качественной авторской музыки",
     link: "https://t.me/musicfestmsc",
     emoji: "🎵",
-    gradient: "from-slate-500/15 via-indigo-400/8 to-transparent",
+    gradient: "from-indigo-500/15 via-blue-400/8 to-transparent",
   },
   {
     title: "Фестиваль творчества и культурных ценностей народов России",
@@ -74,7 +74,7 @@ const projects: Project[] = [
     impact: "Сохранение культурного разнообразия России",
     link: "https://t.me/sokrovishanarodovrossii",
     emoji: "🏛️",
-    gradient: "from-amber-600/15 via-stone-400/8 to-transparent",
+    gradient: "from-blue-500/15 via-violet-400/8 to-transparent",
   },
 ];
 
@@ -139,7 +139,7 @@ const ProjectsSection = () => {
           >
             <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3">Проекты</p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Наши <span className="italic text-accent">проекты</span>
+              Наши <span className="italic text-glow">проекты</span>
             </h2>
             <p className="font-body text-base md:text-lg text-primary-foreground/80 max-w-lg">
               Текущие инициативы фонда — фестивали, турниры и культурные события, объединяющие людей

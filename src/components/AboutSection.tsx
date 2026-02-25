@@ -29,7 +29,7 @@ const AboutSection = () => {
               <p className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-4">О фонде</p>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-[1.05] mb-8">
                 Кто мы и зачем
-                <br />мы <span className="italic text-accent">здесь</span>
+                <br />мы <span className="italic text-glow">здесь</span>
               </h2>
               <p className="font-body text-lg md:text-xl lg:text-2xl text-primary-foreground/90 leading-relaxed mb-8">
                 Фонд поддержки социально-культурных инициатив и бизнес проектов был создан с убеждением,

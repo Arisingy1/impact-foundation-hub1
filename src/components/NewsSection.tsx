@@ -11,7 +11,7 @@ const newsItems = [
     icon: Newspaper,
     title: "Фестиваль «Свет культуры» пройдёт в 5 новых городах",
     excerpt: "В 2025 году фестиваль расширяет географию — Казань, Екатеринбург, Новосибирск, Краснодар, Владивосток.",
-    color: "bg-indigo-400/10 text-indigo-600",
+    color: "bg-blue-500/10 text-blue-600",
   },
   {
     date: "15.01.2025",
@@ -19,7 +19,7 @@ const newsItems = [
     icon: FileText,
     title: "Как социальное предпринимательство меняет регионы",
     excerpt: "Интервью с выпускниками образовательной лаборатории о влиянии их проектов на сообщества.",
-    color: "bg-slate-400/10 text-slate-600",
+    color: "bg-indigo-400/10 text-indigo-600",
   },
   {
     date: "10.12.2024",
@@ -27,7 +27,7 @@ const newsItems = [
     icon: BarChart3,
     title: "Итоги 2024 года: цифры и достижения",
     excerpt: "40 новых проектов, 15 000 участников мероприятий и расширение в 8 регионов.",
-    color: "bg-amber-700/10 text-amber-700",
+    color: "bg-violet-400/10 text-violet-600",
   },
 ];
 
@@ -48,7 +48,7 @@ const NewsSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Медиа</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Наши <span className="italic text-accent">новости</span>
+            Наши <span className="italic text-glow-light">новости</span>
           </h2>
         </motion.div>
 

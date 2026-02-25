@@ -35,7 +35,7 @@ const PartnersSection = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-6">
               Создавайте
               <br />перемены
-              <br /><span className="italic text-accent">вместе с нами</span>
+              <br /><span className="italic text-glow-light">вместе с нами</span>
             </h2>
             <p className="font-body text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
               Сотрудничество с фондом — это возможность соединить бизнес-цели с общественной

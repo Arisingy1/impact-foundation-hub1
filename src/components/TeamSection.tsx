@@ -67,7 +67,7 @@ const TeamSection = () => {
           >
             <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Команда</p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              Наша <span className="italic text-accent">команда</span>
+              Наша <span className="italic text-glow-light">команда</span>
             </h2>
           </motion.div>
 

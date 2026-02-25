@@ -9,9 +9,9 @@ const audiences = [
     icon: Lightbulb,
     title: "Авторам проектов",
     desc: "Помогаем с запуском, партнёрами, экспертизой и ресурсами",
-    gradient: "from-amber-700/12 to-amber-800/5",
-    iconBg: "bg-amber-700/10 group-hover:bg-amber-700/15",
-    iconColor: "text-amber-700",
+    gradient: "from-blue-500/12 to-blue-600/5",
+    iconBg: "bg-blue-500/10 group-hover:bg-blue-500/15",
+    iconColor: "text-blue-500",
   },
   {
     icon: Building2,
@@ -25,17 +25,17 @@ const audiences = [
     icon: Heart,
     title: "Инвесторам и меценатам",
     desc: "Безопасная точка входа в проверенные социальные и культурные инициативы",
-    gradient: "from-slate-400/12 to-slate-500/5",
-    iconBg: "bg-slate-400/10 group-hover:bg-slate-400/15",
-    iconColor: "text-slate-500",
+    gradient: "from-violet-400/12 to-violet-500/5",
+    iconBg: "bg-violet-400/10 group-hover:bg-violet-400/15",
+    iconColor: "text-violet-500",
   },
   {
     icon: Users,
     title: "Экспертам и командам",
     desc: "Возможность влиять, развиваться и быть частью сильных проектов",
-    gradient: "from-stone-400/12 to-stone-500/5",
-    iconBg: "bg-stone-400/10 group-hover:bg-stone-400/15",
-    iconColor: "text-stone-500",
+    gradient: "from-sky-400/12 to-sky-500/5",
+    iconBg: "bg-sky-400/10 group-hover:bg-sky-400/15",
+    iconColor: "text-sky-500",
   },
 ];
 
@@ -59,7 +59,7 @@ const TargetAudienceSection = () => {
         >
           <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Для кого</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Кому подойдёт <span className="italic text-accent">фонд</span>
+            Кому подойдёт <span className="italic text-glow-light">фонд</span>
           </h2>
         </motion.div>
 
