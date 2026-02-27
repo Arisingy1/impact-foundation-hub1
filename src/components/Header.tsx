@@ -52,7 +52,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <Image src={LogoImg} alt="Фонд" width={56} height={56} className="rounded-xl" />
+          <Image src={LogoImg} alt="Фонд" width={80} height={80} className="rounded-xl w-12 h-12 md:w-16 md:h-16" />
         </a>
 
         {/* Desktop nav */}
