@@ -76,31 +76,31 @@
 
 :root {
   --radius: 0.75rem;
-  --background: #f8f6fa;
-  --foreground: #1a1033;
-  --card: #ffffff;
-  --card-foreground: #1a1033;
-  --popover: #ffffff;
-  --popover-foreground: #1a1033;
-  --primary: #2d1b4e;
-  --primary-foreground: #f8f6fa;
-  --secondary: #f0ecf5;
-  --secondary-foreground: #1a1033;
-  --muted: #ece8f2;
-  --muted-foreground: #6b5b7b;
+  --background: #0a0515;
+  --foreground: #e8e0f0;
+  --card: #130a24;
+  --card-foreground: #e8e0f0;
+  --popover: #130a24;
+  --popover-foreground: #e8e0f0;
+  --primary: #9b6dff;
+  --primary-foreground: #ffffff;
+  --secondary: #1a0e30;
+  --secondary-foreground: #e8e0f0;
+  --muted: #150a28;
+  --muted-foreground: #8b7ba0;
   --accent: #9b6dff;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #fef2f2;
-  --border: #e2dce9;
-  --input: #e2dce9;
+  --border: #1e1035;
+  --input: #1e1035;
   --ring: #9b6dff;
-  --primary-soft: #1a0a2e;
-  --primary-soft-foreground: #f0ecf5;
+  --primary-soft: #0f0720;
+  --primary-soft-foreground: #e8e0f0;
   --accent-glow: #9b6dff;
   --accent-gradient: linear-gradient(135deg, #9b6dff, #c084fc, #e879f9);
-  --hero-gradient: linear-gradient(180deg, #0f0720 0%, #1a0a2e 30%, #2d1b4e 50%, #1a0a2e 70%, #0f0720 100%);
-  --cosmic-gradient: linear-gradient(180deg, #0f0720 0%, #1a0a2e 40%, #2d1b4e 100%);
+  --hero-gradient: linear-gradient(180deg, #0a0515 0%, #0f0720 30%, #1a0a2e 50%, #0f0720 70%, #0a0515 100%);
+  --cosmic-gradient: linear-gradient(180deg, #0a0515 0%, #0f0720 40%, #1a0a2e 100%);
 }
 
 @layer base {
@@ -126,8 +126,8 @@
   }
 
   ::selection {
-    background-color: rgba(155, 109, 255, 0.25);
-    color: #1a1033;
+    background-color: rgba(155, 109, 255, 0.3);
+    color: #ffffff;
   }
 }
 
@@ -188,11 +188,11 @@
 }
 
 .section-dark {
-  background: linear-gradient(180deg, #0f0720 0%, #1a0a2e 50%, #0f0720 100%);
-  color: #f0ecf5;
+  background: linear-gradient(180deg, #0a0515 0%, #0f0720 50%, #0a0515 100%);
+  color: #e8e0f0;
 }
 
 .section-dark-alt {
-  background: linear-gradient(180deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
-  color: #f0ecf5;
+  background: linear-gradient(180deg, #0f0720 0%, #1a0e30 50%, #0f0720 100%);
+  color: #e8e0f0;
 }

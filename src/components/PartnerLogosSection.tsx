@@ -17,8 +17,8 @@ const PartnerLogosSection = () => {
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section ref={ref} className="bg-background relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <section ref={ref} className="relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
         <motion.div
@@ -27,7 +27,7 @@ const PartnerLogosSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground">Наши партнёры</p>
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-white/40">Наши партнёры</p>
         </motion.div>
 
         <motion.div
@@ -42,7 +42,7 @@ const PartnerLogosSection = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + i * 0.08 }}
-              className="w-28 h-16 md:w-36 md:h-20 rounded-2xl border border-border bg-card flex items-center justify-center text-muted-foreground/40 hover:border-[#9b6dff]/30 hover:text-[#9b6dff]/60 transition-all duration-300"
+              className="w-28 h-16 md:w-36 md:h-20 rounded-2xl border border-white/[0.06] bg-white/[0.03] flex items-center justify-center text-white/20 hover:border-[#9b6dff]/30 hover:text-[#9b6dff]/50 transition-all duration-300"
             >
               <span className="font-display text-lg font-bold">{partner.placeholder}</span>
             </motion.div>

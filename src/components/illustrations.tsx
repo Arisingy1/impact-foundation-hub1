@@ -17,11 +17,11 @@ export const HeroPattern = () => (
       <defs>
         {/* Deep cosmic gradient */}
         <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#0a0416" />
-          <stop offset="25%" stopColor="#0f0720" />
-          <stop offset="50%" stopColor="#1a0a2e" />
-          <stop offset="75%" stopColor="#2d1b4e" />
-          <stop offset="100%" stopColor="#1a0a2e" />
+          <stop offset="0%" stopColor="#050210" />
+          <stop offset="25%" stopColor="#0a0515" />
+          <stop offset="50%" stopColor="#0f0720" />
+          <stop offset="75%" stopColor="#1a0a2e" />
+          <stop offset="100%" stopColor="#0f0720" />
         </linearGradient>
 
         {/* Horizon glow */}

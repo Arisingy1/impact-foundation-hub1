@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FileText, Search, CheckCircle, Award, Send, ArrowRight } from "lucide-react";
+import { Send } from "lucide-react";
 import { toast } from "sonner";
 
 const steps = [
-  { icon: FileText, num: "01", title: "Заявка", desc: "Заполните форму с описанием проекта" },
-  { icon: Search, num: "02", title: "Экспертиза", desc: "Наши эксперты оценят инициативу" },
-  { icon: CheckCircle, num: "03", title: "Согласование", desc: "Обсуждаем детали и план" },
-  { icon: Award, num: "04", title: "Запуск", desc: "Начинаем при поддержке фонда" },
+  { num: "01", title: "Заявка", desc: "Заполните форму с описанием проекта" },
+  { num: "02", title: "Экспертиза", desc: "Наши эксперты оценят инициативу" },
+  { num: "03", title: "Согласование", desc: "Обсуждаем детали и план" },
+  { num: "04", title: "Запуск", desc: "Начинаем при поддержке фонда" },
 ];
 
 const ParticipantsSection = () => {
@@ -32,11 +32,11 @@ const ParticipantsSection = () => {
   };
 
   return (
-    <section id="participants" ref={ref} className="relative section-dark-alt overflow-hidden">
+    <section id="participants" ref={ref} className="relative overflow-hidden">
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#9b6dff]/[0.03] -translate-y-1/3 translate-x-1/3" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-28 md:py-40">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -66,17 +66,11 @@ const ParticipantsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 + i * 0.1 }}
-              className="relative bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 text-center group hover:border-[#9b6dff]/20 transition-colors"
+              className="relative border-t border-white/[0.06] pt-6 group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#9b6dff]/15 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#9b6dff]/25 transition-colors">
-                <s.icon className="w-5 h-5 text-[#9b6dff]" />
-              </div>
-              <span className="font-display text-2xl font-bold text-[#9b6dff] block mb-1">{s.num}</span>
+              <span className="font-display text-3xl font-bold text-white/10 block mb-2">{s.num}</span>
               <p className="font-body text-sm font-semibold text-white mb-1">{s.title}</p>
-              <p className="font-body text-xs text-white/55">{s.desc}</p>
-              {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 z-10" />
-              )}
+              <p className="font-body text-xs text-white/45">{s.desc}</p>
             </motion.div>
           ))}
         </motion.div>

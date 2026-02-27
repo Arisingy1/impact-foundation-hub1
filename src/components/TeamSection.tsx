@@ -29,6 +29,24 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
+const slideVariants = {
+  enter: (dir: number) => ({
+    opacity: 0,
+    x: dir >= 0 ? 120 : -120,
+    scale: 0.97,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+  },
+  exit: (dir: number) => ({
+    opacity: 0,
+    x: dir >= 0 ? -120 : 120,
+    scale: 0.97,
+  }),
+};
+
 const TeamSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -42,10 +60,11 @@ const TeamSection = () => {
 
   const prev = useCallback(() => {
     setDirection(-1);
-    setActiveIdx((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
+    setActiveIdx(
+      (prev) => (prev - 1 + teamMembers.length) % teamMembers.length
+    );
   }, []);
 
-  // Auto-advance every 6 seconds
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
@@ -54,104 +73,98 @@ const TeamSection = () => {
   const member = teamMembers[activeIdx];
 
   return (
-    <section id="team" ref={ref} className="section-dark relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/15 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
-        {/* Header with nav arrows */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff]/70 mb-3">Команда</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
-              Наша <span className="italic text-glow">команда</span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="flex items-center gap-3"
-          >
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-white/[0.1] flex items-center justify-center text-white/50 hover:text-[#9b6dff] hover:border-[#9b6dff]/40 transition-all duration-300"
-              aria-label="Предыдущий"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-white/[0.1] flex items-center justify-center text-white/50 hover:text-[#9b6dff] hover:border-[#9b6dff]/40 transition-all duration-300"
-              aria-label="Следующий"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </motion.div>
-        </div>
-
-        {/* Carousel card */}
-        <div className="relative overflow-hidden">
+    <section
+      id="team"
+      ref={ref}
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-0">
+        {/* Carousel */}
+        <div className="relative">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={activeIdx}
               custom={direction}
-              initial={{ opacity: 0, x: direction >= 0 ? 300 : -300 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction >= 0 ? -300 : 300 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
             >
-              {/* Photo */}
-              <div className="relative aspect-[3/4] max-h-[500px] rounded-3xl overflow-hidden bg-white/[0.03] border border-white/[0.06]">
+              {/* Photo — left */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.7 }}
+                className="relative aspect-[3/4] max-h-[600px] rounded-3xl overflow-hidden bg-white/[0.03] border border-white/[0.06]"
+              >
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
                 />
-              </div>
+              </motion.div>
 
-              {/* Info */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#9b6dff]/15 rounded-full px-4 py-1.5 mb-6">
-                  <span className="font-body text-xs uppercase tracking-[0.2em] text-[#9b6dff] font-medium">
-                    {member.role}
-                  </span>
-                </div>
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+              {/* Info — right */}
+              <div className="flex flex-col justify-center">
+                <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] font-semibold mb-6">
+                  {member.role}
+                </p>
+
+                <h2 className="font-display text-4xl md:text-5xl leading-[1.1] font-bold text-white mb-6">
                   {member.name}
-                </h3>
-                <p className="font-body text-base md:text-lg text-white/70 leading-relaxed">
+                </h2>
+
+                <p className="text-lg leading-relaxed text-white/60 max-w-md">
                   {member.description}
                 </p>
+
+                {/* Navigation */}
+                <div className="flex items-center gap-6 mt-12">
+                  {/* Arrows */}
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={prev}
+                      className="w-12 h-12 rounded-full border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all duration-300"
+                      aria-label="Предыдущий"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={next}
+                      className="w-12 h-12 rounded-full border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 transition-all duration-300"
+                      aria-label="Следующий"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {/* Line indicators */}
+                  <div className="flex items-center gap-2">
+                    {teamMembers.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => {
+                          setDirection(i > activeIdx ? 1 : -1);
+                          setActiveIdx(i);
+                        }}
+                        className={`h-[3px] rounded-full transition-all duration-500 ${
+                          i === activeIdx
+                            ? "w-10 bg-[#9b6dff]"
+                            : "w-6 bg-white/15 hover:bg-white/30"
+                        }`}
+                        aria-label={`Участник ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {teamMembers.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > activeIdx ? 1 : -1);
-                setActiveIdx(i);
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === activeIdx
-                  ? "w-8 bg-[#9b6dff]"
-                  : "w-2 bg-white/20 hover:bg-white/40"
-              }`}
-              aria-label={`Участник ${i + 1}`}
-            />
-          ))}
         </div>
       </div>
     </section>
