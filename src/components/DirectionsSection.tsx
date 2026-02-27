@@ -9,33 +9,21 @@ const directions = [
     icon: Sprout,
     title: "Социальные инициативы",
     desc: "Реабилитационные программы, поддержка сообществ, развитие социальной инфраструктуры и устойчивых инициатив.",
-    gradient: "from-slate-400/10 to-slate-500/10",
-    iconBg: "bg-slate-400/10",
-    iconColor: "text-slate-600",
   },
   {
     icon: BookOpen,
     title: "Культурные и образовательные проекты",
     desc: "Выставки, фестивали, образовательные лаборатории, менторство и развитие творческих навыков.",
-    gradient: "from-blue-400/10 to-blue-500/10",
-    iconBg: "bg-blue-400/10",
-    iconColor: "text-blue-500",
   },
   {
     icon: Briefcase,
     title: "Бизнес и предпринимательство",
     desc: "Интеграция бизнес-ресурсов в социально значимые проекты, CSR-стратегии и социальное предпринимательство.",
-    gradient: "from-indigo-400/10 to-indigo-500/10",
-    iconBg: "bg-indigo-400/10",
-    iconColor: "text-indigo-600",
   },
   {
     icon: Globe,
     title: "Междисциплинарные и международные проекты",
     desc: "Межрегиональные и международные инициативы, культурный обмен и кросс-функциональные программы.",
-    gradient: "from-violet-400/10 to-violet-500/10",
-    iconBg: "bg-violet-400/10",
-    iconColor: "text-violet-600",
   },
 ];
 
@@ -67,20 +55,20 @@ const DirectionsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative bg-card rounded-2xl border border-border p-7 hover:border-accent/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 transition-all duration-300 overflow-hidden"
+              className="group relative bg-card rounded-3xl border border-border p-7 hover:border-[#9b6dff]/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#9b6dff]/5 transition-all duration-300 overflow-hidden"
             >
               {/* Gradient background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${d.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#9b6dff]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-2xl ${d.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <d.icon className={`w-6 h-6 ${d.iconColor}`} />
+                  <div className="w-12 h-12 rounded-2xl bg-[#9b6dff]/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#9b6dff]/15 transition-all duration-300">
+                    <d.icon className="w-6 h-6 text-[#9b6dff]" />
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground/30 group-hover:text-[#9b6dff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
-                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-3">
+                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-[#9b6dff] transition-colors mb-3">
                   {d.title}
                 </h3>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{d.desc}</p>

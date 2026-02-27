@@ -80,8 +80,8 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
               {/* Header */}
               <div className="sticky top-0 bg-card/95 backdrop-blur-xl rounded-t-3xl border-b border-border px-6 py-5 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center">
-                    <Heart className="w-5 h-5 text-accent" />
+                  <div className="w-10 h-10 rounded-xl bg-[#9b6dff]/15 flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-[#9b6dff]" />
                   </div>
                   <div>
                     <h2 className="font-display text-lg font-bold text-foreground">Поддержать фонд</h2>
@@ -99,7 +99,7 @@ const DonationModal = ({ open, onClose }: DonationModalProps) => {
               {/* Body */}
               <div className="px-6 py-6 space-y-6">
                 {/* Info text */}
-                <div className="bg-accent/5 border border-accent/15 rounded-2xl p-4">
+                <div className="bg-[#9b6dff]/5 border border-[#9b6dff]/15 rounded-2xl p-4">
                   <p className="font-body text-sm text-foreground/80 leading-relaxed">
                     Вы можете поддержать деятельность фонда, сделав благотворительное пожертвование по реквизитам ниже.
                     Все средства направляются на реализацию социально-культурных проектов.

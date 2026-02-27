@@ -31,7 +31,7 @@ const ContactSection = () => {
 
   return (
     <section id="contacts" ref={ref} className="bg-background relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
@@ -52,8 +52,8 @@ const ContactSection = () => {
             <div className="space-y-4 mb-10">
               {contacts.map((c) => (
                 <div key={c.label} className="flex items-center gap-4 group p-3 -ml-3 rounded-xl hover:bg-muted/50 transition-colors">
-                  <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <c.icon className="w-5 h-5 text-accent" />
+                  <div className="w-11 h-11 rounded-xl bg-[#9b6dff]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#9b6dff]/20 transition-colors">
+                    <c.icon className="w-5 h-5 text-[#9b6dff]" />
                   </div>
                   <div>
                     <p className="font-body text-[11px] uppercase tracking-wider text-muted-foreground/60">{c.label}</p>
@@ -63,7 +63,7 @@ const ContactSection = () => {
               ))}
             </div>
 
-            <div className="bg-muted/50 border border-border rounded-2xl p-5">
+            <div className="bg-muted/50 border border-border rounded-3xl p-5">
               <p className="font-body text-[11px] uppercase tracking-wider text-muted-foreground/60 mb-2">Юридическая информация</p>
               <p className="font-body text-xs text-muted-foreground leading-relaxed">
                 Фонд поддержки социально-культурных инициатив и бизнес проектов · ИНН: 0000000000 · ОГРН: 0000000000000

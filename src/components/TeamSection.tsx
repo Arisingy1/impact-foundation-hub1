@@ -54,8 +54,8 @@ const TeamSection = () => {
   const member = teamMembers[activeIdx];
 
   return (
-    <section id="team" ref={ref} className="bg-background relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <section id="team" ref={ref} className="section-dark relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/15 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         {/* Header with nav arrows */}
@@ -65,9 +65,9 @@ const TeamSection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Команда</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
-              Наша <span className="italic text-glow-light">команда</span>
+            <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff]/70 mb-3">Команда</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
+              Наша <span className="italic text-glow">команда</span>
             </h2>
           </motion.div>
 
@@ -79,14 +79,14 @@ const TeamSection = () => {
           >
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/40 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-white/[0.1] flex items-center justify-center text-white/50 hover:text-[#9b6dff] hover:border-[#9b6dff]/40 transition-all duration-300"
               aria-label="Предыдущий"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/40 transition-all duration-300"
+              className="w-12 h-12 rounded-full border border-white/[0.1] flex items-center justify-center text-white/50 hover:text-[#9b6dff] hover:border-[#9b6dff]/40 transition-all duration-300"
               aria-label="Следующий"
             >
               <ChevronRight className="w-5 h-5" />
@@ -107,7 +107,7 @@ const TeamSection = () => {
               className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
             >
               {/* Photo */}
-              <div className="relative aspect-[3/4] max-h-[500px] rounded-3xl overflow-hidden bg-muted border border-border">
+              <div className="relative aspect-[3/4] max-h-[500px] rounded-3xl overflow-hidden bg-white/[0.03] border border-white/[0.06]">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -119,15 +119,15 @@ const TeamSection = () => {
 
               {/* Info */}
               <div>
-                <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-6">
-                  <span className="font-body text-xs uppercase tracking-[0.2em] text-accent font-medium">
+                <div className="inline-flex items-center gap-2 bg-[#9b6dff]/15 rounded-full px-4 py-1.5 mb-6">
+                  <span className="font-body text-xs uppercase tracking-[0.2em] text-[#9b6dff] font-medium">
                     {member.role}
                   </span>
                 </div>
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
                   {member.name}
                 </h3>
-                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p className="font-body text-base md:text-lg text-white/70 leading-relaxed">
                   {member.description}
                 </p>
               </div>
@@ -146,8 +146,8 @@ const TeamSection = () => {
               }}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === activeIdx
-                  ? "w-8 bg-accent"
-                  : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/40"
+                  ? "w-8 bg-[#9b6dff]"
+                  : "w-2 bg-white/20 hover:bg-white/40"
               }`}
               aria-label={`Участник ${i + 1}`}
             />

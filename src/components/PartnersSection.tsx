@@ -28,9 +28,9 @@ const PartnersSection = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-accent" />
-              <span className="font-body text-xs uppercase tracking-[0.2em] text-accent font-medium">Партнёрам</span>
+            <div className="inline-flex items-center gap-2 bg-[#9b6dff]/10 rounded-full px-4 py-1.5 mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-[#9b6dff]" />
+              <span className="font-body text-xs uppercase tracking-[0.2em] text-[#9b6dff] font-medium">Партнёрам</span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-6">
               Создавайте
@@ -70,17 +70,17 @@ const PartnersSection = () => {
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                className="group relative bg-card border border-border rounded-2xl p-6 hover:border-accent/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 transition-all duration-300 overflow-hidden"
+                className="group relative bg-card border border-border rounded-3xl p-6 hover:border-[#9b6dff]/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#9b6dff]/5 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#9b6dff]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 group-hover:scale-110 transition-all">
-                      <b.icon className="w-5 h-5 text-accent" />
+                    <div className="w-11 h-11 rounded-xl bg-[#9b6dff]/10 flex items-center justify-center group-hover:bg-[#9b6dff]/20 group-hover:scale-110 transition-all">
+                      <b.icon className="w-5 h-5 text-[#9b6dff]" />
                     </div>
-                    <span className="font-display text-3xl font-bold text-border group-hover:text-accent/20 transition-colors">{b.num}</span>
+                    <span className="font-display text-3xl font-bold text-border group-hover:text-[#9b6dff]/20 transition-colors">{b.num}</span>
                   </div>
-                  <h3 className="font-display text-base font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">{b.title}</h3>
+                  <h3 className="font-display text-base font-semibold text-foreground mb-2 group-hover:text-[#9b6dff] transition-colors">{b.title}</h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
                 </div>
               </motion.div>

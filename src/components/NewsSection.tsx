@@ -11,7 +11,6 @@ const newsItems = [
     icon: Newspaper,
     title: "Фестиваль «Свет культуры» пройдёт в 5 новых городах",
     excerpt: "В 2025 году фестиваль расширяет географию — Казань, Екатеринбург, Новосибирск, Краснодар, Владивосток.",
-    color: "bg-blue-500/10 text-blue-600",
   },
   {
     date: "15.01.2025",
@@ -19,7 +18,6 @@ const newsItems = [
     icon: FileText,
     title: "Как социальное предпринимательство меняет регионы",
     excerpt: "Интервью с выпускниками образовательной лаборатории о влиянии их проектов на сообщества.",
-    color: "bg-indigo-400/10 text-indigo-600",
   },
   {
     date: "10.12.2024",
@@ -27,7 +25,6 @@ const newsItems = [
     icon: BarChart3,
     title: "Итоги 2024 года: цифры и достижения",
     excerpt: "40 новых проектов, 15 000 участников мероприятий и расширение в 8 регионов.",
-    color: "bg-violet-400/10 text-violet-600",
   },
 ];
 
@@ -59,19 +56,19 @@ const NewsSection = () => {
               initial={{ opacity: 0, y: 25 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-card border border-border rounded-2xl p-7 hover:border-accent/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 cursor-pointer transition-all duration-300 flex flex-col"
+              className="group bg-card border border-border rounded-3xl p-7 hover:border-[#9b6dff]/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#9b6dff]/5 cursor-pointer transition-all duration-300 flex flex-col"
             >
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-2">
-                  <span className={`inline-flex items-center gap-1.5 font-body text-[11px] font-medium uppercase tracking-wider px-3 py-1 rounded-full ${item.color}`}>
+                  <span className="inline-flex items-center gap-1.5 font-body text-[11px] font-medium uppercase tracking-wider px-3 py-1 rounded-full bg-[#9b6dff]/10 text-[#9b6dff]">
                     <item.icon className="w-3 h-3" />
                     {item.type}
                   </span>
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-muted-foreground/20 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className="w-5 h-5 text-muted-foreground/20 group-hover:text-[#9b6dff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
 
-              <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent transition-colors mb-3 leading-snug">
+              <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-[#9b6dff] transition-colors mb-3 leading-snug">
                 {item.title}
               </h3>
               <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1 mb-5">{item.excerpt}</p>
