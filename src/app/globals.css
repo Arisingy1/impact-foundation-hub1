@@ -196,3 +196,41 @@
   background: linear-gradient(180deg, #0f0720 0%, #1a0e30 50%, #0f0720 100%);
   color: #e8e0f0;
 }
+
+/* ── Light / silver sections ── */
+.section-light {
+  background: linear-gradient(180deg, #f7f5fa 0%, #eeebf4 50%, #f7f5fa 100%);
+  color: #1a0e30;
+}
+
+.section-light-alt {
+  background: linear-gradient(180deg, #eeebf4 0%, #e8e3f0 50%, #eeebf4 100%);
+  color: #1a0e30;
+}
+
+/* Smooth dark→light transition helper */
+.section-light::before,
+.section-light-alt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, var(--background) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-light::after,
+.section-light-alt::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(0deg, var(--background) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}

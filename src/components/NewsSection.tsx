@@ -33,7 +33,7 @@ const NewsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="news" ref={ref} className="py-28 md:py-40">
+    <section id="news" ref={ref} className="section-light-alt relative py-28 md:py-40">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header — left-aligned */}
         <motion.div
@@ -45,7 +45,7 @@ const NewsSection = () => {
           <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4">
             Медиа
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a0e30]">
             СМИ о нас
           </h2>
         </motion.div>
@@ -59,32 +59,32 @@ const NewsSection = () => {
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.15 + 0.12 * i, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 md:p-8 flex flex-col cursor-pointer transition-all duration-300 hover:border-white/12 hover:bg-white/[0.05]"
+              className="group relative bg-white/60 border border-[#1a0e30]/[0.06] rounded-2xl p-7 md:p-8 flex flex-col cursor-pointer transition-all duration-300 hover:border-[#9b6dff]/20 hover:bg-white/80 shadow-sm hover:shadow-md"
             >
               {/* Date + type */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-body text-xs text-white/55 tabular-nums">
+                <span className="font-body text-xs text-[#4a3f5c]/70 tabular-nums">
                   {item.date}
                 </span>
-                <span className="font-body text-xs text-white/40">·</span>
-                <span className="font-body text-xs text-white/55">
+                <span className="font-body text-xs text-[#4a3f5c]/40">·</span>
+                <span className="font-body text-xs text-[#4a3f5c]/70">
                   {item.type}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="font-display text-lg md:text-xl font-semibold text-white leading-snug mb-4 transition-colors duration-300 group-hover:text-[#9b6dff]">
+              <h3 className="font-display text-lg md:text-xl font-semibold text-[#1a0e30] leading-snug mb-4 transition-colors duration-300 group-hover:text-[#9b6dff]">
                 {item.title}
               </h3>
 
               {/* Excerpt */}
-              <p className="font-body text-sm text-white/65 leading-relaxed flex-1">
+              <p className="font-body text-sm text-[#4a3f5c] leading-relaxed flex-1">
                 {item.excerpt}
               </p>
 
               {/* Arrow */}
               <div className="mt-6 flex items-center justify-end">
-                <ArrowUpRight className="w-5 h-5 text-white/15 transition-all duration-300 group-hover:text-[#9b6dff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-5 h-5 text-[#1a0e30]/15 transition-all duration-300 group-hover:text-[#9b6dff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </motion.article>
           ))}
