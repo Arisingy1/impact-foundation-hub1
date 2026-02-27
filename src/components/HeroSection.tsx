@@ -48,23 +48,23 @@ const HeroSection = () => {
             alt=""
             width={500}
             height={500}
-            className="w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] lg:w-[520px] lg:h-[520px] opacity-[0.04] select-none"
+            className="w-[360px] h-[360px] sm:w-[460px] sm:h-[460px] md:w-[560px] md:h-[560px] lg:w-[700px] lg:h-[700px] opacity-[0.06] select-none"
             priority
           />
         </motion.div>
         {/* Glow behind logo */}
-        <div className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full bg-[#9b6dff]/[0.06] blur-[100px]" />
+        <div className="absolute w-[500px] h-[500px] md:w-[750px] md:h-[750px] rounded-full bg-[#9b6dff]/[0.05] blur-[120px]" />
       </div>
 
       {/* Content — centered */}
       <div className="relative z-10 flex-1 flex items-center justify-center">
-        <div className="w-full max-w-5xl mx-auto px-6 md:px-10 text-center">
+        <div className="w-full max-w-4xl mx-auto px-6 md:px-10 text-center">
           {/* Fund full name label */}
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-body text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#9b6dff] mb-6 md:mb-8"
+            className="font-body text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9b6dff] mb-5 md:mb-6 px-4"
           >
             Фонд поддержки социально-культурных инициатив и бизнес проектов
           </motion.p>
@@ -73,13 +73,13 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-12 md:mb-16"
+            className="mb-10 md:mb-14"
           >
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] mb-8"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6"
             >
               Социально-культурные
               <br />инициативы —{" "}
@@ -91,7 +91,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.0 }}
-              className="font-body text-base md:text-lg lg:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
+              className="font-body text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed"
             >
               Объединяем людей, бизнес и творческие инициативы для созидания
             </motion.p>
