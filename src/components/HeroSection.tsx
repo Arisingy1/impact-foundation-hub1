@@ -53,7 +53,7 @@ const HeroSection = () => {
           />
         </motion.div>
         {/* Glow behind logo */}
-        <div className="absolute w-[500px] h-[500px] md:w-[750px] md:h-[750px] rounded-full bg-[#9b6dff]/[0.05] blur-[120px]" />
+        <div className="absolute w-[500px] h-[500px] md:w-[750px] md:h-[750px] rounded-full bg-[#4d7cff]/[0.05] blur-[120px]" />
       </div>
 
       {/* Content — centered */}
@@ -64,7 +64,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-body text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9b6dff] mb-5 md:mb-6 px-4"
+            className="font-body text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4d7cff] mb-5 md:mb-6 px-4"
           >
             Фонд поддержки социально-культурных инициатив и бизнес проектов
           </motion.p>
@@ -108,7 +108,7 @@ const HeroSection = () => {
               variant="hero"
               size="lg"
               onClick={() => setDonationOpen(true)}
-              className="text-base px-10 rounded-full bg-[#9b6dff] hover:bg-[#8b5df0] text-white border-0 shadow-lg shadow-[#9b6dff]/20"
+              className="text-base px-10 rounded-full bg-[#4d7cff] hover:bg-[#3d6cf0] text-white border-0 shadow-lg shadow-[#4d7cff]/20"
             >
               Поддержать фонд
             </Button>
@@ -147,7 +147,7 @@ const HeroSection = () => {
                 onClick={() => scrollTo("#about")}
                 className="text-left group"
               >
-                <p className="font-body text-xs md:text-sm font-semibold text-white mb-1 group-hover:text-[#9b6dff] transition-colors">
+                <p className="font-body text-xs md:text-sm font-semibold text-white mb-1 group-hover:text-[#4d7cff] transition-colors">
                   {item.label}
                 </p>
                 <p className="font-body text-[11px] md:text-xs text-white/55 leading-relaxed line-clamp-2">

@@ -39,7 +39,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#1a0a2e]/90 backdrop-blur-xl shadow-lg shadow-black/20 py-3"
+          ? "bg-[#101a32]/90 backdrop-blur-xl shadow-lg shadow-black/20 py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -52,7 +52,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <Image src={LogoImg} alt="Фонд" width={80} height={80} className="rounded-xl w-12 h-12 md:w-16 md:h-16" />
+          <Image src={LogoImg} alt="Фонд" width={70} height={70} className="rounded-xl w-[70px] h-[70px]" />
         </a>
 
         {/* Desktop nav */}
@@ -113,7 +113,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-[#1a0a2e]/98 backdrop-blur-xl border-b border-white/5"
+            className="lg:hidden bg-[#101a32]/98 backdrop-blur-xl border-b border-white/5"
           >
             <nav className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-1">
               {navItems.map((item) => (

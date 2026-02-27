@@ -76,11 +76,11 @@ const ProjectsSection = () => {
     >
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#9b6dff]/[0.04] blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#4d7cff]/[0.04] blur-[120px]" />
       </div>
 
       {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/15 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/15 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
@@ -90,7 +90,7 @@ const ProjectsSection = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] mb-4">
+          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
             Проекты экосистемы
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -114,12 +114,12 @@ const ProjectsSection = () => {
               className="group relative flex flex-col items-center text-center rounded-3xl
                          bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm
                          p-6 md:p-7
-                         hover:border-[#9b6dff]/30 hover:-translate-y-2
+                         hover:border-[#4d7cff]/30 hover:-translate-y-2
                          hover:shadow-[0_8px_40px_-12px_rgba(155,109,255,0.15)]
                          transition-all duration-300 ease-out"
             >
               {/* Hover glow overlay */}
-              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-[#9b6dff]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-[#4d7cff]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative flex flex-col items-center">
                 {/* Emoji circle */}
@@ -127,20 +127,20 @@ const ProjectsSection = () => {
                   className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-5
                              bg-gradient-to-br from-white/[0.06] to-white/[0.02]
                              border border-white/[0.08]
-                             group-hover:scale-110 group-hover:border-[#9b6dff]/20
+                             group-hover:scale-110 group-hover:border-[#4d7cff]/20
                              transition-all duration-300"
                 >
                   {p.emoji}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-sm font-semibold text-foreground leading-tight mb-1 group-hover:text-[#9b6dff] transition-colors duration-300">
+                <h3 className="font-display text-sm font-semibold text-foreground leading-tight mb-1 group-hover:text-[#4d7cff] transition-colors duration-300">
                   {p.title}
                 </h3>
 
                 {/* External link icon — visible on hover */}
                 <ExternalLink
-                  className="w-3.5 h-3.5 mt-3 text-white/0 group-hover:text-[#9b6dff]/70 transition-colors duration-300"
+                  className="w-3.5 h-3.5 mt-3 text-white/0 group-hover:text-[#4d7cff]/70 transition-colors duration-300"
                 />
               </div>
             </motion.a>
@@ -155,7 +155,7 @@ const ProjectsSection = () => {
           className="mt-24 md:mt-32 text-center max-w-2xl mx-auto"
         >
           <blockquote className="relative">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/40 to-transparent" />
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/40 to-transparent" />
             <p className="font-display text-lg md:text-xl text-foreground/80 italic leading-relaxed">
               «Мы не делаем разовые акции — мы строим проекты, которые
               действительно меняют жизнь»
@@ -163,7 +163,7 @@ const ProjectsSection = () => {
             <footer className="mt-5">
               <span className="font-body text-sm text-white/70 tracking-wide">
                 Анастасия Митькина,{" "}
-                <span className="text-[#9b6dff]/60">президент фонда</span>
+                <span className="text-[#4d7cff]/60">президент фонда</span>
               </span>
             </footer>
           </blockquote>
@@ -171,7 +171,7 @@ const ProjectsSection = () => {
       </div>
 
       {/* Bottom divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/15 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/15 to-transparent" />
     </section>
   );
 };

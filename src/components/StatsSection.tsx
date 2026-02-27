@@ -41,7 +41,7 @@ const StatsSection = () => {
     >
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#9b6dff]/[0.04] blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-[#4d7cff]/[0.04] blur-[120px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
@@ -52,12 +52,12 @@ const StatsSection = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-6"
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] mb-4">
+          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
             Наши результаты
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]">
             Цифры, которые{" "}
-            <span className="italic text-[#9b6dff]">говорят</span>
+            <span className="italic text-[#4d7cff]">говорят</span>
           </h2>
         </motion.div>
 
@@ -85,7 +85,7 @@ const StatsSection = () => {
             >
               <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold text-foreground leading-none tabular-nums tracking-tight">
                 <AnimatedNumber value={stat.value} inView={inView} />
-                <span className="text-[#9b6dff]">{stat.suffix}</span>
+                <span className="text-[#4d7cff]">{stat.suffix}</span>
               </div>
               <p className="font-body text-sm md:text-base text-white/70 mt-3 md:mt-4 tracking-wide">
                 {stat.label}

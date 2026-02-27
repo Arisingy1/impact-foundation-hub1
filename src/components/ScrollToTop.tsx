@@ -26,7 +26,7 @@ const ScrollToTop = () => {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ type: "spring", damping: 20, stiffness: 300 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[#9b6dff] text-white shadow-lg shadow-[#9b6dff]/25 hover:shadow-xl hover:shadow-[#9b6dff]/30 hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[#4d7cff] text-white shadow-lg shadow-[#4d7cff]/25 hover:shadow-xl hover:shadow-[#4d7cff]/30 hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center"
           aria-label="Наверх"
         >
           <ArrowUp className="w-5 h-5" />

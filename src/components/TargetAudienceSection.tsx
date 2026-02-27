@@ -48,7 +48,7 @@ const TargetAudienceSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4"
+            className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4"
           >
             Для кого
           </motion.p>
@@ -75,7 +75,7 @@ const TargetAudienceSection = () => {
 
               {/* Content */}
               <div>
-                <h4 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-[#9b6dff] transition-colors duration-300 mb-2">
+                <h4 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-[#4d7cff] transition-colors duration-300 mb-2">
                   {a.title}
                 </h4>
                 <p className="font-body text-base text-white/70 leading-relaxed max-w-xl">

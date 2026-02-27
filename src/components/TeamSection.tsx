@@ -97,7 +97,7 @@ const TeamSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.7 }}
-                className="relative aspect-[3/4] max-h-[600px] rounded-3xl overflow-hidden bg-[#1a0e30]/[0.05] border border-[#1a0e30]/[0.08]"
+                className="relative aspect-[3/4] max-h-[600px] rounded-3xl overflow-hidden bg-[#101a35]/[0.05] border border-[#101a35]/[0.08]"
               >
                 <Image
                   src={member.image}
@@ -111,15 +111,15 @@ const TeamSection = () => {
 
               {/* Info — right */}
               <div className="flex flex-col justify-center">
-                <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] font-semibold mb-6">
+                <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] font-semibold mb-6">
                   {member.role}
                 </p>
 
-                <h2 className="font-display text-4xl md:text-5xl leading-[1.1] font-bold text-[#1a0e30] mb-6">
+                <h2 className="font-display text-4xl md:text-5xl leading-[1.1] font-bold text-[#101a35] mb-6">
                   {member.name}
                 </h2>
 
-                <p className="text-lg leading-relaxed text-[#4a3f5c] max-w-md">
+                <p className="text-lg leading-relaxed text-[#3a4a65] max-w-md">
                   {member.description}
                 </p>
 
@@ -129,14 +129,14 @@ const TeamSection = () => {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={prev}
-                      className="w-12 h-12 rounded-full border border-[#1a0e30]/[0.10] flex items-center justify-center text-[#4a3f5c] hover:text-[#9b6dff] hover:border-[#9b6dff]/30 transition-all duration-300"
+                      className="w-12 h-12 rounded-full border border-[#101a35]/[0.10] flex items-center justify-center text-[#3a4a65] hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-all duration-300"
                       aria-label="Предыдущий"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                       onClick={next}
-                      className="w-12 h-12 rounded-full border border-[#1a0e30]/[0.10] flex items-center justify-center text-[#4a3f5c] hover:text-[#9b6dff] hover:border-[#9b6dff]/30 transition-all duration-300"
+                      className="w-12 h-12 rounded-full border border-[#101a35]/[0.10] flex items-center justify-center text-[#3a4a65] hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-all duration-300"
                       aria-label="Следующий"
                     >
                       <ChevronRight className="w-5 h-5" />
@@ -154,8 +154,8 @@ const TeamSection = () => {
                         }}
                         className={`h-[3px] rounded-full transition-all duration-500 ${
                           i === activeIdx
-                            ? "w-10 bg-[#9b6dff]"
-                            : "w-6 bg-[#1a0e30]/15 hover:bg-[#9b6dff]/40"
+                            ? "w-10 bg-[#4d7cff]"
+                            : "w-6 bg-[#101a35]/15 hover:bg-[#4d7cff]/40"
                         }`}
                         aria-label={`Участник ${i + 1}`}
                       />

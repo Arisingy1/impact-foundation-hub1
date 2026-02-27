@@ -42,7 +42,7 @@ const PartnerLogosSection = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + i * 0.08 }}
-              className="w-28 h-16 md:w-36 md:h-20 rounded-2xl border border-white/[0.06] bg-white/[0.03] flex items-center justify-center text-white/20 hover:border-[#9b6dff]/30 hover:text-[#9b6dff]/50 transition-all duration-300"
+              className="w-28 h-16 md:w-36 md:h-20 rounded-2xl border border-white/[0.06] bg-white/[0.03] flex items-center justify-center text-white/20 hover:border-[#4d7cff]/30 hover:text-[#4d7cff]/50 transition-all duration-300"
             >
               <span className="font-display text-lg font-bold">{partner.placeholder}</span>
             </motion.div>

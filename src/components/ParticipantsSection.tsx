@@ -34,7 +34,7 @@ const ParticipantsSection = () => {
   return (
     <section id="participants" ref={ref} className="relative overflow-hidden">
       {/* Decorative */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#9b6dff]/[0.03] -translate-y-1/3 translate-x-1/3" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#4d7cff]/[0.03] -translate-y-1/3 translate-x-1/3" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-28 md:py-40">
         <motion.div
@@ -43,7 +43,7 @@ const ParticipantsSection = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-3">Участникам</p>
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-3">Участникам</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4">
             Подайте свой <span className="italic text-glow">проект</span>
           </h2>

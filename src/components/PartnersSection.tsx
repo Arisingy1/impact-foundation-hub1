@@ -36,7 +36,7 @@ const PartnersSection = () => {
               <br />
               перемены
               <br />
-              <span className="italic text-[#9b6dff]">вместе с нами</span>
+              <span className="italic text-[#4d7cff]">вместе с нами</span>
             </h2>
 
             <p className="font-body text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
@@ -84,7 +84,7 @@ const PartnersSection = () => {
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="border-t border-white/[0.06] py-7"
               >
-                <span className="font-display text-sm text-[#9b6dff] tracking-wide mb-2 block">
+                <span className="font-display text-sm text-[#4d7cff] tracking-wide mb-2 block">
                   {b.num}
                 </span>
                 <h3 className="font-display text-lg font-semibold text-foreground mb-1">

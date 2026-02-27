@@ -16,28 +16,28 @@ export const HeroBackground = () => (
       <defs>
         <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#050210" />
-          <stop offset="25%" stopColor="#0a0515" />
-          <stop offset="50%" stopColor="#0f0720" />
-          <stop offset="75%" stopColor="#1a0a2e" />
-          <stop offset="100%" stopColor="#0f0720" />
+          <stop offset="25%" stopColor="#050a18" />
+          <stop offset="50%" stopColor="#0a1025" />
+          <stop offset="75%" stopColor="#101a32" />
+          <stop offset="100%" stopColor="#0a1025" />
         </linearGradient>
         <radialGradient id="horizonGlow" cx="50%" cy="85%" r="50%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.18" />
+          <stop offset="0%" stopColor="#4d7cff" stopOpacity="0.18" />
           <stop offset="30%" stopColor="#7c3aed" stopOpacity="0.08" />
           <stop offset="60%" stopColor="#6d28d9" stopOpacity="0.03" />
           <stop offset="100%" stopColor="#6d28d9" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="centerGlow" cx="50%" cy="45%" r="40%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.07" />
+          <stop offset="0%" stopColor="#4d7cff" stopOpacity="0.07" />
           <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.03" />
           <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#c084fc" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#c084fc" stopOpacity="0" />
+          <stop offset="0%" stopColor="#7da3ff" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#7da3ff" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="planetGlow" cx="50%" cy="0%" r="100%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.1" />
+          <stop offset="0%" stopColor="#4d7cff" stopOpacity="0.1" />
           <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.03" />
           <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
         </radialGradient>
@@ -54,7 +54,7 @@ export const HeroBackground = () => (
       <rect width="1440" height="900" fill="url(#centerGlow)" />
 
       {/* Horizon line */}
-      <ellipse cx="720" cy="920" rx="900" ry="200" fill="none" stroke="#9b6dff" strokeOpacity="0.12" strokeWidth="1" />
+      <ellipse cx="720" cy="920" rx="900" ry="200" fill="none" stroke="#4d7cff" strokeOpacity="0.12" strokeWidth="1" />
       <ellipse cx="720" cy="850" rx="800" ry="300" fill="url(#planetGlow)" />
 
       {/* Stars */}
@@ -95,8 +95,8 @@ export const CosmicSectionBg = () => (
     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 600" fill="none" preserveAspectRatio="xMidYMid slice">
       <defs>
         <radialGradient id="sectionGlow" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.06" />
-          <stop offset="100%" stopColor="#9b6dff" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4d7cff" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="#4d7cff" stopOpacity="0" />
         </radialGradient>
       </defs>
       <rect width="1440" height="600" fill="url(#sectionGlow)" />
@@ -121,8 +121,8 @@ export const AboutIllustration = () => (
   >
     <defs>
       <linearGradient id="aboutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.2" />
-        <stop offset="100%" stopColor="#9b6dff" stopOpacity="0.05" />
+        <stop offset="0%" stopColor="#4d7cff" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#4d7cff" stopOpacity="0.05" />
       </linearGradient>
     </defs>
     <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" strokeOpacity="0.08" strokeWidth="1" />
@@ -131,14 +131,14 @@ export const AboutIllustration = () => (
     <circle cx="170" cy="160" r="18" fill="url(#aboutGrad)" />
     <circle cx="230" cy="160" r="18" fill="url(#aboutGrad)" />
     <circle cx="200" cy="180" r="22" fill="url(#aboutGrad)" />
-    <path d="M140 220 Q170 200 200 220 Q230 200 260 220" stroke="#9b6dff" strokeOpacity="0.15" strokeWidth="2" fill="none" />
-    <path d="M150 250 Q175 230 200 250 Q225 230 250 250" stroke="#9b6dff" strokeOpacity="0.1" strokeWidth="1.5" fill="none" />
-    <path d="M200 280 L200 320" stroke="#9b6dff" strokeOpacity="0.15" strokeWidth="2" />
-    <circle cx="200" cy="280" r="4" fill="#9b6dff" fillOpacity="0.2" />
-    <circle cx="120" cy="120" r="3" fill="#9b6dff" fillOpacity="0.2" />
-    <circle cx="280" cy="100" r="2" fill="#9b6dff" fillOpacity="0.15" />
-    <circle cx="300" cy="280" r="3" fill="#9b6dff" fillOpacity="0.12" />
-    <circle cx="100" cy="300" r="2" fill="#9b6dff" fillOpacity="0.1" />
+    <path d="M140 220 Q170 200 200 220 Q230 200 260 220" stroke="#4d7cff" strokeOpacity="0.15" strokeWidth="2" fill="none" />
+    <path d="M150 250 Q175 230 200 250 Q225 230 250 250" stroke="#4d7cff" strokeOpacity="0.1" strokeWidth="1.5" fill="none" />
+    <path d="M200 280 L200 320" stroke="#4d7cff" strokeOpacity="0.15" strokeWidth="2" />
+    <circle cx="200" cy="280" r="4" fill="#4d7cff" fillOpacity="0.2" />
+    <circle cx="120" cy="120" r="3" fill="#4d7cff" fillOpacity="0.2" />
+    <circle cx="280" cy="100" r="2" fill="#4d7cff" fillOpacity="0.15" />
+    <circle cx="300" cy="280" r="3" fill="#4d7cff" fillOpacity="0.12" />
+    <circle cx="100" cy="300" r="2" fill="#4d7cff" fillOpacity="0.1" />
   </svg>
 );
 

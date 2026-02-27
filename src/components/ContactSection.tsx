@@ -45,7 +45,7 @@ const ContactSection = () => {
       className="relative min-h-screen flex items-center"
     >
       {/* subtle top divider */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#9b6dff]/10 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/10 to-transparent" />
 
       <div className="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -61,7 +61,7 @@ const ContactSection = () => {
             <motion.p
               variants={fadeUp}
               custom={0}
-              className="text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4"
+              className="text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4"
             >
               Контакты
             </motion.p>
@@ -73,7 +73,7 @@ const ContactSection = () => {
             >
               Свяжитесь
               <br />
-              с&nbsp;<span className="italic text-[#9b6dff]">нами</span>
+              с&nbsp;<span className="italic text-[#4d7cff]">нами</span>
             </motion.h2>
 
             <motion.p
@@ -94,7 +94,7 @@ const ContactSection = () => {
                   custom={3 + i}
                   className="flex items-baseline gap-3"
                 >
-                  <span className="text-[#9b6dff] text-sm font-medium w-24 shrink-0">
+                  <span className="text-[#4d7cff] text-sm font-medium w-24 shrink-0">
                     {c.label}
                   </span>
                   <span className="text-white/80 text-sm">{c.value}</span>
@@ -147,7 +147,7 @@ const ContactSection = () => {
                     setForm((s) => ({ ...s, name: e.target.value }))
                   }
                   placeholder="Как к вам обращаться?"
-                  className="rounded-xl h-12 bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#9b6dff]/40"
+                  className="rounded-xl h-12 bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#4d7cff]/40"
                   maxLength={100}
                 />
               </div>
@@ -164,7 +164,7 @@ const ContactSection = () => {
                     setForm((s) => ({ ...s, email: e.target.value }))
                   }
                   placeholder="email@example.com"
-                  className="rounded-xl h-12 bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#9b6dff]/40"
+                  className="rounded-xl h-12 bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#4d7cff]/40"
                   maxLength={255}
                 />
               </div>
@@ -181,7 +181,7 @@ const ContactSection = () => {
                   }
                   placeholder="Напишите ваш вопрос или предложение..."
                   rows={5}
-                  className="rounded-xl bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#9b6dff]/40"
+                  className="rounded-xl bg-white/[0.05] border-white/[0.1] text-white placeholder:text-white/25 focus-visible:ring-[#4d7cff]/40"
                   maxLength={1000}
                 />
               </div>
