@@ -70,7 +70,7 @@ const ParticipantsSection = () => {
             >
               <span className="font-display text-3xl font-bold text-white/10 block mb-2">{s.num}</span>
               <p className="font-body text-sm font-semibold text-white mb-1">{s.title}</p>
-              <p className="font-body text-xs text-white/45">{s.desc}</p>
+              <p className="font-body text-xs text-white/60">{s.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -87,7 +87,7 @@ const ParticipantsSection = () => {
             <h3 className="font-display text-xl font-semibold text-white mb-2">
               Форма заявки
             </h3>
-            <p className="font-body text-sm text-white/55">Заполните поля и мы свяжемся с вами</p>
+            <p className="font-body text-sm text-white/65">Заполните поля и мы свяжемся с вами</p>
           </div>
           <div className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
@@ -144,7 +144,7 @@ const ParticipantsSection = () => {
               <Send className="w-4 h-4 mr-2" />
               Отправить заявку
             </Button>
-            <p className="font-body text-[11px] text-white/35 text-center">
+            <p className="font-body text-[11px] text-white/50 text-center">
               Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
             </p>
           </div>

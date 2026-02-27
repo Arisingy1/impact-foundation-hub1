@@ -39,14 +39,19 @@ const TargetAudienceSection = () => {
       <div className="relative w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 md:mb-24"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-white/40 mb-4">
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4"
+          >
             Для кого
-          </p>
+          </motion.p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Кому подойдёт{" "}
             <span className="italic text-glow-light">фонд</span>
@@ -58,9 +63,9 @@ const TargetAudienceSection = () => {
           {audiences.map((a, i) => (
             <motion.div
               key={a.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15 + i * 0.12, duration: 0.6 }}
+              initial={{ opacity: 0, y: 40, filter: "blur(4px)" }}
+              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+              transition={{ delay: 0.2 + i * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="group border-t border-white/[0.06] py-10 md:py-14 grid grid-cols-[60px_1fr] md:grid-cols-[100px_1fr] gap-6 md:gap-10 items-start"
             >
               {/* Number */}
@@ -73,7 +78,7 @@ const TargetAudienceSection = () => {
                 <h4 className="font-display text-2xl md:text-3xl font-bold text-white group-hover:text-[#9b6dff] transition-colors duration-300 mb-2">
                   {a.title}
                 </h4>
-                <p className="font-body text-base text-white/50 leading-relaxed max-w-xl">
+                <p className="font-body text-base text-white/70 leading-relaxed max-w-xl">
                   {a.desc}
                 </p>
               </div>

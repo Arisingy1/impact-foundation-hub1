@@ -47,12 +47,12 @@ const StatsSection = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-6"
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-muted-foreground mb-4">
+          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] mb-4">
             Наши результаты
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]">
@@ -74,11 +74,11 @@ const StatsSection = () => {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{
-                duration: 0.7,
-                delay: 0.4 + i * 0.12,
+                duration: 0.9,
+                delay: 0.4 + i * 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="flex flex-col items-center text-center"
@@ -87,7 +87,7 @@ const StatsSection = () => {
                 <AnimatedNumber value={stat.value} inView={inView} />
                 <span className="text-[#9b6dff]">{stat.suffix}</span>
               </div>
-              <p className="font-body text-sm md:text-base text-muted-foreground mt-3 md:mt-4 tracking-wide">
+              <p className="font-body text-sm md:text-base text-white/70 mt-3 md:mt-4 tracking-wide">
                 {stat.label}
               </p>
             </motion.div>

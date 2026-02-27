@@ -85,12 +85,12 @@ const ProjectsSection = () => {
       <div className="relative max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 50, scale: 0.97 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff]/60 mb-4">
+          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#9b6dff] mb-4">
             Проекты экосистемы
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -161,7 +161,7 @@ const ProjectsSection = () => {
               действительно меняют жизнь»
             </p>
             <footer className="mt-5">
-              <span className="font-body text-sm text-muted-foreground tracking-wide">
+              <span className="font-body text-sm text-white/70 tracking-wide">
                 Анастасия Митькина,{" "}
                 <span className="text-[#9b6dff]/60">президент фонда</span>
               </span>

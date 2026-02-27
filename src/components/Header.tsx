@@ -6,6 +6,8 @@ import { Menu, X, Heart, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DonationModal from "./DonationModal";
 import { TelegramIcon } from "./illustrations";
+import Image from "next/image";
+import LogoImg from "@/assets/Logo.png";
 
 const navItems = [
   { label: "О фонде", href: "#about" },
@@ -44,13 +46,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         <a
           href="#"
-          className="font-display text-xl md:text-2xl font-bold tracking-wide text-white/90 hover:text-white transition-colors"
+          className="flex items-center gap-2 hover:opacity-90 transition-opacity"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          ФОНД
+          <Image src={LogoImg} alt="Фонд" width={44} height={44} className="rounded-xl" />
         </a>
 
         {/* Desktop nav */}

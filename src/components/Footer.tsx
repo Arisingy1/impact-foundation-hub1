@@ -16,11 +16,11 @@ const Footer = () => {
           <div>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="font-display text-2xl font-bold text-white mb-4 block hover:text-[#9b6dff] transition-colors"
+              className="mb-4 block hover:opacity-80 transition-opacity"
             >
-              ФОНД
+              <img src="/assets/Logo.png" alt="Фонд" width={44} height={44} className="rounded-xl" />
             </button>
-            <p className="font-body text-sm text-white/60 leading-relaxed max-w-xs mb-6">
+            <p className="font-body text-sm text-white/70 leading-relaxed max-w-xs mb-6">
               Объединяем людей и ресурсы для создания проектов, которые меняют жизнь к лучшему.
             </p>
             {/* Social */}
@@ -50,7 +50,7 @@ const Footer = () => {
                 <li key={l.href}>
                   <button
                     onClick={() => scrollTo(l.href)}
-                    className="font-body text-sm text-white/55 hover:text-[#9b6dff] transition-colors"
+                    className="font-body text-sm text-white/70 hover:text-[#9b6dff] transition-colors"
                   >
                     {l.label}
                   </button>
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
           <div>
             <h5 className="font-body text-[11px] uppercase tracking-[0.25em] text-[#9b6dff]/70 mb-5 font-medium">Контакты</h5>
-            <ul className="space-y-3 font-body text-sm text-white/55">
+            <ul className="space-y-3 font-body text-sm text-white/70">
               <li className="hover:text-white/70 transition-colors">info@fond.org</li>
               <li className="hover:text-white/70 transition-colors">+7 (495) 000-00-00</li>
               <li className="hover:text-white/70 transition-colors">г. Москва</li>
@@ -68,10 +68,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="font-body text-xs text-white/40">
+          <p className="font-body text-xs text-white/55">
             © {new Date().getFullYear()} Фонд поддержки социально-культурных инициатив и бизнес проектов. Все права защищены.
           </p>
-          <p className="font-body text-xs text-white/30 flex items-center gap-1">
+          <p className="font-body text-xs text-white/50 flex items-center gap-1">
             Сделано с <Heart className="w-3 h-3 text-[#9b6dff]/40" /> для людей
           </p>
         </div>

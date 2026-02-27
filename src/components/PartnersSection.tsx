@@ -26,9 +26,9 @@ const PartnersSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left — headline, description, CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, filter: "blur(4px)" }}
+            animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col justify-center"
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.08] mb-6">
@@ -39,7 +39,7 @@ const PartnersSection = () => {
               <span className="italic text-[#9b6dff]">вместе с нами</span>
             </h2>
 
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10 max-w-lg">
+            <p className="font-body text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
               Сотрудничество с фондом&nbsp;— это возможность соединить бизнес-цели
               с&nbsp;общественной пользой и&nbsp;оставить значимый след.
             </p>
@@ -79,9 +79,9 @@ const PartnersSection = () => {
             {benefits.map((b, i) => (
               <motion.div
                 key={b.num}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
+                initial={{ opacity: 0, y: 30, filter: "blur(3px)" }}
+                animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                transition={{ duration: 0.7, delay: 0.3 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="border-t border-white/[0.06] py-7"
               >
                 <span className="font-display text-sm text-[#9b6dff] tracking-wide mb-2 block">
@@ -90,7 +90,7 @@ const PartnersSection = () => {
                 <h3 className="font-display text-lg font-semibold text-foreground mb-1">
                   {b.title}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm text-white/65 leading-relaxed">
                   {b.desc}
                 </p>
               </motion.div>

@@ -1,11 +1,10 @@
 "use client";
 
 /* ---------- Decorative SVG Illustrations ----------
-   Cosmic dark-purple theme with 3D crystal, planetary horizon,
-   and abstract geometric patterns inspired by Rybakov Foundation.
+   Cosmic dark-purple theme with stars and atmospheric glow.
    -------------------------------------------------- */
 
-export const HeroPattern = () => (
+export const HeroBackground = () => (
   <div className="absolute inset-0 w-full h-full overflow-hidden">
     <svg
       className="absolute inset-0 w-full h-full"
@@ -15,7 +14,6 @@ export const HeroPattern = () => (
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        {/* Deep cosmic gradient */}
         <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#050210" />
           <stop offset="25%" stopColor="#0a0515" />
@@ -23,115 +21,43 @@ export const HeroPattern = () => (
           <stop offset="75%" stopColor="#1a0a2e" />
           <stop offset="100%" stopColor="#0f0720" />
         </linearGradient>
-
-        {/* Horizon glow */}
         <radialGradient id="horizonGlow" cx="50%" cy="85%" r="50%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.2" />
-          <stop offset="30%" stopColor="#7c3aed" stopOpacity="0.1" />
-          <stop offset="60%" stopColor="#6d28d9" stopOpacity="0.05" />
+          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.18" />
+          <stop offset="30%" stopColor="#7c3aed" stopOpacity="0.08" />
+          <stop offset="60%" stopColor="#6d28d9" stopOpacity="0.03" />
           <stop offset="100%" stopColor="#6d28d9" stopOpacity="0" />
         </radialGradient>
-
-        {/* Crystal face gradients */}
-        <linearGradient id="crystalFace1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3d2066" stopOpacity="0.9" />
-          <stop offset="50%" stopColor="#2d1b4e" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#1a0a2e" stopOpacity="1" />
-        </linearGradient>
-        <linearGradient id="crystalFace2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#4c2d73" stopOpacity="0.85" />
-          <stop offset="50%" stopColor="#3d2066" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#2d1b4e" stopOpacity="0.95" />
-        </linearGradient>
-        <linearGradient id="crystalFace3" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#6d28d9" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#3d2066" stopOpacity="0.8" />
-        </linearGradient>
-        <linearGradient id="crystalHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#c084fc" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#9b6dff" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id="crystalEdge" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#c084fc" stopOpacity="0.4" />
-          <stop offset="50%" stopColor="#e879f9" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#c084fc" stopOpacity="0.4" />
-        </linearGradient>
-
-        {/* Star glow */}
+        <radialGradient id="centerGlow" cx="50%" cy="45%" r="40%">
+          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.07" />
+          <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.03" />
+          <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
+        </radialGradient>
         <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#c084fc" stopOpacity="0.6" />
           <stop offset="100%" stopColor="#c084fc" stopOpacity="0" />
         </radialGradient>
-
-        {/* Planet surface curve glow */}
         <radialGradient id="planetGlow" cx="50%" cy="0%" r="100%">
-          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.12" />
-          <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.04" />
+          <stop offset="0%" stopColor="#9b6dff" stopOpacity="0.1" />
+          <stop offset="50%" stopColor="#7c3aed" stopOpacity="0.03" />
           <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
         </radialGradient>
-
-        <filter id="crystalBlur" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
-        </filter>
         <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
         </filter>
-        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-        </filter>
       </defs>
 
-      {/* Base dark gradient */}
+      {/* Base gradient */}
       <rect width="1440" height="900" fill="url(#heroGrad1)" />
 
-      {/* Horizon atmospheric glow */}
+      {/* Atmospheric glows */}
       <rect width="1440" height="900" fill="url(#horizonGlow)" />
+      <rect width="1440" height="900" fill="url(#centerGlow)" />
 
-      {/* Planetary curved horizon line */}
-      <ellipse cx="720" cy="920" rx="900" ry="200" fill="none" stroke="#9b6dff" strokeOpacity="0.15" strokeWidth="1" />
-      <ellipse cx="720" cy="930" rx="850" ry="180" fill="none" stroke="#c084fc" strokeOpacity="0.08" strokeWidth="0.5" />
-
-      {/* Planet surface glow */}
+      {/* Horizon line */}
+      <ellipse cx="720" cy="920" rx="900" ry="200" fill="none" stroke="#9b6dff" strokeOpacity="0.12" strokeWidth="1" />
       <ellipse cx="720" cy="850" rx="800" ry="300" fill="url(#planetGlow)" />
 
-      {/* ===== 3D Crystal / Diamond shape — center ===== */}
-      <g transform="translate(720, 340)">
-        {/* Crystal shadow/glow underneath */}
-        <ellipse cx="0" cy="140" rx="120" ry="30" fill="#9b6dff" fillOpacity="0.08" filter="url(#glowFilter)" />
-
-        {/* Crystal body — faceted diamond shape */}
-        {/* Top facet (lightest) */}
-        <path d="M0 -120 L80 -20 L0 -10 Z" fill="url(#crystalFace3)" />
-        <path d="M0 -120 L-80 -20 L0 -10 Z" fill="url(#crystalFace2)" />
-
-        {/* Right face */}
-        <path d="M80 -20 L0 -10 L0 120 L40 40 Z" fill="url(#crystalFace1)" />
-        {/* Left face */}
-        <path d="M-80 -20 L0 -10 L0 120 L-40 40 Z" fill="url(#crystalFace2)" />
-
-        {/* Bottom right facet */}
-        <path d="M40 40 L0 120 L80 -20 Z" fill="#2d1b4e" fillOpacity="0.95" />
-        {/* Bottom left facet */}
-        <path d="M-40 40 L0 120 L-80 -20 Z" fill="#1a0a2e" fillOpacity="0.95" />
-
-        {/* Crystal highlight edges */}
-        <path d="M0 -120 L80 -20" stroke="url(#crystalEdge)" strokeWidth="1.5" fill="none" />
-        <path d="M0 -120 L-80 -20" stroke="url(#crystalEdge)" strokeWidth="1" fill="none" />
-        <path d="M80 -20 L0 120" stroke="#c084fc" strokeOpacity="0.15" strokeWidth="0.5" fill="none" />
-        <path d="M-80 -20 L0 120" stroke="#c084fc" strokeOpacity="0.1" strokeWidth="0.5" fill="none" />
-        <path d="M0 -10 L80 -20" stroke="#c084fc" strokeOpacity="0.2" strokeWidth="0.5" fill="none" />
-        <path d="M0 -10 L-80 -20" stroke="#c084fc" strokeOpacity="0.15" strokeWidth="0.5" fill="none" />
-        <path d="M0 -10 L0 120" stroke="#c084fc" strokeOpacity="0.1" strokeWidth="0.5" fill="none" />
-
-        {/* Top highlight */}
-        <path d="M0 -120 L80 -20 L0 -10 Z" fill="url(#crystalHighlight)" />
-
-        {/* Specular spot */}
-        <circle cx="-25" cy="-50" r="8" fill="white" fillOpacity="0.08" filter="url(#crystalBlur)" />
-        <circle cx="30" cy="-30" r="4" fill="white" fillOpacity="0.12" />
-      </g>
-
-      {/* ===== Scattered stars ===== */}
+      {/* Stars */}
       <circle cx="200" cy="100" r="1.5" fill="#e9d5ff" fillOpacity="0.6" />
       <circle cx="350" cy="200" r="1" fill="#e9d5ff" fillOpacity="0.4" />
       <circle cx="1200" cy="150" r="1.8" fill="#e9d5ff" fillOpacity="0.5" />
@@ -145,6 +71,9 @@ export const HeroPattern = () => (
       <circle cx="1350" cy="500" r="0.8" fill="#e9d5ff" fillOpacity="0.35" />
       <circle cx="650" cy="150" r="1" fill="#e9d5ff" fillOpacity="0.4" />
       <circle cx="250" cy="600" r="1.5" fill="#e9d5ff" fillOpacity="0.2" />
+      <circle cx="550" cy="300" r="0.7" fill="#e9d5ff" fillOpacity="0.35" />
+      <circle cx="820" cy="250" r="0.9" fill="#e9d5ff" fillOpacity="0.3" />
+      <circle cx="1000" cy="550" r="1.1" fill="#e9d5ff" fillOpacity="0.2" />
 
       {/* Brighter stars with glow */}
       <circle cx="300" cy="150" r="6" fill="url(#starGlow)" />
@@ -154,11 +83,7 @@ export const HeroPattern = () => (
       <circle cx="800" cy="80" r="4" fill="url(#starGlow)" />
       <circle cx="800" cy="80" r="1" fill="#e9d5ff" fillOpacity="0.6" />
 
-      {/* Small decorative accent lines near crystal */}
-      <line x1="620" y1="500" x2="580" y2="520" stroke="#9b6dff" strokeOpacity="0.08" strokeWidth="0.5" />
-      <line x1="820" y1="490" x2="860" y2="510" stroke="#9b6dff" strokeOpacity="0.08" strokeWidth="0.5" />
-
-      {/* Soft nebula-like patches */}
+      {/* Nebula patches */}
       <ellipse cx="300" cy="400" rx="200" ry="100" fill="#6d28d9" fillOpacity="0.03" filter="url(#glowFilter)" />
       <ellipse cx="1100" cy="350" rx="250" ry="120" fill="#7c3aed" fillOpacity="0.02" filter="url(#glowFilter)" />
     </svg>

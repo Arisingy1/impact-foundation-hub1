@@ -37,12 +37,12 @@ const NewsSection = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header — left-aligned */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-white/40 mb-4">
+          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4">
             Медиа
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white">
@@ -55,18 +55,19 @@ const NewsSection = () => {
           {newsItems.map((item, i) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 * i }}
-              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 md:p-8 flex flex-col cursor-pointer transition-all duration-300 hover:border-white/10"
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.15 + 0.12 * i, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 md:p-8 flex flex-col cursor-pointer transition-all duration-300 hover:border-white/12 hover:bg-white/[0.05]"
             >
               {/* Date + type */}
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-body text-xs text-white/35 tabular-nums">
+                <span className="font-body text-xs text-white/55 tabular-nums">
                   {item.date}
                 </span>
-                <span className="font-body text-xs text-white/25">·</span>
-                <span className="font-body text-xs text-white/35">
+                <span className="font-body text-xs text-white/40">·</span>
+                <span className="font-body text-xs text-white/55">
                   {item.type}
                 </span>
               </div>
@@ -77,7 +78,7 @@ const NewsSection = () => {
               </h3>
 
               {/* Excerpt */}
-              <p className="font-body text-sm text-white/50 leading-relaxed flex-1">
+              <p className="font-body text-sm text-white/65 leading-relaxed flex-1">
                 {item.excerpt}
               </p>
 

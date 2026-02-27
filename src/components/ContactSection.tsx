@@ -61,7 +61,7 @@ const ContactSection = () => {
             <motion.p
               variants={fadeUp}
               custom={0}
-              className="text-xs uppercase tracking-[0.3em] text-white/40 mb-4"
+              className="text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4"
             >
               Контакты
             </motion.p>
@@ -79,7 +79,7 @@ const ContactSection = () => {
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="text-base text-white/50 leading-relaxed mb-12 max-w-md"
+              className="text-base text-white/70 leading-relaxed mb-12 max-w-md"
             >
               Мы всегда открыты для вопросов, предложений и сотрудничества.
               Напишите нам!
@@ -108,10 +108,10 @@ const ContactSection = () => {
               custom={6}
               className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6"
             >
-              <p className="text-[11px] uppercase tracking-wider text-white/30 mb-2">
+              <p className="text-[11px] uppercase tracking-wider text-white/50 mb-2">
                 Юридическая информация
               </p>
-              <p className="text-xs text-white/40 leading-relaxed">
+              <p className="text-xs text-white/60 leading-relaxed">
                 Фонд поддержки социально-культурных инициатив и бизнес проектов
                 · ИНН:&nbsp;0000000000 · ОГРН:&nbsp;0000000000000
                 <br />
@@ -122,9 +122,9 @@ const ContactSection = () => {
 
           {/* ── Right column: form ── */}
           <motion.form
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
             onSubmit={handleSubmit}
             className="bg-white/[0.03] border border-white/[0.06] rounded-3xl p-8 md:p-10 self-start backdrop-blur-sm"
           >

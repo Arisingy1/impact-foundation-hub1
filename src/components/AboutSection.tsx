@@ -16,9 +16,9 @@ const AboutSection = () => {
       <div className="w-full max-w-5xl mx-auto px-6 md:px-10 py-32 md:py-44">
         {/* ── Label + Headline ── */}
         <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16 md:mb-24"
         >
           <p className="font-body text-xs uppercase tracking-[0.35em] text-[#9b6dff] mb-5">
@@ -31,7 +31,7 @@ const AboutSection = () => {
             мы&nbsp;<span className="italic text-glow">здесь</span>
           </h2>
 
-          <p className="font-body text-lg md:text-xl text-white/50 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-body text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Фонд поддержки социально-культурных инициатив и бизнес проектов был
             создан с убеждением, что сила общества&nbsp;— в объединении. Мы верим,
             что каждый человек и организация способны изменить мир вокруг себя,
@@ -61,7 +61,7 @@ const AboutSection = () => {
             <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4">
               Видение
             </p>
-            <p className="font-body text-lg text-white/60 leading-relaxed">
+            <p className="font-body text-lg text-white/75 leading-relaxed">
               Мы видим мир, в котором социальная ответственность становится нормой.
               Мир, где бизнес, культура и общество действуют в гармонии, создавая
               устойчивые изменения для будущих поколений.
@@ -77,7 +77,7 @@ const AboutSection = () => {
             <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9b6dff] mb-4">
               Миссия
             </p>
-            <p className="font-body text-lg text-white/60 leading-relaxed">
+            <p className="font-body text-lg text-white/75 leading-relaxed">
               Объединять ресурсы, идеи и людей для реализации проектов, которые
               приносят долгосрочную пользу обществу и формируют культуру созидания.
             </p>
@@ -100,7 +100,7 @@ const AboutSection = () => {
 
           <p className="font-body text-sm text-[#9b6dff]">
             Анастасия Митькина —{" "}
-            <span className="text-white/50">президент фонда</span>
+            <span className="text-white/70">президент фонда</span>
           </p>
         </motion.div>
       </div>
