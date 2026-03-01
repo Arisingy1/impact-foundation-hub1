@@ -14,13 +14,13 @@ interface DonationModalProps {
 
 const bankDetails = [
   { label: "Наименование", value: 'ФОНД ПОДДЕРЖКИ СОЦИАЛЬНО-КУЛЬТУРНЫХ ИНИЦИАТИВ И БИЗНЕС ПРОЕКТОВ' },
-  { label: "ИНН", value: "9710098737" },
-  { label: "КПП", value: "771001001" },
-  { label: "ОГРН", value: "1237700576986" },
-  { label: "Расчётный счёт", value: "40703810338000013498" },
-  { label: "Банк", value: 'ПАО "СБЕРБАНК"' },
-  { label: "БИК", value: "044525225" },
-  { label: "Корр. счёт", value: "30101810400000000225" },
+  { label: "ОГРН", value: "1207700461781" },
+  { label: "ИНН", value: "9706011000" },
+  { label: "КПП", value: "770601001" },
+  { label: "Расчётный счёт", value: "40703810420000008318" },
+  { label: "Банк", value: 'ООО «Банк Точка»' },
+  { label: "БИК", value: "044525104" },
+  { label: "Корр. счёт", value: "30101810745374525104" },
 ];
 
 const DonationModal = ({ open, onClose }: DonationModalProps) => {

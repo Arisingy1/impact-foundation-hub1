@@ -57,14 +57,14 @@ const HeroSection = () => {
       </div>
 
       {/* Content — centered */}
-      <div className="relative z-10 flex-1 flex items-center justify-center">
+      <div className="relative z-10 flex-1 flex items-center justify-center pt-28 md:pt-32">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-10 text-center">
           {/* Fund full name label */}
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-body text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4d7cff] mb-5 md:mb-6 px-4"
+            className="font-body text-xl uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4d7cff] mb-5 md:mb-6 px-4"
           >
             Фонд поддержки социально-культурных инициатив и бизнес проектов
           </motion.p>

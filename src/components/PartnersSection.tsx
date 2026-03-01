@@ -20,9 +20,9 @@ const PartnersSection = () => {
     <section
       id="partners"
       ref={ref}
-      className="min-h-screen flex items-center bg-background relative overflow-hidden"
+      className="bg-background relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-24 md:py-36">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left — headline, description, CTAs */}
           <motion.div
@@ -84,13 +84,13 @@ const PartnersSection = () => {
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="border-t border-white/[0.06] py-7"
               >
-                <span className="font-display text-sm text-[#4d7cff] tracking-wide mb-2 block">
+                <span className="font-display text-lg text-[#4d7cff] tracking-wide mb-2 block">
                   {b.num}
                 </span>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-1">
+                <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground mb-1">
                   {b.title}
                 </h3>
-                <p className="font-body text-sm text-white/65 leading-relaxed">
+                <p className="font-body text-base md:text-lg text-white/65 leading-relaxed">
                   {b.desc}
                 </p>
               </motion.div>

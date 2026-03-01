@@ -5,13 +5,20 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import { Send, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { TelegramIcon, VkIcon, MaxIcon } from "./illustrations";
 import { toast } from "sonner";
 
-const contacts = [
-  { label: "Адрес", value: "г. Москва, ул. Примерная, д. 1" },
-  { label: "Email", value: "info@fond.org" },
-  { label: "Телефон", value: "+7 (495) 000-00-00" },
+const contactsInfo = [
+  { label: "Адрес", value: "г. Москва", icon: <MapPin className="w-5 h-5" />, href: null },
+  { label: "Email", value: "Mfondom@yandex.ru", icon: <Mail className="w-5 h-5" />, href: "mailto:Mfondom@yandex.ru" },
+  { label: "Телефон", value: "+7 (917) 568-88-99", icon: <Phone className="w-5 h-5" />, href: "tel:+79175688899" },
+];
+
+const socialLinks = [
+  { label: "Telegram", href: "https://t.me/FondMitkina", icon: <TelegramIcon className="w-5 h-5" /> },
+  { label: "ВКонтакте", href: "https://vk.com/club236050978", icon: <VkIcon className="w-5 h-5" /> },
+  { label: "Max", href: "https://max.ru/id9706011000_biz", icon: <MaxIcon className="w-5 h-5" /> },
 ];
 
 const fadeUp = {
@@ -42,12 +49,10 @@ const ContactSection = () => {
     <section
       id="contacts"
       ref={ref}
-      className="relative min-h-screen flex items-center"
+      className="relative flex items-center"
     >
-      {/* subtle top divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/10 to-transparent" />
-
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* ── Left column ── */}
           <motion.div
@@ -61,7 +66,7 @@ const ContactSection = () => {
             <motion.p
               variants={fadeUp}
               custom={0}
-              className="text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4"
+              className="text-xl uppercase tracking-[0.3em] text-[#4d7cff] mb-4"
             >
               Контакты
             </motion.p>
@@ -82,41 +87,72 @@ const ContactSection = () => {
               className="text-base text-white/70 leading-relaxed mb-12 max-w-md"
             >
               Мы всегда открыты для вопросов, предложений и сотрудничества.
-              Напишите нам!
+              Напишите нам или свяжитесь любым удобным способом!
             </motion.p>
 
             {/* contact lines */}
-            <div className="space-y-5 mb-12">
-              {contacts.map((c, i) => (
+            <div className="space-y-6 mb-10">
+              {contactsInfo.map((c, i) => (
                 <motion.div
                   key={c.label}
                   variants={fadeUp}
                   custom={3 + i}
-                  className="flex items-baseline gap-3"
+                  className="flex items-center gap-5"
                 >
-                  <span className="text-[#4d7cff] text-sm font-medium w-24 shrink-0">
-                    {c.label}
-                  </span>
-                  <span className="text-white/80 text-sm">{c.value}</span>
+                  <div className="w-14 h-14 shrink-0 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#4d7cff]">
+                    {c.icon}
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40 uppercase tracking-wider mb-1">{c.label}</p>
+                    {c.href ? (
+                      <a href={c.href} className="text-white hover:text-[#4d7cff] transition-colors font-medium">
+                        {c.value}
+                      </a>
+                    ) : (
+                      <p className="text-white font-medium">{c.value}</p>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </div>
 
+            {/* social links */}
+            <motion.div variants={fadeUp} custom={6} className="mb-12">
+              <p className="text-xs text-white/40 uppercase tracking-wider mb-4">Наши соцсети</p>
+              <div className="flex flex-wrap gap-5">
+                {socialLinks.map((social, i) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 shrink-0 rounded-2xl bg-[#4d7cff]/10 border border-[#4d7cff]/20 flex items-center justify-center text-white hover:bg-[#4d7cff] hover:border-[#4d7cff] transition-all duration-300 p-3"
+                    title={social.label}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
             {/* legal block */}
             <motion.div
               variants={fadeUp}
-              custom={6}
+              custom={7}
               className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6"
             >
-              <p className="text-[11px] uppercase tracking-wider text-white/50 mb-2">
+              <p className="text-[11px] uppercase tracking-wider text-white/50 mb-3">
                 Юридическая информация
               </p>
-              <p className="text-xs text-white/60 leading-relaxed">
-                Фонд поддержки социально-культурных инициатив и бизнес проектов
-                · ИНН:&nbsp;0000000000 · ОГРН:&nbsp;0000000000000
-                <br />
-                г. Москва, ул. Примерная, д. 1
-              </p>
+              <div className="text-xs text-white/60 leading-relaxed grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
+                <p><strong>Наименование:</strong> ФОНД ПОДДЕРЖКИ СОЦИАЛЬНО-КУЛЬТУРНЫХ ИНИЦИАТИВ И БИЗНЕС ПРОЕКТОВ</p>
+                <p><strong>ОГРН:</strong> 1207700461781</p>
+                <p><strong>ИНН:</strong> 9706011000</p>
+                <p><strong>КПП:</strong> 770601001</p>
+                <p><strong>Дата постановки:</strong> 2 декабря 2020 г.</p>
+                <p><strong>Налоговый орган:</strong> ИФНС № 6 по г. Москве</p>
+                <p><strong>Президент:</strong> Анастасия Сергеевна Митькина</p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -136,7 +172,6 @@ const ContactSection = () => {
             </p>
 
             <div className="space-y-5">
-              {/* Name */}
               <div>
                 <label className="text-xs font-medium text-white/50 mb-2 block">
                   Ваше имя
@@ -152,7 +187,6 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label className="text-xs font-medium text-white/50 mb-2 block">
                   Email
@@ -169,7 +203,6 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Message */}
               <div>
                 <label className="text-xs font-medium text-white/50 mb-2 block">
                   Сообщение
@@ -186,7 +219,6 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Submit */}
               <Button
                 type="submit"
                 className="w-full group rounded-xl h-12 text-base"

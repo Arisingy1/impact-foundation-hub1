@@ -33,7 +33,7 @@ const NewsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="news" ref={ref} className="section-light-alt relative py-28 md:py-40">
+    <section id="news" ref={ref} className="section-light-alt relative py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header — left-aligned */}
         <motion.div
@@ -42,7 +42,7 @@ const NewsSection = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
+          <p className="font-body text-xl uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
             Медиа
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#101a35]">

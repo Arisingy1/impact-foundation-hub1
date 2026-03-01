@@ -37,11 +37,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-[#101a32]/90 backdrop-blur-xl shadow-lg shadow-black/20 py-3"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? "bg-[#0a1025] backdrop-blur-xl shadow-lg shadow-black/10 py-4"
+          : "bg-transparent py-8"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         <a
@@ -68,7 +67,7 @@ const Header = () => {
           ))}
           <div className="ml-4 flex items-center gap-2">
             <a
-              href="https://t.me/"
+              href="https://t.me/FondMitkina"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/5 transition-colors"
@@ -77,7 +76,7 @@ const Header = () => {
               <TelegramIcon className="w-4 h-4" />
             </a>
             <a
-              href="mailto:info@fond-support.ru"
+              href="mailto:Mfondom@yandex.ru"
               className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/5 transition-colors"
               title="Email"
             >
@@ -113,7 +112,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-[#101a32]/98 backdrop-blur-xl border-b border-white/5"
+            className="lg:hidden bg-[#0a1025]/95 backdrop-blur-xl border-b border-white/5"
           >
             <nav className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-1">
               {navItems.map((item) => (
@@ -128,7 +127,7 @@ const Header = () => {
               <div className="pt-3 mt-2 border-t border-white/5 flex flex-col gap-2">
                 <div className="flex items-center gap-2 px-3 py-1">
                   <a
-                    href="https://t.me/"
+                    href="https://t.me/FondMitkina"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/5 transition-colors"
@@ -136,7 +135,7 @@ const Header = () => {
                     <TelegramIcon className="w-4 h-4" />
                   </a>
                   <a
-                    href="mailto:info@fond-support.ru"
+                    href="mailto:Mfondom@yandex.ru"
                     className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/5 transition-colors"
                   >
                     <Mail className="w-4 h-4" />

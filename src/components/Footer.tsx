@@ -1,6 +1,13 @@
 "use client";
 
 import { Heart } from "lucide-react";
+import { TelegramIcon, VkIcon, MaxIcon } from "./illustrations";
+
+const socialLinks = [
+  { label: "Telegram", href: "https://t.me/FondMitkina", icon: <TelegramIcon className="w-5 h-5" /> },
+  { label: "ВКонтакте", href: "https://vk.com/club236050978", icon: <VkIcon className="w-5 h-5" /> },
+  { label: "Max", href: "https://max.ru/id9706011000_biz", icon: <MaxIcon className="w-5 h-5" /> },
+];
 
 const Footer = () => {
   const scrollTo = (href: string) => {
@@ -24,17 +31,19 @@ const Footer = () => {
               Объединяем людей и ресурсы для создания проектов, которые меняют жизнь к лучшему.
             </p>
             {/* Social */}
-            <div className="flex gap-3">
-              <a
-                href="https://t.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/50 hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-colors"
-              >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                </svg>
-              </a>
+            <div className="flex flex-wrap gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 shrink-0 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/50 hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-all duration-300 p-2"
+                  title={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
           <div>
@@ -61,8 +70,8 @@ const Footer = () => {
           <div>
             <h5 className="font-body text-[11px] uppercase tracking-[0.25em] text-[#4d7cff]/70 mb-5 font-medium">Контакты</h5>
             <ul className="space-y-3 font-body text-sm text-white/70">
-              <li className="hover:text-white/70 transition-colors">info@fond.org</li>
-              <li className="hover:text-white/70 transition-colors">+7 (495) 000-00-00</li>
+              <li className="hover:text-white/70 transition-colors">Mfondom@yandex.ru</li>
+              <li className="hover:text-white/70 transition-colors">+7 (917) 568-88-99</li>
               <li className="hover:text-white/70 transition-colors">г. Москва</li>
             </ul>
           </div>
