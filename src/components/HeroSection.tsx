@@ -56,9 +56,7 @@ const HeroSection = () => {
           <Image
             src={LogoImg}
             alt=""
-            width={500}
-            height={500}
-            className="w-[360px] h-[360px] sm:w-[460px] sm:h-[460px] md:w-[560px] md:h-[560px] lg:w-[700px] lg:h-[700px] opacity-[0.06] select-none"
+            className="w-[360px] h-[260px] sm:w-[460px] sm:h-[350px] md:w-[560px] md:h-[450px] lg:w-[700px] lg:h-[560px] opacity-[0.25] select-none"
             priority
           />
         </motion.div>

@@ -38,8 +38,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "bg-[#0a1025] backdrop-blur-xl shadow-lg shadow-black/10 py-4"
-          : "bg-transparent py-8"
+        ? "bg-[#0a1025] backdrop-blur-xl shadow-lg shadow-black/10 py-4"
+        : "bg-transparent py-8"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -51,7 +51,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <Image src={LogoImg} alt="Фонд" width={70} height={70} className="rounded-xl w-[70px] h-[70px]" />
+          <Image src={LogoImg} alt="Фонд" width={75} height={65} className="rounded-xl" />
         </a>
 
         {/* Desktop nav */}

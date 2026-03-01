@@ -25,7 +25,7 @@ const Footer = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="mb-4 block hover:opacity-80 transition-opacity"
             >
-              <img src="/assets/Logo.png" alt="Фонд" width={44} height={44} className="rounded-xl" />
+              <img src="/assets/Logo.png" alt="Фонд" width={100} height={55} className="rounded-xl" />
             </button>
             <p className="font-body text-sm text-white/70 leading-relaxed max-w-xs mb-6">
               Объединяем людей и ресурсы для создания проектов, которые меняют жизнь к лучшему.

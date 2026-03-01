@@ -7,7 +7,7 @@ import Link from "next/link";
 const partners = [
    { name: "OMSM", placeholder: null, image: "/assets/omsm.webp", link: null },
    { name: "NIRIX", placeholder: null, image: "/assets/nirix.webp", link: null },
-   { name: "LUMELABS", placeholder: null, image: "/assets/lumelabs.webp", link: null },
+   { name: "LUMELABS", placeholder: null, image: "/assets/lumelabs.webp", link: 'https://lumelabs-landing.vercel.app/' },
    { name: "Ваша компания 1", placeholder: "Здесь может быть ваша компания", image: null, link: null },
 ];
 
