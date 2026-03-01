@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useCallback, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface TeamMember {
@@ -29,142 +28,104 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-const slideVariants = {
-  enter: (dir: number) => ({
-    opacity: 0,
-    x: dir >= 0 ? 120 : -120,
-    scale: 0.97,
-  }),
-  center: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-  },
-  exit: (dir: number) => ({
-    opacity: 0,
-    x: dir >= 0 ? -120 : 120,
-    scale: 0.97,
-  }),
-};
-
 const TeamSection = () => {
   const ref = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const next = useCallback(() => {
-    setDirection(1);
-    setActiveIdx((prev) => (prev + 1) % teamMembers.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setActiveIdx(
-      (prev) => (prev - 1 + teamMembers.length) % teamMembers.length
-    );
-  }, []);
 
   useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
+    const el = scrollRef.current;
+    if (!el) return;
 
-  const member = teamMembers[activeIdx];
+    let intervalId: NodeJS.Timeout;
+
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        // If content fits completely, don't scroll
+        if (el.scrollWidth <= el.clientWidth + 10) return;
+
+        // Calculate exact distance to next item including gap
+        const step = el.children.length >= 2
+          ? (el.children[1] as HTMLElement).offsetLeft - (el.children[0] as HTMLElement).offsetLeft
+          : el.clientWidth;
+
+        // If we reached the end (with small tolerance), go strictly back to the start
+        if (Math.ceil(el.scrollLeft + el.clientWidth) >= el.scrollWidth - 10) {
+          el.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          el.scrollTo({ left: el.scrollLeft + step, behavior: "smooth" });
+        }
+      }, 7000);
+    };
+
+    startAutoScroll();
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section
       id="team"
       ref={ref}
-      className="section-light relative min-h-screen flex items-center overflow-hidden"
+      className="section-light relative  py-12 md:py-20 overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-0">
-        {/* Carousel */}
-        <div className="relative">
-          <AnimatePresence mode="wait" custom={direction}>
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+          className="text-center mb-16 md:mb-24"
+        >
+          <p className="font-body text-xl uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
+            Лидеры изменений
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#101a35] uppercase">
+            НАША КОМАНДА
+          </h2>
+        </motion.div>
+
+        {/* CSS Scroll Snap Carousel Container */}
+        <div
+          ref={scrollRef}
+          className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 md:justify-center gap-6 md:gap-10"
+        >
+          {teamMembers.map((member, i) => (
             <motion.div
-              key={activeIdx}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
+              key={member.name}
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: i * 0.2 }}
+              className="snap-center shrink-0 w-full sm:w-[400px] md:w-[calc(50%-1.25rem)] lg:max-w-[480px] bg-white rounded-3xl p-6 md:p-8 shadow-[0_4px_12px_rgb(0,0,0,0.02)] border border-[#101a35]/[0.03] flex flex-col mx-auto"
             >
-              {/* Photo — left */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.7 }}
-                className="relative aspect-[3/4] max-h-[600px] rounded-3xl overflow-hidden bg-[#101a35]/[0.05] border border-[#101a35]/[0.08]"
-              >
+              {/* Photo */}
+              <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-[#101a35]/[0.05] mb-8">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
+                  sizes="(max-width: 768px) 85vw, 500px"
                 />
-              </motion.div>
+              </div>
 
-              {/* Info — right */}
-              <div className="flex flex-col justify-center">
-                <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] font-semibold mb-6">
+              {/* Info */}
+              <div className="flex flex-col flex-grow">
+                <p className="font-body text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] font-semibold mb-3 border-b border-[#101a35]/5 pb-3">
                   {member.role}
                 </p>
 
-                <h2 className="font-display text-4xl md:text-5xl leading-[1.1] font-bold text-[#101a35] mb-6">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-[#101a35] mb-4">
                   {member.name}
-                </h2>
+                </h3>
 
-                <p className="text-lg leading-relaxed text-[#3a4a65] max-w-md">
+                <p className="text-sm md:text-base leading-relaxed text-[#3a4a65] mt-auto">
                   {member.description}
                 </p>
-
-                {/* Navigation */}
-                <div className="flex items-center gap-6 mt-12">
-                  {/* Arrows */}
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={prev}
-                      className="w-12 h-12 rounded-full border border-[#101a35]/[0.10] flex items-center justify-center text-[#3a4a65] hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-all duration-300"
-                      aria-label="Предыдущий"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      onClick={next}
-                      className="w-12 h-12 rounded-full border border-[#101a35]/[0.10] flex items-center justify-center text-[#3a4a65] hover:text-[#4d7cff] hover:border-[#4d7cff]/30 transition-all duration-300"
-                      aria-label="Следующий"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
-
-                  {/* Line indicators */}
-                  <div className="flex items-center gap-2">
-                    {teamMembers.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => {
-                          setDirection(i > activeIdx ? 1 : -1);
-                          setActiveIdx(i);
-                        }}
-                        className={`h-[3px] rounded-full transition-all duration-500 ${
-                          i === activeIdx
-                            ? "w-10 bg-[#4d7cff]"
-                            : "w-6 bg-[#101a35]/15 hover:bg-[#4d7cff]/40"
-                        }`}
-                        aria-label={`Участник ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
               </div>
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
       </div>
     </section>

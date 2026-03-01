@@ -36,14 +36,14 @@ const ParticipantsSection = () => {
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#4d7cff]/[0.03] -translate-y-1/3 translate-x-1/3" />
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-28 md:py-40">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-3">Участникам</p>
+          <p className="font-body text-xl uppercase tracking-[0.3em] text-[#4d7cff] mb-3">Участникам</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4">
             Подайте свой <span className="italic text-glow">проект</span>
           </h2>
@@ -68,9 +68,9 @@ const ParticipantsSection = () => {
               transition={{ delay: 0.3 + i * 0.1 }}
               className="relative border-t border-white/[0.06] pt-6 group"
             >
-              <span className="font-display text-3xl font-bold text-white/10 block mb-2">{s.num}</span>
-              <p className="font-body text-sm font-semibold text-white mb-1">{s.title}</p>
-              <p className="font-body text-xs text-white/60">{s.desc}</p>
+              <span className="font-display text-4xl md:text-5xl font-bold text-white/10 block mb-2">{s.num}</span>
+              <p className="font-body text-lg md:text-xl font-semibold text-white mb-2">{s.title}</p>
+              <p className="font-body text-sm md:text-base text-white/60">{s.desc}</p>
             </motion.div>
           ))}
         </motion.div>

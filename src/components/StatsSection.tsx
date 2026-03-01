@@ -4,11 +4,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const stats = [
-  { value: 9, suffix: "", label: "Активных проектов" },
-  { value: 15000, suffix: "+", label: "Участников" },
-  { value: 25, suffix: "+", label: "Регионов" },
-  { value: 120, suffix: "+", label: "Партнёров" },
-  { value: 90, suffix: "%", label: "Продолжают развитие" },
+  { value: 9, suffix: "", label: "активных проектов" },
+  { value: 15000, suffix: "+", label: "участников и благополучателей" },
+  { value: 25, suffix: "+", label: "регионов и стран" },
+  { value: 120, suffix: "+", label: "партнёров и экспертов" },
+  { value: 90, suffix: "%", label: "проектов продолжают развитие" },
 ];
 
 function AnimatedNumber({ value, inView }: { value: number; inView: boolean }) {
@@ -37,7 +37,7 @@ const StatsSection = () => {
     <section
       id="stats"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative  flex items-center justify-center overflow-hidden"
     >
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0">
@@ -52,12 +52,11 @@ const StatsSection = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-6"
         >
-          <p className="font-body text-[11px] uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
+          <p className="font-body text-xl uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
             Наши результаты
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]">
-            Цифры, которые{" "}
-            <span className="italic text-[#4d7cff]">говорят</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] uppercase">
+            Цифры, которые <span className="italic text-[#4d7cff]">говорят</span>
           </h2>
         </motion.div>
 
@@ -66,11 +65,11 @@ const StatsSection = () => {
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="h-px w-full bg-white/5 origin-center mb-20 md:mb-28"
+          className="h-px w-full bg-white/5 origin-center mb-16 md:mb-24"
         />
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-16 md:gap-y-20 gap-x-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-16 md:gap-y-20 gap-x-4 mb-20 md:mb-32">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -83,16 +82,32 @@ const StatsSection = () => {
               }}
               className="flex flex-col items-center text-center"
             >
-              <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold text-foreground leading-none tabular-nums tracking-tight">
+              <div className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-none tabular-nums tracking-tight">
                 <AnimatedNumber value={stat.value} inView={inView} />
                 <span className="text-[#4d7cff]">{stat.suffix}</span>
               </div>
-              <p className="font-body text-sm md:text-base text-white/70 mt-3 md:mt-4 tracking-wide">
+              <p className="font-body text-xs md:text-sm text-white/70 mt-3 md:mt-4 tracking-wide max-w-[150px]">
                 {stat.label}
               </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/50 to-transparent mx-auto mb-8" />
+          <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl italic text-foreground leading-snug mb-6">
+            «Мы не делаем разовые акции — <br className="hidden md:block" /> мы строим устойчивые проекты»
+          </blockquote>
+          <p className="font-body text-sm md:text-base text-[#4d7cff]">
+            Анастасия Митькина <span className="text-white/50 block sm:inline sm:ml-2 mt-1 sm:mt-0">— президент фонда</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

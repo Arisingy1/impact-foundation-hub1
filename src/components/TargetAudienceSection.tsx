@@ -34,9 +34,9 @@ const TargetAudienceSection = () => {
     <section
       id="audience"
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative overflow-hidden"
     >
-      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-36">
+      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-20">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -44,17 +44,8 @@ const TargetAudienceSection = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 md:mb-24"
         >
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4"
-          >
-            Для кого
-          </motion.p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-            Кому подойдёт{" "}
-            <span className="italic text-glow-light">фонд</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase">
+            Кому подойдет <span className="italic text-glow-light">фонд</span>
           </h2>
         </motion.div>
 

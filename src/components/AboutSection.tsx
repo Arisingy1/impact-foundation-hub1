@@ -11,9 +11,9 @@ const AboutSection = () => {
     <section
       id="about"
       ref={ref}
-      className="section-light relative min-h-screen flex items-center overflow-hidden"
+      className="section-light relative  flex items-center overflow-hidden"
     >
-      <div className="w-full max-w-5xl mx-auto px-6 md:px-10 py-32 md:py-44">
+      <div className="w-full max-w-5xl mx-auto px-6 md:px-10 py-12 md:py-20">
         {/* ── Label + Headline ── */}
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.97 }}
@@ -21,7 +21,7 @@ const AboutSection = () => {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16 md:mb-24"
         >
-          <p className="font-body text-xs uppercase tracking-[0.35em] text-[#4d7cff] mb-5">
+          <p className="font-body text-xl uppercase tracking-[0.35em] text-[#4d7cff] mb-5">
             О фонде
           </p>
 
@@ -58,7 +58,7 @@ const AboutSection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
+            <p className="font-body text-l uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
               Видение
             </p>
             <p className="font-body text-lg text-[#3a4a65] leading-relaxed">
@@ -74,7 +74,7 @@ const AboutSection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-body text-xs uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
+            <p className="font-body text-l uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
               Миссия
             </p>
             <p className="font-body text-lg text-[#3a4a65] leading-relaxed">
@@ -83,26 +83,6 @@ const AboutSection = () => {
             </p>
           </motion.div>
         </div>
-
-        {/* ── Founder quote ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-24 md:mt-32 text-center max-w-3xl mx-auto"
-        >
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/50 to-transparent mx-auto mb-10" />
-
-          <blockquote className="font-display text-xl md:text-2xl lg:text-3xl italic text-[#1e2a45] leading-relaxed mb-6">
-            «Мы не делаем разовые акции — мы строим устойчивые проекты, которые
-            меняют жизнь людей»
-          </blockquote>
-
-          <p className="font-body text-sm text-[#4d7cff]">
-            Анастасия Митькина —{" "}
-            <span className="text-[#3a4a65]">президент фонда</span>
-          </p>
-        </motion.div>
       </div>
     </section>
   );

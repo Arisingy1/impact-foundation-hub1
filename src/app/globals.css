@@ -42,65 +42,137 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
   --animate-shimmer: shimmer 8s ease-in-out infinite;
+  --animate-marquee-left: marquee-left 100s linear infinite;
+  --animate-marquee-right: marquee-right 100s linear infinite;
+
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
 
   @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
+
   @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
+
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
+
   @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-10px) rotate(1deg); }
-    66% { transform: translateY(5px) rotate(-1deg); }
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+
+    66% {
+      transform: translateY(5px) rotate(-1deg);
+    }
   }
+
   @keyframes glow-pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
+
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 0.8;
+    }
   }
+
   @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
   }
 }
 
 :root {
   --radius: 0.75rem;
-  --background: #050a18;
+  --background: #0a1025;
   --foreground: #e0e8f5;
-  --card: #0c1228;
+  --card: #101a35;
   --card-foreground: #e0e8f5;
-  --popover: #0c1228;
+  --popover: #101a35;
   --popover-foreground: #e0e8f5;
   --primary: #4d7cff;
   --primary-foreground: #ffffff;
-  --secondary: #101a35;
+  --secondary: #142042;
   --secondary-foreground: #e0e8f5;
-  --muted: #0e142c;
+  --muted: #10152c;
   --muted-foreground: #7b8ba5;
   --accent: #4d7cff;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #fef2f2;
-  --border: #15203a;
-  --input: #15203a;
+  --border: #182848;
+  --input: #182848;
   --ring: #4d7cff;
-  --primary-soft: #0a1025;
+  --primary-soft: #101a35;
   --primary-soft-foreground: #e0e8f5;
   --accent-glow: #4d7cff;
   --accent-gradient: linear-gradient(135deg, #4d7cff, #7da3ff, #60a5fa);
-  --hero-gradient: linear-gradient(180deg, #050a18 0%, #0a1025 30%, #101a32 50%, #0a1025 70%, #050a18 100%);
-  --cosmic-gradient: linear-gradient(180deg, #050a18 0%, #0a1025 40%, #101a32 100%);
+  --hero-gradient: linear-gradient(180deg, #0a1025 0%, #0c142b 30%, #101a32 50%, #0c142b 70%, #0a1025 100%);
+  --cosmic-gradient: linear-gradient(180deg, #0a1025 0%, #0c142b 40%, #101a32 100%);
 }
 
 @layer base {
@@ -120,7 +192,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
@@ -188,12 +265,12 @@
 }
 
 .section-dark {
-  background: linear-gradient(180deg, #050a18 0%, #0a1025 50%, #050a18 100%);
+  background: linear-gradient(180deg, #0a1025 0%, #101a35 50%, #0a1025 100%);
   color: #e0e8f5;
 }
 
 .section-dark-alt {
-  background: linear-gradient(180deg, #0a1025 0%, #101a35 50%, #0a1025 100%);
+  background: linear-gradient(180deg, #0c152c 0%, #142042 50%, #0c152c 100%);
   color: #e0e8f5;
 }
 
@@ -208,29 +285,21 @@
   color: #101a35;
 }
 
-/* Smooth dark→light transition helper */
-.section-light::before,
-.section-light-alt::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(180deg, var(--background) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
+/* ── Animations for infinite marquee ── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.section-light::after,
-.section-light-alt::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(0deg, var(--background) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
