@@ -16,9 +16,9 @@ const AboutSection = () => {
       <div className="w-full max-w-5xl mx-auto px-6 md:px-10 py-12 md:py-20">
         {/* ── Label + Headline ── */}
         <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16 md:mb-24"
         >
           <p className="font-body text-xl uppercase tracking-[0.35em] text-[#4d7cff] mb-5">
@@ -43,7 +43,7 @@ const AboutSection = () => {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="border-t border-[#101a35]/[0.10] max-w-xl mx-auto mb-16 md:mb-24 origin-center"
         />
 
@@ -56,7 +56,7 @@ const AboutSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="font-body text-l uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
               Видение
@@ -72,7 +72,7 @@ const AboutSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="font-body text-l uppercase tracking-[0.3em] text-[#4d7cff] mb-4">
               Миссия

@@ -12,26 +12,53 @@ const stats = [
 ];
 
 function AnimatedNumber({ value, inView }: { value: number; inView: boolean }) {
-  const [display, setDisplay] = useState(0);
+  const nodeRef = useRef<HTMLSpanElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    if (!inView) return;
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  useEffect(() => {
+    if (!inView || !nodeRef.current) return;
+
+    if (isMobile) {
+      nodeRef.current.textContent = value.toLocaleString("ru-RU");
+      return;
+    }
+
     const end = value;
-    const duration = 2200;
+    const duration = 1500;
     const startTime = performance.now();
+
     const step = (now: number) => {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.floor(eased * end));
+      const current = Math.floor(eased * end);
+
+      if (nodeRef.current) {
+        nodeRef.current.textContent = current.toLocaleString("ru-RU");
+      }
+
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [inView, value]);
-  return <>{display.toLocaleString("ru-RU")}</>;
+  }, [inView, value, isMobile]);
+
+  return <span ref={nodeRef}>{isMobile ? value.toLocaleString("ru-RU") : "0"}</span>;
 }
 
 const StatsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <section
@@ -47,9 +74,9 @@ const StatsSection = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
           animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: isMobile ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-6"
         >
           <p className="font-body text-xl uppercase tracking-[0.35em] text-[#4d7cff] mb-4">
@@ -64,7 +91,7 @@ const StatsSection = () => {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="h-px w-full bg-white/5 origin-center mb-16 md:mb-24"
         />
 
@@ -73,11 +100,11 @@ const StatsSection = () => {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{
-                duration: 0.9,
-                delay: 0.4 + i * 0.15,
+                duration: isMobile ? 0 : 0.6,
+                delay: isMobile ? 0 : 0.2 + i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="flex flex-col items-center text-center"
@@ -95,9 +122,9 @@ const StatsSection = () => {
 
         {/* Quote */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl mx-auto text-center"
         >
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#4d7cff]/50 to-transparent mx-auto mb-8" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
@@ -11,6 +11,15 @@ import LogoImg from "@/assets/Logo.png";
 
 const HeroSection = () => {
   const [donationOpen, setDonationOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const scrollTo = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -23,25 +32,26 @@ const HeroSection = () => {
       {/* Animated gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          animate={isMobile ? {} : { x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
+          transition={isMobile ? { duration: 0 } : { duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(155,109,255,0.1) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(155,109,255,0.1) 0%, transparent 70%)", willChange: isMobile ? "auto" : "transform" }}
         />
         <motion.div
-          animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          animate={isMobile ? {} : { x: [0, -20, 0], y: [0, 15, 0] }}
+          transition={isMobile ? { duration: 0 } : { duration: 15, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -bottom-20 -left-40 w-[600px] h-[600px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(155,109,255,0.07) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(155,109,255,0.07) 0%, transparent 70%)", willChange: isMobile ? "auto" : "transform" }}
         />
       </div>
 
       {/* Rotating logo behind content */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          animate={isMobile ? {} : { rotate: 360 }}
+          transition={isMobile ? { duration: 0 } : { duration: 80, repeat: Infinity, ease: "linear" }}
           className="relative"
+          style={{ willChange: isMobile ? "auto" : "transform" }}
         >
           <Image
             src={LogoImg}
@@ -63,7 +73,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: isMobile ? 0 : 0.5, delay: isMobile ? 0 : 0.1 }}
             className="font-body text-xl uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4d7cff] mb-5 md:mb-6 px-4"
           >
             Фонд поддержки социально-культурных инициатив и бизнес проектов
@@ -72,13 +82,13 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.2 }}
             className="mb-10 md:mb-14"
           >
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6"
             >
               Социально-культурные
@@ -90,7 +100,7 @@ const HeroSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1.0 }}
+              transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.5 }}
               className="font-body text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed"
             >
               Объединяем людей, бизнес и творческие инициативы для созидания
@@ -101,7 +111,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
+            transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.6 }}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
             <Button
@@ -128,7 +138,7 @@ const HeroSection = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        transition={{ delay: isMobile ? 0 : 0.8, duration: isMobile ? 0 : 0.5 }}
         className="relative z-10 pb-8"
       >
         <div className="max-w-5xl mx-auto px-6 md:px-10">
@@ -141,9 +151,9 @@ const HeroSection = () => {
             ].map((item, i) => (
               <motion.button
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.7 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: isMobile ? 0 : 0.8 + i * 0.1, duration: isMobile ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => scrollTo("#about")}
                 className="text-left group"
               >
@@ -163,11 +173,14 @@ const HeroSection = () => {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
+        transition={{ delay: isMobile ? 0 : 1.2, duration: isMobile ? 0 : 0.5 }}
         onClick={() => scrollTo("#stats")}
         className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors z-10"
       >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
+        <motion.div
+          animate={isMobile ? { y: 0 } : { y: [0, 8, 0] }}
+          transition={isMobile ? { duration: 0 } : { repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
           <ArrowDown className="w-5 h-5" />
         </motion.div>
       </motion.button>
