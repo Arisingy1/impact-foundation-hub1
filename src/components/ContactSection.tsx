@@ -34,15 +34,42 @@ const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Заполните все поля");
       return;
     }
-    toast.success("Сообщение отправлено!");
-    setForm({ name: "", email: "", message: "" });
+    
+    setIsSubmitting(true);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://mfondom.ru/mfond/notify";
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY || "your-secret-api-key";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "x-api-key": apiKey
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message
+        }),
+      });
+
+      if (!response.ok) throw new Error("Ошибка отправки");
+      
+      toast.success("Сообщение отправлено!");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast.error("Произошла ошибка при отправке сообщения. Попробуйте позже.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -223,9 +250,10 @@ const ContactSection = () => {
                 type="submit"
                 className="w-full group rounded-xl h-12 text-base"
                 size="lg"
+                disabled={isSubmitting}
               >
                 <Send className="w-4 h-4 mr-2 transition-transform group-hover:translate-x-0.5" />
-                Отправить сообщение
+                {isSubmitting ? "Отправка..." : "Отправить сообщение"}
               </Button>
             </div>
           </motion.form>

@@ -21,14 +21,43 @@ const ParticipantsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [formState, setFormState] = useState({ name: "", email: "", direction: "", description: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.description || !formState.direction) {
       toast.error("Пожалуйста, заполните все обязательные поля");
       return;
     }
-    toast.success("Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.");
-    setFormState({ name: "", email: "", direction: "", description: "" });
+
+    setIsSubmitting(true);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://mfondom.ru/mfond/notify";
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY || "your-secret-api-key";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          projectDirection: formState.direction,
+          projectDescription: formState.description
+        }),
+      });
+
+      if (!response.ok) throw new Error("Ошибка отправки");
+
+      toast.success("Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+      setFormState({ name: "", email: "", direction: "", description: "" });
+    } catch (error) {
+      toast.error("Произошла ошибка при отправке заявки. Попробуйте позже.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -140,9 +169,9 @@ const ParticipantsSection = () => {
                 maxLength={1000}
               />
             </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full font-body rounded-xl h-13 text-base">
+            <Button type="submit" variant="hero" size="lg" className="w-full font-body rounded-xl h-13 text-base" disabled={isSubmitting}>
               <Send className="w-4 h-4 mr-2" />
-              Отправить заявку
+              {isSubmitting ? "Отправка..." : "Отправить заявку"}
             </Button>
             <p className="font-body text-[11px] text-white/50 text-center">
               Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
