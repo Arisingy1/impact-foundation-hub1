@@ -91,7 +91,7 @@ const HeroSection = () => {
             >
               Социально-культурные
               <br />инициативы —{" "}
-              <span className="text-glow italic">самая мощная сила</span>,
+              <span className="text-glow italic">мощная сила</span>,
               <br />способная изменить мир
             </motion.h1>
 
@@ -101,7 +101,7 @@ const HeroSection = () => {
               transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.5 }}
               className="font-body text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed"
             >
-              Объединяем людей, бизнес и творческие инициативы для созидания
+              Объединяем людей, ресурсы, бизнес и экспертизу для созидания
             </motion.p>
           </motion.div>
 
