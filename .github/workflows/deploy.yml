@@ -35,7 +35,7 @@ jobs:
           path: ./out/
           remote_path: ${{ secrets.DEPLOY_PATH }}
           remote_host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
+          remote_port: ${{ secrets.SSH_PORT }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_KEY }}
 
