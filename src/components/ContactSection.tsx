@@ -34,6 +34,7 @@ const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isAgreed, setIsAgreed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,7 +43,11 @@ const ContactSection = () => {
       toast.error("Заполните все поля");
       return;
     }
-    
+    if (!isAgreed) {
+      toast.error("Необходимо согласие с политикой обработки персональных данных");
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://mfondom.ru/mfond/notify";
@@ -50,7 +55,7 @@ const ContactSection = () => {
 
       const response = await fetch(apiUrl, {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
           "x-api-key": apiKey
         },
@@ -62,7 +67,7 @@ const ContactSection = () => {
       });
 
       if (!response.ok) throw new Error("Ошибка отправки");
-      
+
       toast.success("Сообщение отправлено!");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
@@ -246,11 +251,24 @@ const ContactSection = () => {
                 />
               </div>
 
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="contact-policy"
+                  checked={isAgreed}
+                  onChange={(e) => setIsAgreed(e.target.checked)}
+                  className="w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-[#4d7cff] checked:border-[#4d7cff] shrink-0 cursor-pointer relative after:content-[''] after:absolute after:top-[1px] after:left-[4px] after:w-[4px] after:h-[8px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 checked:after:opacity-100 transition-all"
+                />
+                <label htmlFor="contact-policy" className="text-xs text-white/50 cursor-pointer select-none">
+                  Согласен с <a href="/documents/policy.pdf" className="text-[#4d7cff] hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a>
+                </label>
+              </div>
+
               <Button
                 type="submit"
                 className="w-full group rounded-xl h-12 text-base"
                 size="lg"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isAgreed}
               >
                 <Send className="w-4 h-4 mr-2 transition-transform group-hover:translate-x-0.5" />
                 {isSubmitting ? "Отправка..." : "Отправить сообщение"}

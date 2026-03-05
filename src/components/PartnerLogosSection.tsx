@@ -15,9 +15,6 @@ const PartnerLogosSection = () => {
    const ref = useRef(null);
    const inView = useInView(ref, { once: true, margin: "-40px" });
 
-   // Triple array to ensure smooth continuous marquee filling the screen
-   const marqueeItems = [...partners, ...partners, ...partners];
-
    return (
       <section ref={ref} className="relative overflow-hidden bg-[#0a1025]">
          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
@@ -36,11 +33,10 @@ const PartnerLogosSection = () => {
                initial={{ opacity: 0 }}
                animate={inView ? { opacity: 1 } : {}}
                transition={{ duration: 0.8, delay: 0.2 }}
-               className="w-full relative flex overflow-hidden"
-               style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+               className="w-full relative px-6 md:px-10 max-w-7xl mx-auto"
             >
-               <div className="flex w-max shrink-0 gap-4 md:gap-8 pr-4 md:pr-8 animate-marquee">
-                  {marqueeItems.map((partner, i) => {
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 justify-items-center">
+                  {partners.map((partner, i) => {
                      const CardContent = (
                         <div className="flex items-center justify-center w-full h-full transition-colors duration-300 overflow-hidden rounded-2xl">
                            {partner.image ? (
@@ -51,10 +47,9 @@ const PartnerLogosSection = () => {
                         </div>
                      );
 
-                     // Sizing handles 4 on desktop, 2 tablet, 1 mobile visually scaling up
-                     // If there's an image, hide the background and border to just show the rounded image.
+                     // Grid cell container
                      const hasImage = !!partner.image;
-                     const containerClass = `shrink-0 group w-[280px] sm:w-[320px] lg:w-[360px] h-24 md:h-32 flex items-center justify-center rounded-2xl transition-all duration-300 ${hasImage
+                     const containerClass = `w-full max-w-[360px] h-24 md:h-32 flex items-center justify-center rounded-2xl transition-all duration-300 group ${hasImage
                         ? "border-transparent bg-transparent"
                         : "border border-white/[0.06] bg-white/[0.03] hover:border-[#4d7cff]/30"
                         }`;

@@ -20,6 +20,7 @@ const ParticipantsSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [formState, setFormState] = useState({ name: "", email: "", direction: "", description: "" });
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -27,6 +28,10 @@ const ParticipantsSection = () => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.description || !formState.direction) {
       toast.error("Пожалуйста, заполните все обязательные поля");
+      return;
+    }
+    if (!isAgreed) {
+      toast.error("Необходимо согласие с политикой обработки персональных данных");
       return;
     }
 
@@ -169,13 +174,24 @@ const ParticipantsSection = () => {
                 maxLength={1000}
               />
             </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full font-body rounded-xl h-13 text-base" disabled={isSubmitting}>
+
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                id="participant-policy"
+                checked={isAgreed}
+                onChange={(e) => setIsAgreed(e.target.checked)}
+                className="w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-[#4d7cff] checked:border-[#4d7cff] shrink-0 cursor-pointer relative after:content-[''] after:absolute after:top-[1px] after:left-[4px] after:w-[4px] after:h-[8px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 checked:after:opacity-100 transition-all"
+              />
+              <label htmlFor="participant-policy" className="font-body text-[11px] text-white/50 cursor-pointer select-none">
+                Согласен с <a href="/documents/policy.pdf" className="text-[#4d7cff] hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a>
+              </label>
+            </div>
+
+            <Button type="submit" variant="hero" size="lg" className="w-full font-body rounded-xl h-13 text-base" disabled={isSubmitting || !isAgreed}>
               <Send className="w-4 h-4 mr-2" />
               {isSubmitting ? "Отправка..." : "Отправить заявку"}
             </Button>
-            <p className="font-body text-[11px] text-white/50 text-center">
-              Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
-            </p>
           </div>
         </motion.form>
       </div>
