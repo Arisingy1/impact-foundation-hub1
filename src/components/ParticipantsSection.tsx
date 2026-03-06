@@ -184,7 +184,7 @@ const ParticipantsSection = () => {
                 className="w-4 h-4 rounded appearance-none border border-white/20 bg-white/5 checked:bg-[#4d7cff] checked:border-[#4d7cff] shrink-0 cursor-pointer relative after:content-[''] after:absolute after:top-[1px] after:left-[4px] after:w-[4px] after:h-[8px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 checked:after:opacity-100 transition-all"
               />
               <label htmlFor="participant-policy" className="font-body text-[11px] text-white/50 cursor-pointer select-none">
-                Согласен с <a href="/documents/policy.pdf" className="text-[#4d7cff] hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a>
+                Согласен с <a href="/documents/privacy.pdf" className="text-[#4d7cff] hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a>
               </label>
             </div>
 
