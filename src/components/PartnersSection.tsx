@@ -3,13 +3,22 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText, ExternalLink } from "lucide-react";
 
 const benefits = [
   { num: "01", title: "Репутационный эффект", desc: "Укрепление имиджа через ассоциацию с социально значимыми проектами." },
   { num: "02", title: "Социальное воздействие", desc: "Прямое участие в изменениях, улучшающих жизнь тысяч людей." },
   { num: "03", title: "Доступ к сообществу", desc: "Сеть экспертов, партнёров и инициаторов для совместных проектов." },
   { num: "04", title: "Гибкие форматы", desc: "От разовой поддержки до стратегического партнёрства." },
+];
+
+const documents = [
+  { title: "5 преимуществ фонда", url: "/documents/partners/5_benefits_of_the_foundation.pdf" },
+  { title: "7 форматов сотрудничества", url: "/documents/partners/7_partnership_formats.pdf" },
+  { title: "Как стать партнером", url: "/documents/partners/how_to_become_a_partner.pdf" },
+  { title: "Как фонд работает с партнерами", url: "/documents/partners/how_foundation_works_with_partners.pdf" },
+  { title: "Матрица выгод партнерства", url: "/documents/partners/partnership_benefits_matrix.pdf" },
+  { title: "Уровни партнерства фонда", url: "/documents/partners/foundation_partnership_levels.pdf" },
 ];
 
 const PartnersSection = () => {
@@ -22,7 +31,7 @@ const PartnersSection = () => {
       ref={ref}
       className="bg-background relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-12 md:py-20 border-t border-white/[0.03]">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left — headline, description, CTAs */}
           <motion.div
@@ -44,7 +53,7 @@ const PartnersSection = () => {
               с&nbsp;общественной пользой и&nbsp;оставить значимый след.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-12">
               <Button
                 variant="default"
                 size="lg"
@@ -71,6 +80,35 @@ const PartnersSection = () => {
               >
                 Подать проект
               </Button>
+            </div>
+
+            {/* Documents list */}
+            <div className="space-y-4">
+              <h4 className="font-display text-sm uppercase tracking-widest text-[#4d7cff] font-bold mb-4">
+                Документы для партнеров
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {documents.map((doc, idx) => (
+                  <motion.a
+                    key={idx}
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.5 + idx * 0.05 }}
+                    className="flex items-center gap-3 p-3 rounded-xl border border-white/[0.08] hover:bg-white/[0.04] transition-all group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-[#4d7cff]/10 flex items-center justify-center text-[#4d7cff] group-hover:bg-[#4d7cff] group-hover:text-white transition-colors">
+                      <FileText className="w-4 h-4" />
+                    </div>
+                    <span className="font-body text-sm text-white/60 group-hover:text-white transition-colors">
+                      {doc.title}
+                    </span>
+                    <ExternalLink className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-40 transition-opacity" />
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
 

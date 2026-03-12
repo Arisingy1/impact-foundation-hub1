@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import DonationModal from "./DonationModal";
 import { TelegramIcon } from "./illustrations";
 import Image from "next/image";
-import LogoImg from "@/assets/Logo.png";
+import LogoImg from "public/Logo.png";
 
 const navItems = [
   { label: "О фонде", href: "#about" },
@@ -51,7 +51,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <Image src={LogoImg} alt="Фонд" width={75} height={65} className="rounded-xl" />
+          <Image src={LogoImg} alt="Фонд" width={80} height={80} className="rounded-xl" />
         </a>
 
         {/* Desktop nav */}

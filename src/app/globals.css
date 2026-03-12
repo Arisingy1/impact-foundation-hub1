@@ -146,6 +146,14 @@
   }
 }
 
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 :root {
   --radius: 0.75rem;
   --background: #0a1025;

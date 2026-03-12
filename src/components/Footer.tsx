@@ -2,7 +2,7 @@
 
 import { Heart } from "lucide-react";
 import Image from "next/image";
-import LogoImg from "@/assets/Logo.png";
+import LogoImg from "public/Logo.png";
 import { TelegramIcon, VkIcon, MaxIcon } from "./illustrations";
 
 const socialLinks = [
@@ -23,7 +23,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid md:grid-cols-[2fr_1fr_1fr] gap-12 mb-14">
           <div>
-            <Image src={LogoImg} alt="Фонд" width={75} height={65} className="rounded-xl mb-6" />
+            <Image src={LogoImg} alt="Фонд" width={80} height={80} className="rounded-xl mb-6" />
             <p className="font-body text-sm text-white/70 leading-relaxed max-w-xs mb-6">
               Объединяем людей и ресурсы для создания проектов, которые меняют жизнь к лучшему.
             </p>

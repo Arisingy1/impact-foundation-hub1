@@ -7,7 +7,7 @@ import { ArrowDown } from "lucide-react";
 import { HeroBackground } from "./illustrations";
 import DonationModal from "./DonationModal";
 import Image from "next/image";
-import LogoImg from "@/assets/Logo.png";
+import LogoImg from "public/Logo.png";
 
 const HeroSection = () => {
   const [donationOpen, setDonationOpen] = useState(false);
@@ -45,28 +45,37 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Rotating logo behind content */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          animate={isMobile ? {} : { rotate: 360 }}
-          transition={isMobile ? { duration: 0 } : { duration: 80, repeat: Infinity, ease: "linear" }}
-          className="relative"
-          style={{ willChange: isMobile ? "auto" : "transform" }}
-        >
-          <Image
-            src={LogoImg}
-            alt=""
-            className="w-[360px] h-[260px] sm:w-[460px] sm:h-[350px] md:w-[560px] md:h-[450px] lg:w-[700px] lg:h-[560px] opacity-[0.25] select-none"
-            priority
-          />
-        </motion.div>
-        {/* Glow behind logo */}
-        <div className="absolute w-[500px] h-[500px] md:w-[750px] md:h-[750px] rounded-full bg-[#4d7cff]/[0.05] blur-[120px]" />
-      </div>
-
       {/* Content — centered */}
-      <div className="relative z-10 flex-1 flex items-center justify-center pt-28 md:pt-32">
+      <div className="relative z-10 flex-1 flex items-center justify-center pt-24 md:pt-32">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-10 text-center">
+          {/* Logo on top */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{
+              opacity: 1,
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              opacity: { duration: isMobile ? 0 : 1, ease: "easeOut" },
+              scale: {
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
+            className="flex justify-center mb-8 md:mb-12"
+          >
+            <div className="relative">
+              <Image
+                src={LogoImg}
+                alt="Logo"
+                className="w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[350px] select-none opacity-40"
+                priority
+              />
+              <div className="absolute inset-0 bg-[#4d7cff]/15 blur-[65px] -z-10 rounded-full" />
+            </div>
+          </motion.div>
+
           {/* Fund full name label */}
           <motion.p
             initial={{ opacity: 0, y: -10 }}
@@ -74,7 +83,7 @@ const HeroSection = () => {
             transition={{ duration: isMobile ? 0 : 0.5, delay: isMobile ? 0 : 0.1 }}
             className="font-body text-xl uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4d7cff] mb-5 md:mb-6 px-4"
           >
-            Фонд поддержки социально-культурных инициатив и бизнес проектов
+            Фонд «Среда Возможностей»
           </motion.p>
 
           <motion.div
@@ -83,17 +92,6 @@ const HeroSection = () => {
             transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.2 }}
             className="mb-10 md:mb-14"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: isMobile ? 0 : 0.8, delay: isMobile ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6"
-            >
-              Социально-культурные
-              <br />инициативы —{" "}
-              <span className="text-glow italic">мощная сила</span>,
-              <br />способная изменить мир
-            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
