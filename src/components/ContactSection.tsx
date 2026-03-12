@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { TelegramIcon, VkIcon, MaxIcon } from "./illustrations";
 import { toast } from "sonner";
 
@@ -70,7 +70,7 @@ const ContactSection = () => {
 
       toast.success("Сообщение отправлено!");
       setForm({ name: "", email: "", message: "" });
-    } catch (error) {
+    } catch {
       toast.error("Произошла ошибка при отправке сообщения. Попробуйте позже.");
     } finally {
       setIsSubmitting(false);
@@ -152,7 +152,7 @@ const ContactSection = () => {
             <motion.div variants={fadeUp} custom={6} className="mb-12">
               <p className="text-xs text-white/40 uppercase tracking-wider mb-4">Наши соцсети</p>
               <div className="flex flex-wrap gap-5">
-                {socialLinks.map((social, i) => (
+                {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}

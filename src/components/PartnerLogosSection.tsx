@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
-import Link from "next/link";
+import Image from "next/image";
 
 const partners = [
    { name: "OMSM", placeholder: null, image: "/assets/omsm.webp", link: null },
@@ -92,9 +92,11 @@ const PartnerLogosSection = () => {
                      const CardContent = (
                         <div className="flex items-center justify-center w-full h-full p-2.5 md:p-3 transition-colors duration-300 overflow-hidden rounded-2xl">
                            {partner.image ? (
-                              <img
+                              <Image
                                  src={partner.image}
                                  alt={partner.name}
+                                 width={200}
+                                 height={100}
                                  className="max-w-full max-h-full object-contain"
                               />
                            ) : (

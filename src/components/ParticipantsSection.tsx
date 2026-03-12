@@ -58,7 +58,7 @@ const ParticipantsSection = () => {
 
       toast.success("Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.");
       setFormState({ name: "", email: "", direction: "", description: "" });
-    } catch (error) {
+    } catch {
       toast.error("Произошла ошибка при отправке заявки. Попробуйте позже.");
     } finally {
       setIsSubmitting(false);
