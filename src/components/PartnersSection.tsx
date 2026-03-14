@@ -13,12 +13,10 @@ const benefits = [
 ];
 
 const documents = [
-  { title: "5 преимуществ фонда", url: "/documents/partners/5_benefits_of_the_foundation.pdf" },
-  { title: "7 форматов сотрудничества", url: "/documents/partners/7_partnership_formats.pdf" },
   { title: "Как стать партнером", url: "/documents/partners/how_to_become_a_partner.pdf" },
   { title: "Как фонд работает с партнерами", url: "/documents/partners/how_foundation_works_with_partners.pdf" },
-  { title: "Матрица выгод партнерства", url: "/documents/partners/partnership_benefits_matrix.pdf" },
-  { title: "Уровни партнерства фонда", url: "/documents/partners/foundation_partnership_levels.pdf" },
+  { title: "Как подать заявку на грант", url: "/documents/partners/how_to_apply_for_grant.pdf" },
+  { title: "Подача заявки через фонд", url: "/documents/partners/how_to_apply_for_grant_via_foundation.pdf" },
 ];
 
 const PartnersSection = () => {
